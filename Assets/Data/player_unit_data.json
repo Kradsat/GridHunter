@@ -1,0 +1,52 @@
+{
+	"unit_datas":
+	[
+		{
+			"unit_id": 0,
+			"unit_name": "template",
+			"unit_hp": 100,
+			"unit_mp": 100,
+			"unit_range": 10,
+			"unit_attack": 100,
+			"unit_equipment": 0
+		},
+		{
+			"unit_id": 1,
+			"unit_name": "dagger",
+			"unit_hp": 150,
+			"unit_mp": 10,
+			"unit_range": 1,
+			"unit_attack": 50,
+			"unit_equipment": 1
+		},
+		{
+			"unit_id": 2,
+			"unit_name": "hammer",
+			"unit_hp": 200,
+			"unit_mp": 10,
+			"unit_range": 3,
+			"unit_attack": 50,
+			"unit_equipment": 4
+		},
+		{
+			"unit_id": 3,
+			"unit_name": "lance",
+			"unit_hp": 500,
+			"unit_mp": 10,
+			"unit_range": 1,
+			"unit_attack": 30,
+			"unit_equipment": 7
+		},
+		{
+			"unit_id": 4,
+			"unit_name": "rod",
+			"unit_hp": 50,
+			"unit_mp": 100,
+			"unit_range": 1,
+			"unit_attack": 10,
+			"unit_equipment": 10
+		}
+	]
+	
+}
+		
