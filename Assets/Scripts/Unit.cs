@@ -12,6 +12,9 @@ public class Unit : MonoBehaviour
     public static event EventHandler OnAnyUnitDead;
 
     [SerializeField] private bool isEnemy;
+    [SerializeField] public bool is3x3Boss;
+    [SerializeField] public bool canMove = true;
+    [SerializeField] public bool canAttack = true;
 
     private GridPosition gridPosition;
     private HealthSystem healthSystem;
@@ -129,6 +132,8 @@ public class Unit : MonoBehaviour
         {
             actionPoints = ACTION_POINTS_MAX;
             OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
+            canAttack = true;
+            canMove = true;
         }
        
     }

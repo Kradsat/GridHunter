@@ -31,8 +31,27 @@ public class LevelGrid : MonoBehaviour
 
     public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
-        GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-        gridObject.AddUnit(unit);
+        if (!unit.is3x3Boss)
+        {
+            GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+            gridObject.AddUnit(unit);
+        }
+        else
+        {
+            GridPosition gridPos;
+            gridPos.x = gridPosition.x - 1;
+            gridPos.z = gridPosition.z - 1;
+            for (int i = 0; i < 3; i++)
+            {
+                gridPosition.z = gridPos.z + i;
+                for (int j = 0; j < 3; j++)
+                {
+                    gridPosition.x = gridPos.x + j;
+                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+                    gridObject.AddUnit(unit);
+                }
+            }
+        }
     }
 
     public List<Unit> GetUnitListAtGridPosition(GridPosition gridPosition)
@@ -43,8 +62,27 @@ public class LevelGrid : MonoBehaviour
 
     public void RemoveUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
-        GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-        gridObject.RemoveUnit(unit);
+        if (!unit.is3x3Boss)
+        {
+            GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+            gridObject.RemoveUnit(unit);
+        }
+        else
+        {
+            GridPosition gridPos;
+            gridPos.x = gridPosition.x - 1;
+            gridPos.z = gridPosition.z - 1;
+            for (int i = 0; i < 3; i++)
+            {
+                gridPosition.z = gridPos.z + i;
+                for (int j = 0; j < 3; j++)
+                {
+                    gridPosition.x = gridPos.x + j;
+                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+                    gridObject.RemoveUnit(unit);
+                }
+            }
+        }
     }
 
     //Function that will be called whenever a unit changes its grid position

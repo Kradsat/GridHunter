@@ -47,6 +47,7 @@ public class MoveAction : BaseAction
         {
             OnStopMoving?.Invoke(this, EventArgs.Empty);
             ActionComplete();
+            unit.canMove = false;
 
         }
         float rotateSpeed = 20f;
@@ -125,5 +126,14 @@ public class MoveAction : BaseAction
             gridPosition = gridPosition,
             actionValue = targetCountAtGridPosition * 10
         };
+    }
+
+    public override int GetActionPointsCost()
+    {
+        if (unit.canMove)
+        {
+            return 1;
+        }
+        return 2;
     }
 }

@@ -147,9 +147,9 @@ GameObject:
   - component: {fileID: 688692475197359422}
   - component: {fileID: 4896233374760510505}
   - component: {fileID: 3605657592260861662}
-  - component: {fileID: 4753658738129769339}
   - component: {fileID: 7878245244955129851}
   - component: {fileID: -3089689246366230025}
+  - component: {fileID: 6917891023451083383}
   - component: {fileID: 8973033085096905138}
   - component: {fileID: 5620908759051501071}
   m_Layer: 7
@@ -190,6 +190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 0
+  is3x3Boss: 0
+  canMove: 1
+  canAttack: 1
 --- !u!65 &4896233374760510505
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -216,18 +219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMoveDistance: 4
---- !u!114 &4753658738129769339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688692475197359416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad3f37a16a200734baa281d1d1a6ec66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7878245244955129851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  enemyAnimator: {fileID: 0}
 --- !u!114 &-3089689246366230025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +245,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &6917891023451083383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688692475197359416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ee499e1424f7b4e891523b78f31d7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAttackDistance: 1
 --- !u!114 &8973033085096905138
 MonoBehaviour:
   m_ObjectHideFlags: 0
