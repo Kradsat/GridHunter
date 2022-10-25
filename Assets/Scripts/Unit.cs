@@ -18,19 +18,19 @@ public class Unit : MonoBehaviour
 
     private GridPosition gridPosition;
     private HealthSystem healthSystem;
-    private MoveAction moveAction;
-    private SpinAction spinAction;
-    private AttackAction attackAction;
-    private BaseAction[] baseAction;
+    //private MoveAction moveAction;
+    //private SpinAction spinAction;
+    //private AttackAction attackAction;
+    private BaseAction[] baseActionArray;
     private int actionPoints = ACTION_POINTS_MAX;
 
     private void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
-        moveAction = GetComponent<MoveAction>();
-        spinAction = GetComponent<SpinAction>();;
-        attackAction = GetComponent<AttackAction>();;
-        baseAction = GetComponents<BaseAction>();
+        //moveAction = GetComponent<MoveAction>();
+        //spinAction = GetComponent<SpinAction>();;
+        //attackAction = GetComponent<AttackAction>();;
+        baseActionArray = GetComponents<BaseAction>();
     }
 
     private void Start()
@@ -61,20 +61,30 @@ public class Unit : MonoBehaviour
 
     }
 
-    public MoveAction GetMoveAction()
+    public T GetAction<T>() where T : BaseAction
     {
-        return moveAction;
+        foreach (BaseAction baseAction in baseActionArray)
+        {
+            if (baseAction.GetType() == typeof(T))
+            return (T)baseAction;
+        }
+        return null;
     }
 
-    public SpinAction GetSpinAction()
-    {
-        return spinAction;
-    }
+    //public MoveAction GetMoveAction()
+    //{
+    //    return moveAction;
+    //}
 
-    public AttackAction GetAttackAction()
-    {
-        return attackAction;
-    }
+    //public SpinAction GetSpinAction()
+    //{
+    //    return spinAction;
+    //}
+
+    //public AttackAction GetAttackAction()
+    //{
+    //    return attackAction;
+    //}
 
 
     public GridPosition GetGridPosition()
@@ -89,7 +99,7 @@ public class Unit : MonoBehaviour
 
     public BaseAction[] GetBaseActionArray()
     {
-        return baseAction;
+        return baseActionArray;
     }
 
     public bool TrySpendActionPointsToTakeAction(BaseAction baseAction)
