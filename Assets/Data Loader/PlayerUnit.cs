@@ -6,5 +6,5 @@ public class PlayerUnit
     public double Mp { get; set; }
     public int Range { get; set; }
     public int Attack { get; set; }
-    public int Equipment { get; set; }
+    public Equipment_Datas Equipment { get; set; }
 }

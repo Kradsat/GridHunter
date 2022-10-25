@@ -1,6 +1,7 @@
 public class MasterStruct
 {
-    public Unit_Datas UnitDatas;
+    public Units UnitDatas;
     public Equipments EquipmentDatas;
-    public string[,] Map = new string[10, 10];
+    public int[,] Map = new int[10, 10];
+    public int[,] UnitEquip = new int[4, 2];
 }

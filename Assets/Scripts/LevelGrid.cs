@@ -26,29 +26,24 @@ public class LevelGrid : MonoBehaviour
         Instance = this;
 
         gridSystem = new GridSystem(GridSize, GridSize, cellSize);
-        gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
+        gridSystem.CreateDebugObjects(gridDebugObjectPrefab, this.transform);
     }
 
     public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
-        if (!unit.is3x3Boss)
-        {
+        if( !unit.is3x3Boss ) {
             GridObject gridObject = gridSystem.GetGridObject(gridPosition);
             gridObject.AddUnit(unit);
-        }
-        else
-        {
+        } else {
             GridPosition gridPos;
             gridPos.x = gridPosition.x - 1;
             gridPos.z = gridPosition.z - 1;
-            for (int i = 0; i < 3; i++)
-            {
+            for( int i = 0; i < 3; i++ ) {
                 gridPosition.z = gridPos.z + i;
-                for (int j = 0; j < 3; j++)
-                {
+                for( int j = 0; j < 3; j++ ) {
                     gridPosition.x = gridPos.x + j;
-                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-                    gridObject.AddUnit(unit);
+                    GridObject gridObject = gridSystem.GetGridObject( gridPosition );
+                    gridObject.AddUnit( unit );
                 }
             }
         }
@@ -62,24 +57,19 @@ public class LevelGrid : MonoBehaviour
 
     public void RemoveUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
-        if (!unit.is3x3Boss)
-        {
-            GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-            gridObject.RemoveUnit(unit);
-        }
-        else
-        {
+        if( !unit.is3x3Boss ) {
+            GridObject gridObject = gridSystem.GetGridObject( gridPosition );
+            gridObject.RemoveUnit( unit );
+        } else {
             GridPosition gridPos;
             gridPos.x = gridPosition.x - 1;
             gridPos.z = gridPosition.z - 1;
-            for (int i = 0; i < 3; i++)
-            {
+            for( int i = 0; i < 3; i++ ) {
                 gridPosition.z = gridPos.z + i;
-                for (int j = 0; j < 3; j++)
-                {
+                for( int j = 0; j < 3; j++ ) {
                     gridPosition.x = gridPos.x + j;
-                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-                    gridObject.RemoveUnit(unit);
+                    GridObject gridObject = gridSystem.GetGridObject( gridPosition );
+                    gridObject.RemoveUnit( unit );
                 }
             }
         }
@@ -101,6 +91,7 @@ public class LevelGrid : MonoBehaviour
 
     public int GetWidth() => gridSystem.GetWidth();
     public int GetHeight() => gridSystem.GetHeight();
+    public float GetCellSize() => gridSystem.GetCellSize();
 
 
     public bool HasAnyUnitOnGridPosition(GridPosition gridPosition)

@@ -1,5 +1,3 @@
-//dunno why doesnt work
-
 using System.Collections.Generic;
 
 [System.Serializable]

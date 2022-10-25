@@ -12,6 +12,7 @@ public class SpecialAttack : BaseAction
 
 
     [SerializeField] private int maxAttackDistance = 5;
+    [SerializeField] private int damage = 50;
 
     private enum State
     {
@@ -115,13 +116,12 @@ public class SpecialAttack : BaseAction
                 state = State.SwingingSwordAfterHit;
                 float afterHitStateTime = 0.5f;
                 stateTimer = afterHitStateTime;
-                targetUnit.Damage(50);
+                targetUnit.Damage(damage);
                 OnAnySwordHit?.Invoke(this, EventArgs.Empty);
                 break;
             case State.SwingingSwordAfterHit:
                 OnAttackEnd?.Invoke(this, EventArgs.Empty);
                 ActionComplete();
-                unit.canAttack = false;
                 break;
 
         }
@@ -220,14 +220,5 @@ public class SpecialAttack : BaseAction
     public int GetTargetCountAtPosition(GridPosition gridPosition)
     {
         return GetValidActionGridPositionList(gridPosition).Count;
-    }
-
-    public override int GetActionPointsCost()
-    {
-        if (unit.canAttack)
-        {
-            return 1;
-        }
-        return 2;
     }
 }

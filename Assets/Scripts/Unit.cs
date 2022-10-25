@@ -14,29 +14,32 @@ public class Unit : MonoBehaviour
     [SerializeField] private bool isEnemy;
     [SerializeField] public bool is3x3Boss;
     [SerializeField] public bool canMove = true;
-    [SerializeField] public bool canAttack = true;
 
     private GridPosition gridPosition;
     private HealthSystem healthSystem;
-    //private MoveAction moveAction;
-    //private SpinAction spinAction;
-    //private AttackAction attackAction;
-    private BaseAction[] baseActionArray;
+    private MoveAction moveAction;
+    private SpinAction spinAction;
+    private AttackAction attackAction;
+    private BaseAction[] baseAction;
     private int actionPoints = ACTION_POINTS_MAX;
 
     private void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
-        //moveAction = GetComponent<MoveAction>();
-        //spinAction = GetComponent<SpinAction>();;
-        //attackAction = GetComponent<AttackAction>();;
-        baseActionArray = GetComponents<BaseAction>();
+        moveAction = GetComponent<MoveAction>();
+        spinAction = GetComponent<SpinAction>();;
+        attackAction = GetComponent<AttackAction>();;
+        baseAction = GetComponents<BaseAction>();
     }
 
     private void Start()
     {
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
-        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
+        if( !is3x3Boss ) {
+            LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
+        } else {
+            LevelGrid.Instance.AddUnitAtGridPosition( gridPosition, this );
+        }
 
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
 
@@ -48,7 +51,7 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         if (newGridPosition!= gridPosition)
         {
@@ -61,30 +64,20 @@ public class Unit : MonoBehaviour
 
     }
 
-    public T GetAction<T>() where T : BaseAction
+    public MoveAction GetMoveAction()
     {
-        foreach (BaseAction baseAction in baseActionArray)
-        {
-            if (baseAction.GetType() == typeof(T))
-            return (T)baseAction;
-        }
-        return null;
+        return moveAction;
     }
 
-    //public MoveAction GetMoveAction()
-    //{
-    //    return moveAction;
-    //}
+    public SpinAction GetSpinAction()
+    {
+        return spinAction;
+    }
 
-    //public SpinAction GetSpinAction()
-    //{
-    //    return spinAction;
-    //}
-
-    //public AttackAction GetAttackAction()
-    //{
-    //    return attackAction;
-    //}
+    public AttackAction GetAttackAction()
+    {
+        return attackAction;
+    }
 
 
     public GridPosition GetGridPosition()
@@ -99,8 +92,12 @@ public class Unit : MonoBehaviour
 
     public BaseAction[] GetBaseActionArray()
     {
-        return baseActionArray;
+        return baseAction;
     }
+
+
+    //public bool canMove { get { return actionPoints > ACTION_POINTS_MAX; } }
+
 
     public bool TrySpendActionPointsToTakeAction(BaseAction baseAction)
     {
@@ -130,22 +127,21 @@ public class Unit : MonoBehaviour
         OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    public int GetcActionPoints()
+    public int GetActionPoints()
     {
         return actionPoints;
     }
 
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
-        if ((IsEnemy() && !TurnSystem.Instance.IsPlayerTurn()) || 
+        if ((IsEnemy() && !TurnSystem.Instance.IsPlayerTurn()) ||
             (!IsEnemy() && TurnSystem.Instance.IsPlayerTurn()))
         {
             actionPoints = ACTION_POINTS_MAX;
             OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
-            canAttack = true;
             canMove = true;
         }
-       
+
     }
 
     public bool IsEnemy()

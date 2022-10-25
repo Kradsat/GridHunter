@@ -18,7 +18,7 @@ public class UnityActionSystemUI : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void Initialize()
     {
         UnitActionSystem.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChange;
         UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChange;
@@ -96,7 +96,7 @@ public class UnityActionSystemUI : MonoBehaviour
     {
         Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
 
-        actionPointText.text = "Action Points: " + selectedUnit.GetcActionPoints();
+        actionPointText.text = "Action Points: " + selectedUnit.GetActionPoints();
     }
 
     

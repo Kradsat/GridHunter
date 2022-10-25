@@ -13,7 +13,14 @@ public class UnitActionSystem : MonoBehaviour
     public event EventHandler<bool> OnBusyChanged;
     public event EventHandler OnActionStarted;
 
-    [SerializeField]private Unit selectedUnit;
+    [SerializeField] private Unit selectedUnit;
+    public Unit SelectedUnit
+    {
+        set { 
+            selectedUnit = value;
+            SetSelectedUnit(selectedUnit);
+        }
+    }
     [SerializeField] private LayerMask unitLayerMask;
 
     private BaseAction selectedAction;
@@ -30,10 +37,10 @@ public class UnitActionSystem : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        SetSelectedUnit(selectedUnit);
-    }
+    //private void Start()
+    //{
+    //    SetSelectedUnit(selectedUnit);
+    //}
 
     private void Update()
     {
@@ -104,7 +111,7 @@ public class UnitActionSystem : MonoBehaviour
             //}
             //OnActionStarted?.Invoke(this, EventArgs.Empty);
             #endregion
-            //but maybe in the future can be useful and cand migrated to the switch method
+            //but maybe in the future can be useful and can migrate to the switch method
         }
     }
 
@@ -152,7 +159,7 @@ public class UnitActionSystem : MonoBehaviour
     {
         selectedUnit = unit;
 
-        SetSelectedAction(unit.GetAction<MoveAction>());
+        SetSelectedAction(unit.GetMoveAction());
 
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
         /* is the same as above

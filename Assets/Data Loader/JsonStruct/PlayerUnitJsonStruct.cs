@@ -1,16 +1,16 @@
 [System.Serializable]
-public class Unit_Datas
+public class Units
 {
-    public Unit_Data[] unit_datas;
+    public Unit_Datas[] unit_datas;
 }
 
 [System.Serializable]
-public class Unit_Data
+public class Unit_Datas
 {
     public int unit_id;
     public string unit_name;
-    public float unit_hp;
-    public float unit_mp;
+    public int unit_hp;
+    public int unit_mp;
     public int unit_range;
     public int unit_attack;
 }

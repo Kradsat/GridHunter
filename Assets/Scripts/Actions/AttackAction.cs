@@ -10,9 +10,9 @@ public class AttackAction : BaseAction
     public event EventHandler OnAttackStart;
     public event EventHandler OnAttackEnd;
 
-    public Quaternion originalRotationValue; // declare this as a Quaternion
 
     [SerializeField] private int maxAttackDistance = 1;
+    [SerializeField] private int damage = 10;
     
     private enum State
     {
@@ -25,12 +25,8 @@ public class AttackAction : BaseAction
     private float stateTimer;
     private bool canAttack;
     private Unit targetUnit;
+   
 
-
-    private void Start()
-    {
-        originalRotationValue = transform.rotation;
-    }
 
     // Update is called once per frame
     private void Update()
@@ -73,8 +69,6 @@ public class AttackAction : BaseAction
                 transform.forward = Vector3.Lerp(transform.forward, aimDir, Time.deltaTime * rotateSpeed);
                 break;
             case State.SwingingSwordAfterHit:
-                float rotationResetSpeed = 200f;
-                transform.rotation = Quaternion.Slerp(transform.rotation, originalRotationValue, Time.time * rotationResetSpeed);
                 break;
             default:
                 break;
@@ -122,13 +116,12 @@ public class AttackAction : BaseAction
                 state = State.SwingingSwordAfterHit;
                 float afterHitStateTime = 0.5f;
                 stateTimer = afterHitStateTime;
-                targetUnit.Damage(10);
+                targetUnit.Damage(damage);
                 OnAnySwordHit?.Invoke(this, EventArgs.Empty);
                 break;
             case State.SwingingSwordAfterHit:
                 OnAttackEnd?.Invoke(this, EventArgs.Empty);
                 ActionComplete();
-                unit.canAttack = false;
                 break;
 
         }
@@ -224,14 +217,5 @@ public class AttackAction : BaseAction
     public int GetTargetCountAtPosition(GridPosition gridPosition)
     {
         return GetValidActionGridPositionList(gridPosition).Count;
-    }
-
-    public override int GetActionPointsCost()
-    {
-        if (unit.canAttack)
-        {
-            return 1;
-        }
-        return 2;
     }
 }

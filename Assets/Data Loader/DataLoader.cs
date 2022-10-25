@@ -1,28 +1,30 @@
 using UnityEngine;
 using System.IO;
+using System;
 
-public class DataLoader : MonoBehaviour
-{
+public class DataLoader : MonoBehaviour {
     [Header("Json")]
     [SerializeField] private TextAsset EquipmentDataJson;
     [SerializeField] private TextAsset UnitDataJson;
 
-    //TODO
     [Header("CSV")]
     [SerializeField] private TextAsset MapCSV;
+    [SerializeField] private TextAsset UnitEquipCSV;
+
 
     public void LoadAllDatas()
     {
         //json
-        MasterDataContainer.Instance.UnitDatas = JsonUtility.FromJson<Unit_Datas>(UnitDataJson.text);
+        MasterDataContainer.Instance.UnitDatas = JsonUtility.FromJson<Units>(UnitDataJson.text);
         MasterDataContainer.Instance.EquipmentDatas = JsonUtility.FromJson<Equipments>(EquipmentDataJson.text);
 
         //csv
         LoadMapData();
+        LoadUnitEquip();
     }
 
     //今はステージ１しかロードしません
-    private void LoadMapData()
+    public void LoadMapData(Action callback = null)
     {
         StringReader reader = new StringReader(MapCSV.text);
 
@@ -31,7 +33,23 @@ public class DataLoader : MonoBehaviour
             string[] line = reader.ReadLine().Split(",");
             for (int x = 0; x < 10; x++)
             {
-                MasterDataContainer.Instance.Map[x, y] = line[x];
+                MasterDataContainer.Instance.Map[x, y] = int.Parse(line[x]);
+            }
+        }
+
+        callback?.Invoke();
+    }
+
+    public void LoadUnitEquip()
+    {
+        StringReader reader = new StringReader(UnitEquipCSV.text);
+
+        for (int y = 0; y < 2; y++)
+        {
+            string[] line = reader.ReadLine().Split(",");
+            for (int x = 0; x < 4; x++)
+            {
+                MasterDataContainer.Instance.UnitEquip[x, y] = int.Parse(line[x]);
             }
         }
     }

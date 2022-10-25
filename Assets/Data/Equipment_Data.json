@@ -1,89 +1,69 @@
 {
-	"equipment_datas": [
+	"equipment_datas":[
 		{
-			"unit_equipments": [
-				{
-					"equipment_id": 0,
-					"equipment_name": "template",
-					"equipment_attack": 0
-				}
-			]
+			"equipment_id": 0,
+			"equipment_name": "template",
+			"equipment_attack": 0
 		},
 		{
-			"unit_equipments": [
-				{
-					"equipment_id": 11,
-					"equipment_name": "Iron Dagger",
-					"equipment_attack": 5
-				},
-				{
-					"equipment_id": 12,
-					"equipment_name": "Silver Dagger",
-					"equipment_attack": 10
-				},
-				{
-					"equipment_id": 13,
-					"equipment_name": "Gold Dagger",
-					"equipment_attack": 15
-				}
-			]
+			"equipment_id": 1,
+			"equipment_name": "Iron Dagger",
+			"equipment_attack": 5
 		},
 		{
-			"unit_equipments": [
-				{
-					"equipment_id": 21,
-					"equipment_name": "Iron Hammer",
-					"equipment_attack": 5
-				},
-				{
-					"equipment_id": 22,
-					"equipment_name": "Silver Hammer",
-					"equipment_attack": 10
-				},
-				{
-					"equipment_id": 23,
-					"equipment_name": "Gold Hammer",
-					"equipment_attack": 15
-				}
-			]
+			"equipment_id": 2,
+			"equipment_name": "Silver Dagger",
+			"equipment_attack": 10
 		},
 		{
-			"unit_equipments": [
-				{
-					"equipment_id": 31,
-					"equipment_name": "Iron Lance",
-					"equipment_attack": 5
-				},
-				{
-					"equipment_id": 32,
-					"equipment_name": "Silver Lance",
-					"equipment_attack": 10
-				},
-				{
-					"equipment_id": 33,
-					"equipment_name": "Gold Lance",
-					"equipment_attack": 15
-				}
-			]
+			"equipment_id": 3,
+			"equipment_name": "Gold Dagger",
+			"equipment_attack": 15
 		},
 		{
-			"unit_equipments": [
-				{
-					"equipment_id": 41,
-					"equipment_name": "Iron Rod",
-					"equipment_attack": 5
-				},
-				{
-					"equipment_id": 42,
-					"equipment_name": "Silver Rod",
-					"equipment_attack": 10
-				},
-				{
-					"equipment_id": 43,
-					"equipment_name": "Gold Rod",
-					"equipment_attack": 15
-				}
-			]
+			"equipment_id": 4,
+			"equipment_name": "Iron Hammer",
+			"equipment_attack": 5
+		},
+		{
+			"equipment_id": 5,
+			"equipment_name": "Silver Hammer",
+			"equipment_attack": 10
+		},
+		{
+			"equipment_id": 6,
+			"equipment_name": "Gold Hammer",
+			"equipment_attack": 15
+		},
+		{
+			"equipment_id": 7,
+			"equipment_name": "Iron Lance",
+			"equipment_attack": 5
+		},
+		{
+			"equipment_id": 8,
+			"equipment_name": "Silver Lance",
+			"equipment_attack": 10
+		},
+		{
+			"equipment_id": 9,
+			"equipment_name": "Gold Lance",
+			"equipment_attack": 15
+		},
+		{
+			"equipment_id": 10,
+			"equipment_name": "Iron Rod",
+			"equipment_attack": 5
+		},
+		{
+			"equipment_id": 11,
+			"equipment_name": "Silver Rod",
+			"equipment_attack": 10
+		},
+		{
+			"equipment_id": 12,
+			"equipment_name": "Gold Rod",
+			"equipment_attack": 15
 		}
 	]
 }

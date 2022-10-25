@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitAnimator : MonoBehaviour
@@ -11,6 +9,8 @@ public class UnitAnimator : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+
         if(TryGetComponent<MoveAction>(out MoveAction moveAction))
         {
             moveAction.OnStartMoving += MoveAction_OnStartMoving;

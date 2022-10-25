@@ -25,7 +25,7 @@ public class GridSystemVisual : MonoBehaviour
 
     [SerializeField] private Transform gridSystemVisualSinglePrefab;
     [SerializeField] private List<GridVisualTypeMaterial> gridVisualMaterialList;
-    
+
     private GridSystemVisualSingle[,] gridSystemVisualSingleArray;
 
     private void Awake()
@@ -39,7 +39,7 @@ public class GridSystemVisual : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    public void Initialize()
     {
         gridSystemVisualSingleArray = new GridSystemVisualSingle[
             LevelGrid.Instance.GetWidth(),
@@ -52,6 +52,7 @@ public class GridSystemVisual : MonoBehaviour
             {
                 GridPosition gridPosition = new GridPosition(x,z);
                 Transform grisdSystemVisualSingleTransform = Instantiate(gridSystemVisualSinglePrefab, LevelGrid.Instance.GetWorldPosition(gridPosition), Quaternion.identity);
+                grisdSystemVisualSingleTransform.SetParent(this.transform);
                 gridSystemVisualSingleArray[x,z] = grisdSystemVisualSingleTransform.GetComponent<GridSystemVisualSingle>();
             }
         }

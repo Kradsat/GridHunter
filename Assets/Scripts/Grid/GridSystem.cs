@@ -44,7 +44,7 @@ public class GridSystem
         ); ;
     }
 
-    public void CreateDebugObjects(Transform debugPrefab)
+    public void CreateDebugObjects(Transform debugPrefab, Transform parent)
     {
         for (int x = 0; x < width; x++)
         {
@@ -59,10 +59,8 @@ public class GridSystem
 
                 Transform debugTransform = GameObject.Instantiate(debugPrefab, GetWorldPosition(gridPosition), Quaternion.identity);
                 GridDebugObject gridDebugObject = debugTransform.GetComponent<GridDebugObject>();
+                gridDebugObject.transform.SetParent(parent);
                 gridDebugObject.SetGridObject(GetGridObject(gridPosition));
-
-
-
             }
         }
     }
@@ -88,5 +86,10 @@ public class GridSystem
     public int GetHeight()
     {
         return height;
+    }
+
+    public float GetCellSize()
+    {
+        return cellSize;
     }
 }

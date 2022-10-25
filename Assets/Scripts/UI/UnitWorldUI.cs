@@ -32,7 +32,7 @@ public class UnitWorldUI : MonoBehaviour
 
     private void UpdateActionPointsText()
     {
-        actionPointsText.text = unit.GetcActionPoints().ToString();
+        actionPointsText.text = unit.GetActionPoints().ToString();
     }
 
     private void UpdateHealthBar()

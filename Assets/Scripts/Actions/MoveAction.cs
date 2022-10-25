@@ -9,11 +9,10 @@ public class MoveAction : BaseAction
     public event EventHandler OnStopMoving;
     //[SerializeField] private Animator unitAnimator;
     [SerializeField] private int maxMoveDistance = 4;
+    
 
     private Vector3 targetposition;
-    public Quaternion originalRotationValue; // declare this as a Quaternion
-    float rotationResetSpeed = 20f;
-
+ 
 
     protected override void Awake()
     {
@@ -23,7 +22,7 @@ public class MoveAction : BaseAction
     
     void Start()
     {
-        originalRotationValue = transform.rotation; // save the initial rotation
+        
     }
 
     // Update is called once per frame
@@ -34,8 +33,8 @@ public class MoveAction : BaseAction
         {
             return;
         }
+      
         Vector3 moveDirection = (targetposition - transform.position).normalized;
-        Vector3 resetDirection = (transform.position - targetposition).normalized;
         
         float stoppingDistance = .1f;
         if (Vector3.Distance(transform.position, targetposition) > stoppingDistance)
@@ -43,20 +42,20 @@ public class MoveAction : BaseAction
 
             float moveSpeed = 4f;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
-            float rotateSpeed = 20f;
-            transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
 
+            
         }
         else
         {
             OnStopMoving?.Invoke(this, EventArgs.Empty);
             ActionComplete();
-            //transform.rotation = Quaternion.Slerp(transform.rotation, originalRotationValue, Time.time * rotationResetSpeed);
             unit.canMove = false;
 
+
         }
- 
-        
+
+        float rotateSpeed = 20f;
+        transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed); 
     }
 
     #region Switch Method
@@ -125,11 +124,11 @@ public class MoveAction : BaseAction
 
     public override EnemyAIAction GetEnemyAIAction(GridPosition gridPosition)
     {
-        int targetCountAtGridPosition = unit.GetAction<AttackAction>().GetTargetCountAtPosition(gridPosition);
+        int targetCountAtGridPosition = unit.GetAttackAction().GetTargetCountAtPosition(gridPosition);
         return new EnemyAIAction
         {
             gridPosition = gridPosition,
-            actionValue = targetCountAtGridPosition * 5
+            actionValue = targetCountAtGridPosition * 10
         };
     }
 
