@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: -6286486250325856335}
   m_Layer: 7
   m_Name: Hunter_Rod_01
-  m_TagString: Untagged
+  m_TagString: Rod
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 6407706457841540623}
   m_Layer: 7
   m_Name: Hunter_Sword_01
-  m_TagString: Untagged
+  m_TagString: Hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

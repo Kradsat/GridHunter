@@ -1363,7 +1363,7 @@ GameObject:
   - component: {fileID: -6818704849396996865}
   m_Layer: 7
   m_Name: Hunter_Lance_01
-  m_TagString: Untagged
+  m_TagString: Lancer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
