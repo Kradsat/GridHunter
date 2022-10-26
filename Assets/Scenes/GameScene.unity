@@ -2665,7 +2665,7 @@ GameObject:
   - component: {fileID: 466930214}
   - component: {fileID: 466930213}
   m_Layer: 5
-  m_Name: Enemy3
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2711,7 +2711,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 923beb65ed739f14a95255e4f860b245, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f01c880c21f7b546974425c3e8cfda9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4859,7 +4859,7 @@ GameObject:
   - component: {fileID: 1233231770}
   - component: {fileID: 1233231769}
   m_Layer: 5
-  m_Name: Enemy1
+  m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4905,7 +4905,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 923beb65ed739f14a95255e4f860b245, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afb06d00d6712a7459d1a36c4397ac4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5420,10 +5420,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit:
+  - {fileID: 7126295819214467793, guid: 39a7b6d6a98ac6446b8d9075866b6d11, type: 3}
   - {fileID: 6305114307767709647, guid: b34d563cf58a1dc49a795d19e2589d2b, type: 3}
   - {fileID: 760444733531138299, guid: fa50b196a4518d642aff1d18445bb4af, type: 3}
   - {fileID: 1460378923471753717, guid: 1a9119bbbf4e38849abe485ee0cb53b1, type: 3}
-  - {fileID: 7126295819214467793, guid: 39a7b6d6a98ac6446b8d9075866b6d11, type: 3}
   dataLoader: {fileID: 2056676127}
   unitActionSystem: {fileID: 1829696810}
   unityActionSystemUI: {fileID: 166488845}
@@ -5440,7 +5440,7 @@ GameObject:
   - component: {fileID: 1362895283}
   - component: {fileID: 1362895282}
   m_Layer: 5
-  m_Name: Enemy2
+  m_Name: Rod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5486,7 +5486,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 923beb65ed739f14a95255e4f860b245, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c8e98a457d34474384d73371caab92c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6761,7 +6761,7 @@ GameObject:
   - component: {fileID: 1756991451}
   - component: {fileID: 1756991450}
   m_Layer: 5
-  m_Name: Player3
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6807,7 +6807,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e22505c0d6969334db426afe9d8794a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 923beb65ed739f14a95255e4f860b245, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7011,7 +7011,7 @@ GameObject:
   - component: {fileID: 1843531315}
   - component: {fileID: 1843531314}
   m_Layer: 5
-  m_Name: Player1
+  m_Name: Dagger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7327,7 +7327,7 @@ GameObject:
   - component: {fileID: 1949947620}
   - component: {fileID: 1949947619}
   m_Layer: 5
-  m_Name: Player2
+  m_Name: Lancer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7373,7 +7373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e22505c0d6969334db426afe9d8794a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd881d9bea653744fb0ccdcb2166f362, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
