@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: 29762c2b069521940adf94a102fd4c99
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: j_armor_l
+    100004: j_armor_r
+    100006: j_asi_l
+    100008: j_asi_r
+    100010: j_bow_a
+    100012: j_bow_b
+    100014: j_buki_a
+    100016: j_buki_b
+    100018: j_hammer_a
+    100020: j_hara
+    100022: j_kami_a
+    100024: j_kami_b
+    100026: j_kao
+    100028: j_kata_l
+    100030: j_kata_r
+    100032: j_kosi
+    100034: j_kubi
+    100036: j_lance_a
+    100038: j_lance_b
+    100040: j_momo_l
+    100042: j_momo_r
+    100044: j_mune
+    100046: j_sune_l
+    100048: j_sune_r
+    100050: j_te_l
+    100052: j_te_r
+    100054: j_ude_l
+    100056: j_ude_r
+    100058: j_yubi_l
+    100060: j_yubi_r
+    100062: j_yure_b
+    100064: j_yure_f
+    100066: j_yure_l
+    100068: j_yure_r
+    100070: weapon
+    400000: //RootNode
+    400002: j_armor_l
+    400004: j_armor_r
+    400006: j_asi_l
+    400008: j_asi_r
+    400010: j_bow_a
+    400012: j_bow_b
+    400014: j_buki_a
+    400016: j_buki_b
+    400018: j_hammer_a
+    400020: j_hara
+    400022: j_kami_a
+    400024: j_kami_b
+    400026: j_kao
+    400028: j_kata_l
+    400030: j_kata_r
+    400032: j_kosi
+    400034: j_kubi
+    400036: j_lance_a
+    400038: j_lance_b
+    400040: j_momo_l
+    400042: j_momo_r
+    400044: j_mune
+    400046: j_sune_l
+    400048: j_sune_r
+    400050: j_te_l
+    400052: j_te_r
+    400054: j_ude_l
+    400056: j_ude_r
+    400058: j_yubi_l
+    400060: j_yubi_r
+    400062: j_yure_b
+    400064: j_yure_f
+    400066: j_yure_l
+    400068: j_yure_r
+    400070: weapon
+    4300000: weapon
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: weapon
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 2
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 

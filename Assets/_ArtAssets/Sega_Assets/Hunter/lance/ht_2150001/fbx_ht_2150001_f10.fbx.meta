@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: 9d11f52d3abc701408328dae8f553754
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: head2
+    100002: //RootNode
+    100004: j_armor_l
+    100006: j_armor_r
+    100008: j_asi_l
+    100010: j_asi_r
+    100012: j_buki_a
+    100014: j_buki_b
+    100016: j_hara
+    100018: j_kami_a
+    100020: j_kami_b
+    100022: j_kao
+    100024: j_kata_l
+    100026: j_kata_r
+    100028: j_kosi
+    100030: j_kubi
+    100032: j_momo_l
+    100034: j_momo_r
+    100036: j_mune
+    100038: j_sune_l
+    100040: j_sune_r
+    100042: j_te_l
+    100044: j_te_r
+    100046: j_ude_l
+    100048: j_ude_r
+    100050: j_yubi_l
+    100052: j_yubi_r
+    100054: j_yure_b
+    100056: j_yure_f
+    100058: j_yure_l
+    100060: j_yure_r
+    100062: Model
+    100064: ht_0000000_f10
+    100066: head
+    100068: j_bow_a
+    100070: j_bow_b
+    100072: j_hammer_a
+    100074: j_lance_a
+    100076: j_lance_b
+    400000: head2
+    400002: //RootNode
+    400004: j_armor_l
+    400006: j_armor_r
+    400008: j_asi_l
+    400010: j_asi_r
+    400012: j_buki_a
+    400014: j_buki_b
+    400016: j_hara
+    400018: j_kami_a
+    400020: j_kami_b
+    400022: j_kao
+    400024: j_kata_l
+    400026: j_kata_r
+    400028: j_kosi
+    400030: j_kubi
+    400032: j_momo_l
+    400034: j_momo_r
+    400036: j_mune
+    400038: j_sune_l
+    400040: j_sune_r
+    400042: j_te_l
+    400044: j_te_r
+    400046: j_ude_l
+    400048: j_ude_r
+    400050: j_yubi_l
+    400052: j_yubi_r
+    400054: j_yure_b
+    400056: j_yure_f
+    400058: j_yure_l
+    400060: j_yure_r
+    400062: Model
+    400064: ht_0000000_f10
+    400066: head
+    400068: j_bow_a
+    400070: j_bow_b
+    400072: j_hammer_a
+    400074: j_lance_a
+    400076: j_lance_b
+    4300000: head2
+    4300002: ht_0000000_f10
+    4300004: head
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: head2
+    13700002: j_mune
+    13700004: ht_0000000_f10
+    13700006: head
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 2
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 

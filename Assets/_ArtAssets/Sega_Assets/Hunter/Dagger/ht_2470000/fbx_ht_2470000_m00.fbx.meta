@@ -1,108 +1,291 @@
 fileFormatVersion: 2
 guid: 6849413f2a2f5764883949d3fb743085
 ModelImporter:
-  serializedVersion: 16
-  fileIDToRecycleName:
-    100000: head
-    100002: //RootNode
-    100004: j_armor_l
-    100006: j_armor_r
-    100008: j_asi_l
-    100010: j_asi_r
-    100012: j_buki_a
-    100014: j_buki_b
-    100016: j_hara
-    100018: j_kami_a
-    100020: j_kami_b
-    100022: j_kao
-    100024: j_kata_l
-    100026: j_kata_r
-    100028: j_kosi
-    100030: j_kubi
-    100032: j_momo_l
-    100034: j_momo_r
-    100036: j_mune
-    100038: j_sune_l
-    100040: j_sune_r
-    100042: j_te_l
-    100044: j_te_r
-    100046: j_ude_l
-    100048: j_ude_r
-    100050: j_yubi_l
-    100052: j_yubi_r
-    100054: j_yure_b
-    100056: j_yure_f
-    100058: j_yure_l
-    100060: j_yure_r
-    100062: Model
-    100064: ht_0000000_m00
-    100066: j_bow_a
-    100068: j_bow_b
-    100070: j_hammer_a
-    100072: j_lance_a
-    100074: j_lance_b
-    400000: head
-    400002: //RootNode
-    400004: j_armor_l
-    400006: j_armor_r
-    400008: j_asi_l
-    400010: j_asi_r
-    400012: j_buki_a
-    400014: j_buki_b
-    400016: j_hara
-    400018: j_kami_a
-    400020: j_kami_b
-    400022: j_kao
-    400024: j_kata_l
-    400026: j_kata_r
-    400028: j_kosi
-    400030: j_kubi
-    400032: j_momo_l
-    400034: j_momo_r
-    400036: j_mune
-    400038: j_sune_l
-    400040: j_sune_r
-    400042: j_te_l
-    400044: j_te_r
-    400046: j_ude_l
-    400048: j_ude_r
-    400050: j_yubi_l
-    400052: j_yubi_r
-    400054: j_yure_b
-    400056: j_yure_f
-    400058: j_yure_l
-    400060: j_yure_r
-    400062: Model
-    400064: ht_0000000_m00
-    400066: j_bow_a
-    400068: j_bow_b
-    400070: j_hammer_a
-    400072: j_lance_a
-    400074: j_lance_b
-    2300000: head
-    3300000: head
-    4300000: head
-    4300002: ht_0000000_m00
-    9500000: //RootNode
-    11100000: //RootNode
-    13700000: head
-    13700002: j_mune
-    13700004: ht_0000000_m00
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: head
+  - first:
+      1: 100002
+    second: //RootNode
+  - first:
+      1: 100004
+    second: j_armor_l
+  - first:
+      1: 100006
+    second: j_armor_r
+  - first:
+      1: 100008
+    second: j_asi_l
+  - first:
+      1: 100010
+    second: j_asi_r
+  - first:
+      1: 100012
+    second: j_buki_a
+  - first:
+      1: 100014
+    second: j_buki_b
+  - first:
+      1: 100016
+    second: j_hara
+  - first:
+      1: 100018
+    second: j_kami_a
+  - first:
+      1: 100020
+    second: j_kami_b
+  - first:
+      1: 100022
+    second: j_kao
+  - first:
+      1: 100024
+    second: j_kata_l
+  - first:
+      1: 100026
+    second: j_kata_r
+  - first:
+      1: 100028
+    second: j_kosi
+  - first:
+      1: 100030
+    second: j_kubi
+  - first:
+      1: 100032
+    second: j_momo_l
+  - first:
+      1: 100034
+    second: j_momo_r
+  - first:
+      1: 100036
+    second: j_mune
+  - first:
+      1: 100038
+    second: j_sune_l
+  - first:
+      1: 100040
+    second: j_sune_r
+  - first:
+      1: 100042
+    second: j_te_l
+  - first:
+      1: 100044
+    second: j_te_r
+  - first:
+      1: 100046
+    second: j_ude_l
+  - first:
+      1: 100048
+    second: j_ude_r
+  - first:
+      1: 100050
+    second: j_yubi_l
+  - first:
+      1: 100052
+    second: j_yubi_r
+  - first:
+      1: 100054
+    second: j_yure_b
+  - first:
+      1: 100056
+    second: j_yure_f
+  - first:
+      1: 100058
+    second: j_yure_l
+  - first:
+      1: 100060
+    second: j_yure_r
+  - first:
+      1: 100062
+    second: Model
+  - first:
+      1: 100064
+    second: ht_0000000_m00
+  - first:
+      1: 100066
+    second: j_bow_a
+  - first:
+      1: 100068
+    second: j_bow_b
+  - first:
+      1: 100070
+    second: j_hammer_a
+  - first:
+      1: 100072
+    second: j_lance_a
+  - first:
+      1: 100074
+    second: j_lance_b
+  - first:
+      4: 400000
+    second: head
+  - first:
+      4: 400002
+    second: //RootNode
+  - first:
+      4: 400004
+    second: j_armor_l
+  - first:
+      4: 400006
+    second: j_armor_r
+  - first:
+      4: 400008
+    second: j_asi_l
+  - first:
+      4: 400010
+    second: j_asi_r
+  - first:
+      4: 400012
+    second: j_buki_a
+  - first:
+      4: 400014
+    second: j_buki_b
+  - first:
+      4: 400016
+    second: j_hara
+  - first:
+      4: 400018
+    second: j_kami_a
+  - first:
+      4: 400020
+    second: j_kami_b
+  - first:
+      4: 400022
+    second: j_kao
+  - first:
+      4: 400024
+    second: j_kata_l
+  - first:
+      4: 400026
+    second: j_kata_r
+  - first:
+      4: 400028
+    second: j_kosi
+  - first:
+      4: 400030
+    second: j_kubi
+  - first:
+      4: 400032
+    second: j_momo_l
+  - first:
+      4: 400034
+    second: j_momo_r
+  - first:
+      4: 400036
+    second: j_mune
+  - first:
+      4: 400038
+    second: j_sune_l
+  - first:
+      4: 400040
+    second: j_sune_r
+  - first:
+      4: 400042
+    second: j_te_l
+  - first:
+      4: 400044
+    second: j_te_r
+  - first:
+      4: 400046
+    second: j_ude_l
+  - first:
+      4: 400048
+    second: j_ude_r
+  - first:
+      4: 400050
+    second: j_yubi_l
+  - first:
+      4: 400052
+    second: j_yubi_r
+  - first:
+      4: 400054
+    second: j_yure_b
+  - first:
+      4: 400056
+    second: j_yure_f
+  - first:
+      4: 400058
+    second: j_yure_l
+  - first:
+      4: 400060
+    second: j_yure_r
+  - first:
+      4: 400062
+    second: Model
+  - first:
+      4: 400064
+    second: ht_0000000_m00
+  - first:
+      4: 400066
+    second: j_bow_a
+  - first:
+      4: 400068
+    second: j_bow_b
+  - first:
+      4: 400070
+    second: j_hammer_a
+  - first:
+      4: 400072
+    second: j_lance_a
+  - first:
+      4: 400074
+    second: j_lance_b
+  - first:
+      23: 2300000
+    second: head
+  - first:
+      33: 3300000
+    second: head
+  - first:
+      43: 4300000
+    second: head
+  - first:
+      43: 4300002
+    second: ht_0000000_m00
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      111: 11100000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: head
+  - first:
+      137: 13700002
+    second: j_mune
+  - first:
+      137: 13700004
+    second: ht_0000000_m00
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -110,35 +293,224 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
+    keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
     tangentImportMode: 2
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
-    skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    skeleton:
+    - name: fbx_ht_2470000_m00(Clone)
+      parentName: 
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.1, y: 0.1, z: 0.1}
+    - name: j_kosi
+      parentName: fbx_ht_2470000_m00(Clone)
+      position: {x: 9.529121e-22, y: 10.5, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_hara
+      parentName: j_kosi
+      position: {x: -9.529121e-22, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_mune
+      parentName: j_hara
+      position: {x: 0.0000012671702, y: 2, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_kubi
+      parentName: j_mune
+      position: {x: -0.0000011232296, y: 2.5, z: -0.2}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_kao
+      parentName: j_kubi
+      position: {x: -0.00000029159918, y: 1.4, z: 0.19999975}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_kami_a
+      parentName: j_kao
+      position: {x: -0.00000029159918, y: 4, z: -1.5}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_kami_b
+      parentName: j_kami_a
+      position: {x: -0.00000029159918, y: 0, z: -4.5}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_kata_l
+      parentName: j_mune
+      position: {x: -2.8, y: 1.8, z: -2.9976022e-15}
+      rotation: {x: 0, y: 1.2246469e-16, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_ude_l
+      parentName: j_kata_l
+      position: {x: -3.2, y: -1.7763568e-15, z: -0.1}
+      rotation: {x: -4.735089e-17, y: -1.2246469e-16, z: 5.1143445e-33, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_te_l
+      parentName: j_ude_l
+      position: {x: -3.2, y: 5.3290705e-15, z: 0.09999975}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: j_yubi_l
+      parentName: j_te_l
+      position: {x: -1.7385873, y: 2.3752313e-23, z: 8.881784e-16}
+      rotation: {x: 0, y: 0, z: -7.118356e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_kata_r
+      parentName: j_mune
+      position: {x: 2.8, y: 1.8, z: -2.220446e-16}
+      rotation: {x: 0, y: 1.2246469e-16, z: -0, w: 1}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: j_ude_r
+      parentName: j_kata_r
+      position: {x: 3.2, y: 0, z: -0.1}
+      rotation: {x: 5.397113e-17, y: -1.2246469e-16, z: 1.7995538e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_te_r
+      parentName: j_ude_r
+      position: {x: 3.2, y: -2.5786408e-23, z: 0.09999976}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_yubi_r
+      parentName: j_te_r
+      position: {x: 1.8, y: -2.5786408e-23, z: 1.3322676e-15}
+      rotation: {x: -2.6745067e-17, y: 5.600501e-17, z: -1.7995538e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_armor_l
+      parentName: j_mune
+      position: {x: -2, y: 2.2, z: -5.884182e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_armor_r
+      parentName: j_mune
+      position: {x: 2, y: 2.2, z: 3.330669e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_momo_l
+      parentName: j_kosi
+      position: {x: -1.5, y: -1.6, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_sune_l
+      parentName: j_momo_l
+      position: {x: -0.000000078991754, y: -4.2, z: 0.1}
+      rotation: {x: -3.4663154e-36, y: -3.3073599e-18, z: -1.0480611e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_asi_l
+      parentName: j_sune_l
+      position: {x: 0.00000026404962, y: -3.8, z: -0.1}
+      rotation: {x: 3.4663154e-36, y: 3.3073599e-18, z: 1.0480611e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_momo_r
+      parentName: j_kosi
+      position: {x: 1.5, y: -1.6, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_sune_r
+      parentName: j_momo_r
+      position: {x: 0.0000021703004, y: -4.2000003, z: 0.1}
+      rotation: {x: 5.866366e-33, y: 6.537626e-17, z: -8.973236e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_asi_r
+      parentName: j_sune_r
+      position: {x: 0.00000025117527, y: -3.8, z: -0.1}
+      rotation: {x: -5.866366e-33, y: -6.537626e-17, z: 8.973236e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_buki_a
+      parentName: j_kosi
+      position: {x: 0.00000019582683, y: -10.5, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_buki_b
+      parentName: j_kosi
+      position: {x: 1.4224733e-16, y: -10.5, z: 0}
+      rotation: {x: -6.4017505e-34, y: 6.433223e-17, z: 9.951077e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_yure_f
+      parentName: j_kosi
+      position: {x: 1.3877788e-16, y: -0.4, z: 1.8}
+      rotation: {x: -1.2683513e-34, y: 3.059721e-17, z: 4.1453168e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_yure_b
+      parentName: j_kosi
+      position: {x: -4.1633363e-17, y: -0.4, z: -1.8}
+      rotation: {x: -6.8982573e-34, y: 6.4383557e-17, z: 1.0714316e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_yure_l
+      parentName: j_kosi
+      position: {x: -2.5, y: -0.4, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: j_yure_r
+      parentName: j_kosi
+      position: {x: 2.5, y: -0.4, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head
+      parentName: fbx_ht_2470000_m00(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 1
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
