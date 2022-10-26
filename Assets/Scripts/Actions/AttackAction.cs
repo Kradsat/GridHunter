@@ -10,6 +10,7 @@ public class AttackAction : BaseAction
     public event EventHandler OnAttackStart;
     public event EventHandler OnAttackEnd;
 
+    public Quaternion originalRotationValue;
 
     [SerializeField] private int maxAttackDistance = 1;
     [SerializeField] private int damage = 10;
@@ -25,8 +26,10 @@ public class AttackAction : BaseAction
     private float stateTimer;
     private bool canAttack;
     private Unit targetUnit;
-   
 
+    private void Start( ) {
+        originalRotationValue = transform.rotation;
+    }
 
     // Update is called once per frame
     private void Update()
@@ -69,6 +72,8 @@ public class AttackAction : BaseAction
                 transform.forward = Vector3.Lerp(transform.forward, aimDir, Time.deltaTime * rotateSpeed);
                 break;
             case State.SwingingSwordAfterHit:
+                float rotationResetSpeed = 5f;
+                transform.rotation = Quaternion.Slerp( transform.rotation, originalRotationValue, Time.time * rotationResetSpeed );
                 break;
             default:
                 break;

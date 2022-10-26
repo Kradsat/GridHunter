@@ -13,6 +13,7 @@ public class Unit : MonoBehaviour
 
     [SerializeField] private bool isEnemy;
     [SerializeField] public bool is3x3Boss;
+    [SerializeField] public bool is2x1Enemy;
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool canAttack = true;
 
@@ -42,11 +43,7 @@ public class Unit : MonoBehaviour
     private void Start()
     {
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
-        if( !is3x3Boss ) {
-            LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
-        } else {
-            LevelGrid.Instance.AddUnitAtGridPosition( gridPosition, this );
-        }
+        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
 
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
 

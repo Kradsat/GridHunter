@@ -12,6 +12,9 @@ public class MoveAction : BaseAction
     
 
     private Vector3 targetposition;
+
+    private Quaternion originalRotationValue;
+    float rotationResetSpeed = 20f;
  
 
     protected override void Awake()
@@ -22,7 +25,7 @@ public class MoveAction : BaseAction
     
     void Start()
     {
-        
+        originalRotationValue = transform.rotation;
     }
 
     // Update is called once per frame
@@ -42,20 +45,22 @@ public class MoveAction : BaseAction
 
             float moveSpeed = 4f;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
+            float rotateSpeed = 20f;
+            transform.forward = Vector3.Lerp( transform.forward, moveDirection, Time.deltaTime * rotateSpeed );
 
-            
+
         }
         else
         {
             OnStopMoving?.Invoke(this, EventArgs.Empty);
             ActionComplete();
             unit.canMove = false;
+            transform.rotation = Quaternion.Slerp(transform.rotation, originalRotationValue, Time.deltaTime * rotationResetSpeed);
 
 
         }
 
-        float rotateSpeed = 20f;
-        transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed); 
+        
     }
 
     #region Switch Method
