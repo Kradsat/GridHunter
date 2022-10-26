@@ -122,6 +122,7 @@ public class SpecialAttack : BaseAction
             case State.SwingingSwordAfterHit:
                 OnAttackEnd?.Invoke(this, EventArgs.Empty);
                 ActionComplete();
+                unit.canAttack = false;
                 break;
 
         }
@@ -220,5 +221,14 @@ public class SpecialAttack : BaseAction
     public int GetTargetCountAtPosition(GridPosition gridPosition)
     {
         return GetValidActionGridPositionList(gridPosition).Count;
+    }
+
+    public override int GetActionPointsCost()
+    {
+        if (unit.canAttack)
+        {
+            return 1;
+        }
+        return 2;
     }
 }

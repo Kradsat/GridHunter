@@ -221,7 +221,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &-6121321964156057174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +237,7 @@ MonoBehaviour:
   isEnemy: 1
   is3x3Boss: 0
   canMove: 1
+  canAttack: 1
 --- !u!114 &-2818734163316488586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,6 +878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6853657815569114395}
   - component: {fileID: 3762142307857228570}
+  - component: {fileID: 5376936643236227780}
   m_Layer: 0
   m_Name: mo_0850000_trex00
   m_TagString: Untagged
@@ -922,6 +924,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &5376936643236227780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853657815569152315}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 20, y: 20, z: 20}
+  m_Center: {x: 0, y: 8, z: 0}
 --- !u!1 &6853657815569152317
 GameObject:
   m_ObjectHideFlags: 0

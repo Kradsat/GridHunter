@@ -34,7 +34,7 @@ public class UnityActionSystemUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void CreateUnitActionButtons()
@@ -47,7 +47,7 @@ public class UnityActionSystemUI : MonoBehaviour
         actionButtonUIList.Clear();
 
         Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
-        foreach (BaseAction baseAction in selectedUnit.GetBaseActionArray()) 
+        foreach (BaseAction baseAction in selectedUnit.GetBaseActionArray())
         {
            Transform actionButtonTransform = Instantiate(actionButtonPrefab, actionButtonContainerTransform);
             ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>();
@@ -99,5 +99,5 @@ public class UnityActionSystemUI : MonoBehaviour
         actionPointText.text = "Action Points: " + selectedUnit.GetActionPoints();
     }
 
-    
+
 }

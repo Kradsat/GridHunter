@@ -8,7 +8,7 @@ public class UnitSpawnSystem : MonoBehaviour
     [SerializeField] private UnityActionSystemUI unityActionSystemUI;
     [SerializeField] private GridSystemVisual gridSystemVisual;
 
-    // TODO: ƒV[ƒ“ƒ[ƒh‚·‚é‚Éˆ—
+    // TODO: ï¿½Vï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½éï¿½Éï¿½ï¿½ï¿½
     private void Awake()
     {
         dataLoader.LoadAllDatas();
@@ -32,7 +32,7 @@ public class UnitSpawnSystem : MonoBehaviour
                         spawn.transform.SetParent(transform, false);
                         spawn.transform.position = new Vector3(x * 2, 0, y * 2);
                         unitActionSystem.SelectedUnit = spawn.GetComponent<Unit>();
-                        
+
                         var unitData = new PlayerUnit();
                         unitData.Id = _unitData.unit_datas[unitType].unit_id;
                         unitData.Name = _unitData.unit_datas[unitType].unit_name;
@@ -42,7 +42,7 @@ public class UnitSpawnSystem : MonoBehaviour
                         unitData.Attack = _unitData.unit_datas[unitType].unit_attack;
                         var equip = MasterDataContainer.Instance.UnitEquip[unitType - 1, 1];
                         unitData.Equipment = MasterDataContainer.Instance.EquipmentDatas.equipment_datas[equip];
-                        
+
                         spawn.GetComponent<PlayerUnitStatus>().Init(unitData);
                         break;
                 }
