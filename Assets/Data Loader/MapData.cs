@@ -6,9 +6,11 @@ public static class MapData
     {
         NONE = 0,
         DAGGER,
-        HAMMER,
+        SWORD,
         LANCE,
         ROD,
         ENEMY,
+        ENEMY_L,
+        MAX,
     }
 }

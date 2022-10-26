@@ -23,6 +23,8 @@ public class Unit : MonoBehaviour
     private AttackAction attackAction;
     private BaseAction[] baseAction;
     private int actionPoints = ACTION_POINTS_MAX;
+    [SerializeField]private int _speed = 0;
+    public int Speed { get { return _speed; } }
 
     private void Awake()
     {
@@ -31,6 +33,10 @@ public class Unit : MonoBehaviour
         spinAction = GetComponent<SpinAction>();;
         attackAction = GetComponent<AttackAction>();;
         baseAction = GetComponents<BaseAction>();
+    }
+
+    public void Initialize(int speed) {
+        _speed = speed;
     }
 
     private void Start()
@@ -135,8 +141,8 @@ public class Unit : MonoBehaviour
 
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
-        if ((IsEnemy() && !TurnSystem.Instance.IsPlayerTurn()) ||
-            (!IsEnemy() && TurnSystem.Instance.IsPlayerTurn()))
+        if ((IsEnemy() && !TurnSystem.Instance.IsPlayerTurn) ||
+            (!IsEnemy() && TurnSystem.Instance.IsPlayerTurn))
         {
             actionPoints = ACTION_POINTS_MAX;
             OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);

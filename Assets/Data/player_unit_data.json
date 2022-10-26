@@ -7,7 +7,8 @@
 			"unit_hp": 100,
 			"unit_mp": 100,
 			"unit_range": 10,
-			"unit_attack": 100
+			"unit_attack": 100,
+			"speed": 0
 		},
 		{
 			"unit_id": 1,
@@ -15,15 +16,17 @@
 			"unit_hp": 150,
 			"unit_mp": 10,
 			"unit_range": 1,
-			"unit_attack": 50
+			"unit_attack": 50,
+			"speed": 100
 		},
 		{
 			"unit_id": 2,
-			"unit_name": "hammer",
+			"unit_name": "sword",
 			"unit_hp": 200,
 			"unit_mp": 10,
 			"unit_range": 3,
-			"unit_attack": 50
+			"unit_attack": 50,
+			"speed": 80
 		},
 		{
 			"unit_id": 3,
@@ -31,7 +34,8 @@
 			"unit_hp": 500,
 			"unit_mp": 10,
 			"unit_range": 1,
-			"unit_attack": 30
+			"unit_attack": 30,
+			"speed": 60
 		},
 		{
 			"unit_id": 4,
@@ -39,7 +43,8 @@
 			"unit_hp": 50,
 			"unit_mp": 100,
 			"unit_range": 1,
-			"unit_attack": 10
+			"unit_attack": 10,
+			"speed": 40
 		}
 	]
 }

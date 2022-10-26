@@ -8,7 +8,6 @@ public class UnitSpawnSystem : MonoBehaviour
     [SerializeField] private UnityActionSystemUI unityActionSystemUI;
     [SerializeField] private GridSystemVisual gridSystemVisual;
 
-    // TODO: �V�[�����[�h���鎞�ɏ���
     private void Awake()
     {
         dataLoader.LoadAllDatas();
@@ -23,7 +22,7 @@ public class UnitSpawnSystem : MonoBehaviour
                     case (int)MapData.OBJ_TYPE.NONE:
                         break;
                     case (int)MapData.OBJ_TYPE.DAGGER:
-                    case (int)MapData.OBJ_TYPE.HAMMER:
+                    case (int)MapData.OBJ_TYPE.SWORD:
                     case (int)MapData.OBJ_TYPE.LANCE:
                     case (int)MapData.OBJ_TYPE.ROD:
                         var unitType = _mapData[x, y];
@@ -32,6 +31,9 @@ public class UnitSpawnSystem : MonoBehaviour
                         spawn.transform.SetParent(transform, false);
                         spawn.transform.position = new Vector3(x * 2, 0, y * 2);
                         unitActionSystem.SelectedUnit = spawn.GetComponent<Unit>();
+                        TurnSystem.Instance.Units.Add(spawn.GetComponent<Unit>());
+                        // temp
+                        spawn.GetComponent<Unit>().Initialize(_unitData.unit_datas[unitType].speed);
 
                         var unitData = new PlayerUnit();
                         unitData.Id = _unitData.unit_datas[unitType].unit_id;
@@ -51,5 +53,6 @@ public class UnitSpawnSystem : MonoBehaviour
 
         unityActionSystemUI.Initialize();
         gridSystemVisual.Initialize();
+        TurnSystem.Instance.Initialize();
     }
 }

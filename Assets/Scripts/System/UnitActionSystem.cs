@@ -48,7 +48,7 @@ public class UnitActionSystem : MonoBehaviour
         {
             return;
         }
-        if (!TurnSystem.Instance.IsPlayerTurn())
+        if (!TurnSystem.Instance.IsPlayerTurn)
         {
             return;
         }

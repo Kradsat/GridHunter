@@ -11,7 +11,7 @@ public class SwitchtTurnBar : MonoBehaviour
     [ SerializeField ] private int order;
 
     public void SwitchPosImageTurn( ){
-        int ordernumber = order + 1 - ( TurnSystem.Instance.GetTurnNumber( ) );
+        int ordernumber = order + 1 - ( TurnSystem.Instance.TurnNumber);
         if( ordernumber < 0 ) {
             ordernumber = 5;
         }

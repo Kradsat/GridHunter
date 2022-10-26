@@ -36,21 +36,22 @@ public class TurnSystemUI : MonoBehaviour
 
     private void UpdateTurnText()
     {
-        textMeshProUGUI.text = "Turn " + TurnSystem.Instance.GetTurnNumber();
+        textMeshProUGUI.text = "Turn " + TurnSystem.Instance.TurnNumber;
 
     }
 
     private void UpdateEnemyVisual()
     {
-        enemyTurnVisualGameObject.SetActive(!TurnSystem.Instance.IsPlayerTurn());
+        enemyTurnVisualGameObject.SetActive(!TurnSystem.Instance.IsPlayerTurn);
     }
 
     private void UpdateEndTurnButtonVisibility()
     {
-        endTurnButton.gameObject.SetActive(TurnSystem.Instance.IsPlayerTurn());
+        endTurnButton.gameObject.SetActive(TurnSystem.Instance.IsPlayerTurn);
     }
 
     private void SwitchTurnImage( ) {
+        // im gonna change this
         for( int i = 0; i < 6; i++ ) {
             order[ i ]--;
             if( order[ i ] < 0 ) {

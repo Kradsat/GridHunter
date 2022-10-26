@@ -13,4 +13,5 @@ public class Unit_Datas
     public int unit_mp;
     public int unit_range;
     public int unit_attack;
+    public int speed;
 }

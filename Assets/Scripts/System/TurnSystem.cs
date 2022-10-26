@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class TurnSystem : MonoBehaviour
 {
@@ -9,35 +9,40 @@ public class TurnSystem : MonoBehaviour
 
     public event EventHandler OnTurnChanged;
 
-    private int turnNumber = 1;
-    private bool isPlayerTurn = true;
+    private int _turnNumber = 1;
+    public int TurnNumber { get { return _turnNumber; } }
+    public List<Unit> Units = new List<Unit>();
+    private int order_head = 0;
+    public Unit NowUnit { get { return Units[order_head]; } }
 
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Debug.LogError("ther is more than ine LevelGrid" + transform + "_" + Instance);
+    private bool _isPlayerTurn = true;
+    public bool IsPlayerTurn { get { return _isPlayerTurn; } }
+
+    private void Awake() {
+        if (Instance != null) {
+            Debug.LogError("ther is more than one LevelGrid" + transform + "_" + Instance);
             Destroy(gameObject);
             return;
         }
         Instance = this;
     }
 
-    public void NextTurn() { 
+    public void Initialize() {
+        Debug.Log("turn init");
+        Reorder();
+        order_head = 0;
+    }
 
-        turnNumber++;
-        isPlayerTurn = !isPlayerTurn;
+    public void NextTurn() { 
+        order_head++;   
+        _turnNumber++;
+        _isPlayerTurn = !_isPlayerTurn;
 
         OnTurnChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    public int GetTurnNumber()
+    private void Reorder()
     {
-        return turnNumber;
-    }
-
-    public bool IsPlayerTurn()
-    {
-        return isPlayerTurn;
+        Units = Units.OrderByDescending(_ => _.Speed).ToList();
     }
 }
