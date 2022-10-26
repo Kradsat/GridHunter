@@ -225,7 +225,7 @@ public class SpecialAttack : BaseAction
 
     public override int GetActionPointsCost()
     {
-        if (unit.canAttack)
+        if (unit.canAttack && unit.canMove == false)
         {
             return 1;
         }
