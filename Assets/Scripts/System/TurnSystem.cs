@@ -28,7 +28,6 @@ public class TurnSystem : MonoBehaviour
     }
 
     public void Initialize() {
-        Debug.Log("turn init");
         Reorder();
         order_head = 0;
     }
@@ -41,8 +40,7 @@ public class TurnSystem : MonoBehaviour
         OnTurnChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    private void Reorder()
-    {
+    private void Reorder() {
         Units = Units.OrderByDescending(_ => _.Speed).ToList();
     }
 }
