@@ -68,7 +68,7 @@ public class LevelGrid : MonoBehaviour
             GridPosition gridPos;
             gridPos.x = gridPosition.x - 1;
             gridPos.z = gridPosition.z - 1;
-            for( int i = 0; i < 3; i++ ) {
+            for( int i = 0; i < 4; i++ ) {
                 gridPosition.z = gridPos.z + i;
                 for( int j = 0; j < 3; j++ ) {
                     gridPosition.x = gridPos.x + j;
@@ -124,7 +124,7 @@ public class LevelGrid : MonoBehaviour
             GridPosition gridPos;
             gridPos.x = gridPosition.x - 1;
             gridPos.z = gridPosition.z - 1;
-            for( int i = 0; i < 3; i++ ) {
+            for( int i = 0; i < 4; i++ ) {
                 gridPosition.z = gridPos.z + i;
                 for( int j = 0; j < 3; j++ ) {
                     gridPosition.x = gridPos.x + j;
