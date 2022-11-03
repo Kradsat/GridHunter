@@ -10,7 +10,8 @@ public static class MapData
         LANCE,
         ROD,
         ENEMY,
-        ENEMY_L,
+        ENEMY2,
+        BOSS,
         MAX,
     }
 }

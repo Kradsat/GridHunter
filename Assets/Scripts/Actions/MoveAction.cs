@@ -115,7 +115,6 @@ public class MoveAction : BaseAction
                 }
 
                 validGridPositionsList.Add(testGridPosition);
-                //Debug.Log(testGridPosition);
             }
         }
 

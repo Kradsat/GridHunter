@@ -7,11 +7,8 @@ public class Units
 [System.Serializable]
 public class Unit_Datas
 {
-    public int unit_id;
-    public string unit_name;
-    public int unit_hp;
-    public int unit_mp;
-    public int unit_range;
-    public int unit_attack;
-    public int speed;
+    public int unit_id { get; set; }
+    public string unit_name { get; set; }
+    public int unit_hp { get; set; }
+    public int unit_attack { get; set; }
 }

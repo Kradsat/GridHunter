@@ -38,24 +38,16 @@ public class Unit : MonoBehaviour
 
     public void Initialize(int speed) {
         _speed = speed;
-    }
-
-    private void Start()
-    {
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
-
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
-
         healthSystem.OnDead += HealthSystem_OnDead;
-
         OnAnyUnitSpawn?.Invoke(this, EventArgs.Empty);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         if (newGridPosition!= gridPosition)
         {

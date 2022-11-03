@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 760444733531138297}
-  - component: {fileID: 4140707311242108478}
   - component: {fileID: 2210721845540725885}
   - component: {fileID: 4645909987191996052}
   - component: {fileID: 4931849269560806018}
@@ -18,6 +17,7 @@ GameObject:
   - component: {fileID: 5225423195913099269}
   - component: {fileID: 9137310447612085771}
   - component: {fileID: 6407706457841540623}
+  - component: {fileID: -3954322951543095806}
   m_Layer: 7
   m_Name: Hunter_Sword_01
   m_TagString: Hammer
@@ -46,18 +46,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4140707311242108478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760444733531138299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db842398db740d41ada7034072778cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2210721845540725885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ee499e1424f7b4e891523b78f31d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
   maxAttackDistance: 1
   damage: 10
 --- !u!114 &3346686552040568752
@@ -139,8 +128,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 0
   is3x3Boss: 0
+  is2x1Enemy: 0
   canMove: 1
   canAttack: 1
+  _speed: 0
 --- !u!114 &9137310447612085771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +158,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 20, z: 10}
   m_Center: {x: 0, y: 10, z: 0}
+--- !u!114 &-3954322951543095806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760444733531138299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db842398db740d41ada7034072778cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2740326789000448661
 GameObject:
   m_ObjectHideFlags: 0

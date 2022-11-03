@@ -1,0 +1,53 @@
+{
+	"unit_datas": [
+		{
+			"unit_id": 0,
+			"unit_name": "template",
+			"unit_hp": 100,
+			"unit_attack": 100
+		},
+		{
+			"unit_id": 1,
+			"unit_name": "dagger",
+			"unit_hp": 150,
+			"unit_attack": 50
+		},
+		{
+			"unit_id": 2,
+			"unit_name": "sword",
+			"unit_hp": 200,
+			"unit_attack": 50
+		},
+		{
+			"unit_id": 3,
+			"unit_name": "lance",
+			"unit_hp": 500,
+			"unit_attack": 30
+		},
+		{
+			"unit_id": 4,
+			"unit_name": "rod",
+			"unit_hp": 50,
+			"unit_attack": 10
+		},
+		{
+			"unit_id": 5,
+			"unit_name": "enemy",
+			"unit_hp": 150,
+			"unit_attack": 20
+		},
+		{
+			"unit_id": 6,
+			"unit_name": "enemy2",
+			"unit_hp": 100,
+			"unit_attack": 50
+		},
+		{
+			"unit_id": 7,
+			"unit_name": "boss",
+			"unit_hp": 200,
+			"unit_attack": 50
+		}
+	]
+}
+		
