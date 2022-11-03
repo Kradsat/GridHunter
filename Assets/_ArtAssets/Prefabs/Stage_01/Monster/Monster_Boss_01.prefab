@@ -1252,8 +1252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 1
-  is3x3Boss: 1
-  is2x1Enemy: 0
+  isBoss: 1
   canMove: 1
   canAttack: 1
 --- !u!114 &9028165965212270071

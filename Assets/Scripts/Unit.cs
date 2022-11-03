@@ -10,8 +10,8 @@ public class Unit : MonoBehaviour
     public static event EventHandler OnAnyUnitDead;
 
     [SerializeField] private bool isEnemy;
-    [SerializeField] public bool is3x3Boss;
-    [SerializeField] public bool is2x1Enemy;
+    public bool IsEnemy { get { return isEnemy; } }
+    [SerializeField] public bool isBoss;
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool canAttack = true;
 
@@ -125,8 +125,8 @@ public class Unit : MonoBehaviour
 
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
-        if ((IsEnemy() && !TurnSystem.Instance.IsPlayerTurn) ||
-            (!IsEnemy() && TurnSystem.Instance.IsPlayerTurn))
+        if ((IsEnemy && !TurnSystem.Instance.IsPlayerTurn) ||
+            (!IsEnemy && TurnSystem.Instance.IsPlayerTurn))
         {
             actionPoints = ACTION_POINTS_MAX;
             OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
@@ -134,11 +134,6 @@ public class Unit : MonoBehaviour
             canAttack = true;
         }
 
-    }
-
-    public bool IsEnemy()
-    {
-        return isEnemy;
     }
 
     public void Damage(int damageAmount)

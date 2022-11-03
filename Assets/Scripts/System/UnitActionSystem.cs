@@ -142,7 +142,7 @@ public class UnitActionSystem : MonoBehaviour
                         return false;
                     }
 
-                    if (unit.IsEnemy())
+                    if (unit.IsEnemy)
                     {
                         return false;
 

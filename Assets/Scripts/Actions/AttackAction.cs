@@ -170,7 +170,7 @@ public class AttackAction : BaseAction
 
                 Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(testGridPosition);
 
-                if (targetUnit.IsEnemy() == unit.IsEnemy())
+                if (targetUnit.IsEnemy == unit.IsEnemy)
                 {
                     // Both Units on same 'team'
                     continue;
