@@ -23,8 +23,10 @@ public class UnitSpawnSystem : MonoBehaviour
                     var spawn = Instantiate(unit[unitType - 1]);
                     spawn.transform.SetParent(transform, false);
                     spawn.transform.position = new Vector3(x * 2, 0, y * 2);
-                    TurnSystem.Instance.Units.Add(spawn.GetComponent<Unit>());
-                    if (unitType == 3)  unitActionSystem.SelectedUnit = spawn.GetComponent<Unit>();
+                    var spawnUnit = spawn.GetComponent<Unit>();
+                    if (unitType == 3)  unitActionSystem.SelectedUnit = spawnUnit;
+                    spawnUnit.Initialize();
+                    
 
                     var unitData = new UnitStruct();
                     unitData.Id = _unitData.unit_datas[unitType].unit_id;
@@ -41,6 +43,5 @@ public class UnitSpawnSystem : MonoBehaviour
 
         unityActionSystemUI.Initialize();
         gridSystemVisual.Initialize();
-        TurnSystem.Instance.Initialize();
     }
 }

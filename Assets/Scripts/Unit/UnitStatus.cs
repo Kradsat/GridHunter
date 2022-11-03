@@ -3,19 +3,23 @@ using UnityEngine;
 public class UnitStatus : MonoBehaviour
 {
     private UnitStruct _player_unit = new UnitStruct();
+    public UnitStruct Player_Unit
+    {
+        get { return _player_unit; }
+    }
 
-    public double HP
+    public virtual double HP
     {
         get { return _player_unit.Hp; }
         set { _player_unit.Hp += value; }
     }
 
-    public double ATK
+    public virtual double ATK
     {
         get { return _player_unit.Attack; }
     }
 
-    public void Init(UnitStruct unit)
+    public virtual void Init(UnitStruct unit)
     {
         _player_unit = unit;
 

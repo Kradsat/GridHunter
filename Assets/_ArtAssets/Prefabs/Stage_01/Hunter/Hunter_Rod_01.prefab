@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 7244834353015090573}
   - component: {fileID: -6524135394394576660}
   - component: {fileID: -6286486250325856335}
-  - component: {fileID: -8032241242363042812}
+  - component: {fileID: 8520021813170213439}
   m_Layer: 7
   m_Name: Hunter_Rod_01
   m_TagString: Rod
@@ -626,7 +626,6 @@ MonoBehaviour:
   is2x1Enemy: 0
   canMove: 1
   canAttack: 1
-  _speed: 0
 --- !u!114 &-6524135394394576660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,7 +652,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.71, y: 1.56, z: 1}
   m_Center: {x: 0, y: 0.75, z: 0}
---- !u!114 &-8032241242363042812
+--- !u!114 &8520021813170213439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -662,7 +661,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7126295819214467793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db842398db740d41ada7034072778cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ec12f8097579a643bc18caf8c6b2b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8245053336655397638

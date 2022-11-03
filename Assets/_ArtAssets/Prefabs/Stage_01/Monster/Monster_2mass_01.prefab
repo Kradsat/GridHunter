@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -9039589402841525767}
   - component: {fileID: -5512441206590282636}
   - component: {fileID: 4041064476023997191}
-  - component: {fileID: 3044654073537150229}
+  - component: {fileID: -7289663929218946461}
   m_Layer: 0
   m_Name: Monster_2mass_01
   m_TagString: Untagged
@@ -66,10 +66,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isEnemy: 1
   is3x3Boss: 0
-  is2x1Enemy: 0
+  is2x1Enemy: 1
   canMove: 1
   canAttack: 1
-  _speed: 0
 --- !u!114 &-9039589402841525767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +110,7 @@ MonoBehaviour:
   originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
   maxAttackDistance: 1
   damage: 10
---- !u!114 &3044654073537150229
+--- !u!114 &-7289663929218946461
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 459611253589615705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db842398db740d41ada7034072778cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ec12f8097579a643bc18caf8c6b2b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1246488892729453768

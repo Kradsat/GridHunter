@@ -31,6 +31,7 @@ public class LevelGrid : MonoBehaviour
 
     public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
+        Debug.Log("ADD UNIT AT GRID POS: " + unit.gameObject.name + " / " + unit.is2x1Enemy + " / " + unit.is3x3Boss);
         if( !unit.is3x3Boss && !unit.is2x1Enemy ) {
             GridObject gridObject = gridSystem.GetGridObject(gridPosition);
             gridObject.AddUnit(unit);

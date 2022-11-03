@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -24,8 +22,6 @@ public class Unit : MonoBehaviour
     private AttackAction attackAction;
     private BaseAction[] baseAction;
     private int actionPoints = ACTION_POINTS_MAX;
-    [SerializeField]private int _speed = 0;
-    public int Speed { get { return _speed; } }
 
     private void Awake()
     {
@@ -36,8 +32,7 @@ public class Unit : MonoBehaviour
         baseAction = GetComponents<BaseAction>();
     }
 
-    public void Initialize(int speed) {
-        _speed = speed;
+    public void Initialize() {
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;

@@ -11,9 +11,6 @@ public class TurnSystem : MonoBehaviour
 
     private int _turnNumber = 1;
     public int TurnNumber { get { return _turnNumber; } }
-    public List<Unit> Units = new List<Unit>();
-    private int order_head = 0;
-    public Unit NowUnit { get { return Units[order_head]; } }
 
     private bool _isPlayerTurn = true;
     public bool IsPlayerTurn { get { return _isPlayerTurn; } }
@@ -27,20 +24,10 @@ public class TurnSystem : MonoBehaviour
         Instance = this;
     }
 
-    public void Initialize() {
-        Reorder();
-        order_head = 0;
-    }
-
     public void NextTurn() { 
-        order_head++;   
         _turnNumber++;
         _isPlayerTurn = !_isPlayerTurn;
 
         OnTurnChanged?.Invoke(this, EventArgs.Empty);
-    }
-
-    private void Reorder() {
-        Units = Units.OrderByDescending(_ => _.Speed).ToList();
     }
 }
