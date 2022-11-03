@@ -23,10 +23,10 @@ public class UnitStatus : MonoBehaviour
     {
         _player_unit = unit;
 
-        Debug.Log(" Initiaized -> id:" + _player_unit.Id + " name:" + _player_unit.Name
+        /* Debug.Log(" Initiaized -> id:" + _player_unit.Id + " name:" + _player_unit.Name
                   + " hp:" + _player_unit.Hp + " attack:" + _player_unit.Attack
                   + " equip:" + _player_unit.Equipment.equipment_name);
-
+        */
     }
 
 }
