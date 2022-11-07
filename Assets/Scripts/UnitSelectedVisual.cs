@@ -2,16 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UnitSelectedVisual : MonoBehaviour
 {
     [SerializeField] private Unit unit;
+    [SerializeField] private bool isSelectedPointer;
 
     private MeshRenderer meshRenderer;
+    private Image image;
 
     private void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        if( !isSelectedPointer ) {
+            meshRenderer = GetComponent<MeshRenderer>();
+        } else {
+            image = GetComponent<Image>( );
+        }
     }
 
     private void Start()
@@ -30,11 +37,19 @@ public class UnitSelectedVisual : MonoBehaviour
     {
         if (UnitActionSystem.Instance.GetSelectedUnit() == unit)
         {
-            meshRenderer.enabled = true;
+            if( isSelectedPointer ) {
+                image.enabled = true;
+            } else {
+                meshRenderer.enabled = true;
+            }
         }
         else
         {
-            meshRenderer.enabled = false;
+            if( isSelectedPointer ) {
+                image.enabled = false;
+            } else {
+                meshRenderer.enabled = false;
+            }
         }
     }
 
