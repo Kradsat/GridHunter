@@ -9,7 +9,7 @@ public class UnitWorldUI : MonoBehaviour
 {
    [SerializeField] private TextMeshProUGUI actionPointsText;
    [SerializeField] private Unit unit;
-   [SerializeField] private Image healthBarImage;
+   [SerializeField] public Image healthBarImage;
    [SerializeField] private HealthSystem healthSystem;
 
     private void Start()

@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 5225423195913099269}
   isSelectedPointer: 0
+  Greenmaterial: {fileID: 0}
+  Redmaterial: {fileID: 0}
 --- !u!1 &760444733531138299
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +245,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 5225423195913099269}
   isSelectedPointer: 0
+  Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
+  Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
 --- !u!65 &6407706457841540623
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -631,6 +635,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 5225423195913099269}
   isSelectedPointer: 0
+  Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
+  Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
 --- !u!1 &6489125131889157636
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +975,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 5225423195913099269}
   isSelectedPointer: 1
+  Greenmaterial: {fileID: 0}
+  Redmaterial: {fileID: 0}
 --- !u!1001 &760444733130432058
 PrefabInstance:
   m_ObjectHideFlags: 0

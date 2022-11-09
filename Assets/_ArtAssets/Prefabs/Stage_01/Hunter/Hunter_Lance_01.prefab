@@ -61,8 +61,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: -1301636463708153521}
   isSelectedPointer: 0
+  Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
+  Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
 --- !u!1 &1212129540127681499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,6 +1582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: -1301636463708153521}
   isSelectedPointer: 0
+  Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
+  Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
 --- !u!65 &-6818704849396996865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1869,6 +1872,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: -1301636463708153521}
   isSelectedPointer: 1
+  Greenmaterial: {fileID: 0}
+  Redmaterial: {fileID: 0}
 --- !u!1 &3937587114471857007
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,6 +2086,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: -1301636463708153521}
   isSelectedPointer: 0
+  Greenmaterial: {fileID: 0}
+  Redmaterial: {fileID: 0}
 --- !u!1 &8873958682121912736
 GameObject:
   m_ObjectHideFlags: 0
