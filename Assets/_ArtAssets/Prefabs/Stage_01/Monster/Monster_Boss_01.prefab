@@ -1165,7 +1165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4378150650040961814
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1548,8 +1548,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionPointsText: {fileID: 213610223338078247}
   unit: {fileID: 8612803085661518104}
-  healthBarImage: {fileID: 3675464209380127666}
+  healthBarImage: {fileID: 0}
   healthSystem: {fileID: 2043202293349986848}
+  isBoss: 1
 --- !u!114 &702493889354574128
 MonoBehaviour:
   m_ObjectHideFlags: 0

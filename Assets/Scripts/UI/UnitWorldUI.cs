@@ -11,10 +11,16 @@ public class UnitWorldUI : MonoBehaviour
    [SerializeField] private Unit unit;
    [SerializeField] public Image healthBarImage;
    [SerializeField] private HealthSystem healthSystem;
+    GameObject BossBar;
+    public bool isBoss;
 
     private void Start()
     {
         Unit.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
+        if( isBoss ) {
+            BossBar = GameObject.Find( "BossBar" );
+            healthBarImage = BossBar.GetComponent<Image>();
+        }
         healthSystem.OnDamage += HealthSystem_OnDamage;
         UpdateActionPointsText();
         UpdateHealthBar();
