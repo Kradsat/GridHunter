@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GridObject
 {
-    private GridSystem gridSystem;
+    private GridSystem<GridObject> gridSystem;
     private GridPosition gridPosition;
     private List<Unit> unitList;
 
-    public GridObject(GridSystem gridSystem, GridPosition gridPosition)
+    public GridObject(GridSystem<GridObject> gridSystem, GridPosition gridPosition)
     {
         this.gridSystem = gridSystem;
         this.gridPosition = gridPosition;
@@ -28,7 +28,7 @@ public class GridObject
     public void AddUnit(Unit unit)
     {
         unitList.Add(unit);
-        
+
     }
 
     public void RemoveUnit(Unit unit)
@@ -36,9 +36,9 @@ public class GridObject
         unitList.Remove(unit);
     }
 
-    public List<Unit> GetUnitList() 
+    public List<Unit> GetUnitList()
     {
-        return unitList; 
+        return unitList;
     }
 
     public bool HasAnyUnit()

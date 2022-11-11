@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5512441206590282636}
   - component: {fileID: 4041064476023997191}
   - component: {fileID: -7289663929218946461}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Monster_2mass_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,8 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemy: 1
-  is3x3Boss: 0
-  is2x1Enemy: 1
+  isBoss: 0
   canMove: 1
   canAttack: 1
 --- !u!114 &-9039589402841525767
@@ -133,7 +132,7 @@ GameObject:
   - component: {fileID: 3488607863755069209}
   - component: {fileID: 3253705428830666521}
   - component: {fileID: 2418038927867931424}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: ActionPointsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +270,7 @@ GameObject:
   - component: {fileID: 4798749548983205837}
   - component: {fileID: 4338687297382101002}
   - component: {fileID: 666891714410990409}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: UnitWorldUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,6 +376,7 @@ MonoBehaviour:
   unit: {fileID: 1138106451899612090}
   healthBarImage: {fileID: 1334419987252063502}
   healthSystem: {fileID: -9039589402841525767}
+  isBoss: 0
 --- !u!114 &666891714410990409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 685197311206056765}
   - component: {fileID: 802437766548491223}
   - component: {fileID: 3933958001671061648}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +493,7 @@ GameObject:
   - component: {fileID: 4431809759473588254}
   - component: {fileID: 7182345261411586689}
   - component: {fileID: 1334419987252063502}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5144372471037223718}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680672}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_wing_r_d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680676}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_ken_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,7 +668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680678}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_wing_l_d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,7 +699,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680688}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_wing_r_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680690}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_wing_r_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680692}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_wing_l_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -797,7 +797,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680694}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_wing_l_c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -828,7 +828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680698}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_ken_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,7 +860,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680700}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_wing_r_c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,7 +891,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680704}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hiza_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,7 +923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680708}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hara
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680710}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hiza_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -987,7 +987,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680712}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_toe_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1018,7 +1018,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680714}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_wing_l_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1050,7 +1050,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680718}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_toe_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1081,7 +1081,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680720}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_asi_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1113,7 +1113,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680722}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_sippo_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1145,7 +1145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680726}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_kata_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1177,7 +1177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680728}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_ago
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1208,7 +1208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680730}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_sippo_c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680734}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_te_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1270,7 +1270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680736}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_ude_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1302,7 +1302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680738}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_te_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,7 +1333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680740}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_kubi_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1365,7 +1365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680742}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_kao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1397,7 +1397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680744}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_asi_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1429,7 +1429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680748}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_mune
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1466,7 +1466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7802043169229680750}
   - component: {fileID: 7802043169229680745}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: fbx_mo_2250000_fleg00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1520,7 +1520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680752}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_kubi_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1552,7 +1552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680754}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_ude_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1584,7 +1584,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680756}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_momo_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1616,7 +1616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680758}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_sippo_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1648,7 +1648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680762}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_kosi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1683,7 +1683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680764}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_kata_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1715,7 +1715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229680766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_momo_l
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1748,7 +1748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7802043169229681106}
   - component: {fileID: 7802043169241407836}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mo_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1858,7 +1858,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802043169229681118}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_shadow_grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

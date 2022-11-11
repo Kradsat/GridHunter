@@ -17,22 +17,17 @@ public class Unit : MonoBehaviour
 
     private GridPosition gridPosition;
     private HealthSystem healthSystem;
-    private MoveAction moveAction;
-    private SpinAction spinAction;
-    private AttackAction attackAction;
-    private BaseAction[] baseAction;
+    private BaseAction[] baseActionArray;
     private int actionPoints = ACTION_POINTS_MAX;
 
     private void Awake()
     {
         healthSystem = GetComponent<HealthSystem>();
-        moveAction = GetComponent<MoveAction>();
-        spinAction = GetComponent<SpinAction>();;
-        attackAction = GetComponent<AttackAction>();;
-        baseAction = GetComponents<BaseAction>();
+        baseActionArray = GetComponents<BaseAction>();
     }
 
-    public void Initialize() {
+    public void Initialize()
+    {
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
@@ -44,7 +39,7 @@ public class Unit : MonoBehaviour
     void Update()
     {
         GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
-        if (newGridPosition!= gridPosition)
+        if (newGridPosition != gridPosition)
         {
             //unit has changed position
             GridPosition oldGridPosition = gridPosition;
@@ -55,19 +50,16 @@ public class Unit : MonoBehaviour
 
     }
 
-    public MoveAction GetMoveAction()
+    public T GetAction<T>() where T : BaseAction
     {
-        return moveAction;
-    }
-
-    public SpinAction GetSpinAction()
-    {
-        return spinAction;
-    }
-
-    public AttackAction GetAttackAction()
-    {
-        return attackAction;
+        foreach (BaseAction baseAction in baseActionArray)
+        {
+            if (baseAction is T)
+            {
+                return (T)baseAction;
+            }
+        }
+        return null;
     }
 
 
@@ -83,7 +75,7 @@ public class Unit : MonoBehaviour
 
     public BaseAction[] GetBaseActionArray()
     {
-        return baseAction;
+        return baseActionArray;
     }
 
 

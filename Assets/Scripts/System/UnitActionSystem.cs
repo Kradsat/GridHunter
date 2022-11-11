@@ -16,7 +16,7 @@ public class UnitActionSystem : MonoBehaviour
     [SerializeField] private Unit selectedUnit;
     public Unit SelectedUnit
     {
-        set { 
+        set {
             selectedUnit = value;
             SetSelectedUnit(selectedUnit);
         }
@@ -62,7 +62,7 @@ public class UnitActionSystem : MonoBehaviour
         {
             return;
         }
- 
+
         HandleSelectedAction();
     }
 
@@ -159,7 +159,7 @@ public class UnitActionSystem : MonoBehaviour
     {
         selectedUnit = unit;
 
-        SetSelectedAction(unit.GetMoveAction());
+        SetSelectedAction(unit.GetAction<MoveAction>());
 
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
         /* is the same as above

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817498}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_sippo_d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817572}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hiza_r_d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817496}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_shadow_grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817554}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_momo_l_d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817588}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_spike_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817552}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_momo_r_d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817574}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hiza_l_d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817582}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_momo_r_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817570}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hiza_l_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817580}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_spike_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817568}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hiza_r_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817590}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_mune_d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817550}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_kao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817576}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_momo_l_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817578}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_kubi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817586}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_sippo_c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817596}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_sippo_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817558}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_sippo_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -579,7 +579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_momo_r_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,7 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 17564347023817538}
   - component: {fileID: 17564347024238433}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mo_1420000_arma00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817592}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_mune_c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,7 +699,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817584}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hiza_r_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -730,7 +730,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817542}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_mune_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817544}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_mune_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817598}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hiza_l_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -827,7 +827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817540}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_momo_l_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -859,7 +859,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817548}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hiza_l_c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817556}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_momo_l_c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -922,7 +922,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817536}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hiza_r_c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -953,7 +953,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817546}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_momo_r_c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 17564347023817560}
   - component: {fileID: 17564347035806330}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mo_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1090,7 +1090,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817562}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_kosi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1125,7 +1125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 17564347023817564}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: j_hara
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1159,7 +1159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4378150650040961814}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1202,7 +1202,7 @@ GameObject:
   - component: {fileID: 9028165965212270071}
   - component: {fileID: 2043202293349986848}
   - component: {fileID: 6186056300799391285}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Monster_Boss_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1306,7 +1306,7 @@ GameObject:
   - component: {fileID: 838253609832001114}
   - component: {fileID: 2920635531171096315}
   - component: {fileID: 213610223338078247}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: ActionPointsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1444,7 +1444,7 @@ GameObject:
   - component: {fileID: 2198993289772653444}
   - component: {fileID: 461433209648052687}
   - component: {fileID: 702493889354574128}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: UnitWorldUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1575,7 +1575,7 @@ GameObject:
   - component: {fileID: 674204372912456680}
   - component: {fileID: 7526513745682735958}
   - component: {fileID: 3675464209380127666}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1652,7 +1652,7 @@ GameObject:
   - component: {fileID: 8037595803600140692}
   - component: {fileID: 1573744715472383845}
   - component: {fileID: 4137036827352147635}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}

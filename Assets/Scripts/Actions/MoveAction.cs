@@ -9,20 +9,20 @@ public class MoveAction : BaseAction
     public event EventHandler OnStopMoving;
     //[SerializeField] private Animator unitAnimator;
     [SerializeField] private int maxMoveDistance = 4;
-    
+
 
     private Vector3 targetposition;
 
     private Quaternion originalRotationValue;
     float rotationResetSpeed = 20f;
- 
+
 
     protected override void Awake()
     {
         base.Awake();
         targetposition = transform.position;
     }
-    
+
     void Start()
     {
         originalRotationValue = transform.rotation;
@@ -36,9 +36,9 @@ public class MoveAction : BaseAction
         {
             return;
         }
-      
+
         Vector3 moveDirection = (targetposition - transform.position).normalized;
-        
+
         float stoppingDistance = .1f;
         if (Vector3.Distance(transform.position, targetposition) > stoppingDistance)
         {
@@ -60,7 +60,7 @@ public class MoveAction : BaseAction
 
         }
 
-        
+
     }
 
     #region Switch Method
@@ -79,7 +79,7 @@ public class MoveAction : BaseAction
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
         ActionStart(onActionComplete);
-        
+
         this.targetposition = LevelGrid.Instance.GetWorldPosition(gridPosition);
         OnStartMoving?.Invoke(this, EventArgs.Empty);
     }
@@ -128,7 +128,7 @@ public class MoveAction : BaseAction
 
     public override EnemyAIAction GetEnemyAIAction(GridPosition gridPosition)
     {
-        int targetCountAtGridPosition = unit.GetAttackAction().GetTargetCountAtPosition(gridPosition);
+        int targetCountAtGridPosition = unit.GetAction<AttackAction>().GetTargetCountAtPosition(gridPosition);
         return new EnemyAIAction
         {
             gridPosition = gridPosition,

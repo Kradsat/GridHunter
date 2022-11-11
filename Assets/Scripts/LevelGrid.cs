@@ -9,11 +9,12 @@ public class LevelGrid : MonoBehaviour
 
     public event EventHandler OnAnyUnitMovedGridPosition;
 
-    [SerializeField] private int GridSize;
+    [SerializeField] private int width;
+    [SerializeField] private int height;
     [SerializeField] private float cellSize;
     [SerializeField] private Transform gridDebugObjectPrefab;
 
-    private GridSystem gridSystem;
+    private GridSystem<GridObject> gridSystem;
 
     private void Awake()
     {
@@ -25,15 +26,19 @@ public class LevelGrid : MonoBehaviour
         }
         Instance = this;
 
-        gridSystem = new GridSystem(GridSize, GridSize, cellSize);
-        gridSystem.CreateDebugObjects(gridDebugObjectPrefab, this.transform);
+        gridSystem = new GridSystem<GridObject>(width, height, cellSize,
+                (GridSystem<GridObject> g, GridPosition gridPosition) => new GridObject(g, gridPosition));
+        //gridSystem.CreateDebugObjects(gridDebugObjectPrefab, this.transform);
     }
 
+    private void Start(){
+        Pathfinding.Instance.Setup(width, height, cellSize);
+    }
     public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
         if (!unit.IsEnemy)
         {
-            // ƒvƒŒƒCƒ„[‚Ìê‡A1x1
+            // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìê‡ï¿½A1x1
             GridObject gridObject = gridSystem.GetGridObject(gridPosition);
             gridObject.AddUnit(unit);
             return;
@@ -108,7 +113,7 @@ public class LevelGrid : MonoBehaviour
     {
         if (!unit.IsEnemy)
         {
-            // ƒvƒŒƒCƒ„[‚Ìê‡A1x1
+            // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìê‡ï¿½A1x1
             GridObject gridObject = gridSystem.GetGridObject(gridPosition);
             gridObject.RemoveUnit(unit);
             return;
