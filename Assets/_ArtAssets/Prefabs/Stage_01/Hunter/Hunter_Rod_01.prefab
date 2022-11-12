@@ -344,6 +344,7 @@ MonoBehaviour:
   unit: {fileID: 7244834353015090573}
   healthBarImage: {fileID: 6159701276444206345}
   healthSystem: {fileID: 7907485400992941793}
+  isBoss: 0
 --- !u!114 &124362246987205237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,6 +747,7 @@ GameObject:
   - component: {fileID: -6524135394394576660}
   - component: {fileID: -6286486250325856335}
   - component: {fileID: 8520021813170213439}
+  - component: {fileID: 3617670642716545090}
   m_Layer: 7
   m_Name: Hunter_Rod_01
   m_TagString: Rod
@@ -787,7 +789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 50
 --- !u!114 &-8126021063586756291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,6 +902,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec12f8097579a643bc18caf8c6b2b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3617670642716545090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7126295819214467793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352ad4f03604f8b459ea4e77715d7911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: 7244834353015090573}
+  healthSystem: {fileID: 7907485400992941793}
+  Attack: {fileID: 4652361956179276740}
+  order: 4
 --- !u!1 &8245053336655397638
 GameObject:
   m_ObjectHideFlags: 0

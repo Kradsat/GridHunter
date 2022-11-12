@@ -514,6 +514,8 @@ GameObject:
   - component: {fileID: 7000007305759172876}
   - component: {fileID: -4388836339886831096}
   - component: {fileID: 7655713762411544779}
+  - component: {fileID: 3628386427477472039}
+  - component: {fileID: 7669345135918534398}
   m_Layer: 7
   m_Name: Hunter_Dagger_01
   m_TagString: Dagger
@@ -555,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 150
 --- !u!114 &4180071738826979822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
   maxAttackDistance: 1
-  damage: 10
+  damage: 50
 --- !u!114 &2017173975420951438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +668,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &3628386427477472039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305114307767709647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352ad4f03604f8b459ea4e77715d7911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: -1136778641032566394}
+  healthSystem: {fileID: 5450380950414510806}
+  Attack: {fileID: 1940448137571076753}
+  order: 1
+--- !u!114 &7669345135918534398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305114307767709647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db842398db740d41ada7034072778cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6305114309045424384
 GameObject:
   m_ObjectHideFlags: 0

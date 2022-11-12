@@ -233,4 +233,8 @@ public class AttackAction : BaseAction
         }
         return 2;
     }
+
+    public int getAttackDamage( ) {
+        return damage;
+    }
 }

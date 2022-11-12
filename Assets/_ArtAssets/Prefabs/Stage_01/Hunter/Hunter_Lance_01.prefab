@@ -1455,6 +1455,8 @@ GameObject:
   - component: {fileID: 6310224221516152973}
   - component: {fileID: -6818704849396996865}
   - component: {fileID: 5482623528742419774}
+  - component: {fileID: 5194317796212032391}
+  - component: {fileID: 1960600247325697669}
   m_Layer: 7
   m_Name: Hunter_Lance_01
   m_TagString: Lancer
@@ -1496,7 +1498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 500
 --- !u!114 &3379068311209202834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1537,7 +1539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
   maxAttackDistance: 1
-  damage: 10
+  damage: 30
 --- !u!114 &-8408481292297118016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1607,6 +1609,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ec12f8097579a643bc18caf8c6b2b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5194317796212032391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460378923471753717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352ad4f03604f8b459ea4e77715d7911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: {fileID: -1301636463708153521}
+  healthSystem: {fileID: -288966086302066162}
+  Attack: {fileID: -4933007183853864577}
+  order: 3
+--- !u!114 &1960600247325697669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460378923471753717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db842398db740d41ada7034072778cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3559263667418764513
@@ -3468,6 +3498,7 @@ MonoBehaviour:
   unit: {fileID: -1301636463708153521}
   healthBarImage: {fileID: 5325643686623942393}
   healthSystem: {fileID: -288966086302066162}
+  isBoss: 0
 --- !u!114 &8546517223786653372
 MonoBehaviour:
   m_ObjectHideFlags: 0
