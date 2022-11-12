@@ -8,6 +8,7 @@ public class UnitBase : UnitStatus
     public static event EventHandler OnAnyActionPointsChanged;
     public static event EventHandler OnAnyUnitSpawn;
     public static event EventHandler OnAnyUnitDead;
+    public static event EventHandler OnDamage;
 
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool canAttack = true;
@@ -29,7 +30,7 @@ public class UnitBase : UnitStatus
         LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         OnAnyUnitSpawn?.Invoke(this, EventArgs.Empty);
-        Debug.Log("INITED");
+        //Debug.Log("INITED");
     }
 
     void Update()
@@ -121,7 +122,9 @@ public class UnitBase : UnitStatus
 
     public void Damage(int damageAmount)
     {
-        base.HP -= damageAmount;
+        base.HP -= ( double )damageAmount;
+
+        OnDamage?.Invoke( this, EventArgs.Empty );
     }
 
     private void HealthSystem_OnDead(object sender, EventArgs e)

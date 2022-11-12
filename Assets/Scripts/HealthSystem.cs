@@ -7,31 +7,33 @@ public class HealthSystem : MonoBehaviour
 {
     public event EventHandler OnDead;
     public event EventHandler OnDamage;
+    private UnitBase unitBase;
+    private double  maxHealth;
 
-    [SerializeField] private int health = 100;
-    private int  maxHealth;
-
-    private void Awake()
+    private void Start()
     {
-        maxHealth = health;
+        unitBase = GetComponent<UnitBase>( );
+
+        maxHealth = unitBase.HP;
     }
 
     public void Damage(int damageAmount)
     {
-        health -= damageAmount;
-        if (health < 0)
+        unitBase.HP -= damageAmount;
+        Debug.Log( unitBase.HP );
+        if ( unitBase.HP < 0)
         {
-            health = 0;
+            unitBase.HP = 0;
         }
 
         OnDamage?.Invoke(this, EventArgs.Empty);
 
-        if (health == 0)
+        if ( unitBase.HP == 0)
         {
             Die();
         }
 
-        Debug.Log(health);
+        Debug.Log( unitBase.HP );
     }
 
     private void Die()
@@ -39,16 +41,16 @@ public class HealthSystem : MonoBehaviour
         OnDead?.Invoke(this, EventArgs.Empty);
     }
 
-    public float GetHealthNormalized()
+    public double GetHealthNormalized()
     {
-        return (float)health / maxHealth;
+        return unitBase.HP / maxHealth;
     }
 
-    public int getHealth( ) {
-        return health;
+    public double getHealth( ) {
+        return unitBase.HP;
     }
 
-    public int getMaxHealth( ) {
+    public double getMaxHealth( ) {
         return maxHealth;
     }
 }

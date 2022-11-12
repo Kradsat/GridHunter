@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionPointsText: {fileID: 4612808173407605182}
-  unit: {fileID: -6121321964156057174}
+  unit: {fileID: 0}
   healthBarImage: {fileID: 3063663102687431041}
   healthSystem: {fileID: -2818734163316488586}
   isBoss: 0
@@ -236,10 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b3fdfa510db4149976683683e2a1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnemy: 1
-  isBoss: 0
-  canMove: 1
-  canAttack: 1
 --- !u!114 &-2818734163316488586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  unit: {fileID: -6121321964156057174}
 --- !u!114 &-7107399793187841868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec12f8097579a643bc18caf8c6b2b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
+  canAttack: 1
 --- !u!1 &4855443866310743348
 GameObject:
   m_ObjectHideFlags: 0
