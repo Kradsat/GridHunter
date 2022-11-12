@@ -8,7 +8,7 @@ public class UnitBase : UnitStatus
     public static event EventHandler OnAnyActionPointsChanged;
     public static event EventHandler OnAnyUnitSpawn;
     public static event EventHandler OnAnyUnitDead;
-    public event EventHandler OnDamage;
+    public static event EventHandler OnDamage;
 
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool canAttack = true;
@@ -122,10 +122,8 @@ public class UnitBase : UnitStatus
 
     public void Damage(int damageAmount)
     {
-        Debug.Log( base.HP );
-        Debug.Log( damageAmount );
         base.HP -= ( double )damageAmount;
-        Debug.Log( base.HP );
+
         OnDamage?.Invoke( this, EventArgs.Empty );
     }
 

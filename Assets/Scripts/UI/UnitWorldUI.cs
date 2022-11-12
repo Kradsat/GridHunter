@@ -18,16 +18,16 @@ public class UnitWorldUI : MonoBehaviour
     {
         unit = GetComponentInParent<UnitBase>();
         UnitBase.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
+        UnitBase.OnDamage += UnitBase_OnDamage;
         if( isBoss ) {
             BossBar = GameObject.Find( "BossBar" );
             healthBarImage = BossBar.GetComponent<Image>();
         }
-        healthSystem.OnDamage += HealthSystem_OnDamage;
         UpdateActionPointsText();
         UpdateHealthBar();
     }
 
-    private void HealthSystem_OnDamage(object sender, EventArgs e)
+    private void UnitBase_OnDamage( object sender, EventArgs e)
     {
         UpdateHealthBar();
     }

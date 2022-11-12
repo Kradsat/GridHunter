@@ -11,7 +11,7 @@ public class UnitStatus : MonoBehaviour
     public virtual double HP
     {
         get { return _unit.Hp; }
-        set { _unit.Hp += value; }
+        set { _unit.Hp = value; }
     }
 
     public virtual double ATK

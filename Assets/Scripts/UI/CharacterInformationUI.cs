@@ -24,7 +24,7 @@ public class CharacterInformationUI : MonoBehaviour {
 
         character = GameObject.Find("Player" + order + "Bar");
         healthBarImage = character.GetComponent<Image>();
-        unitBase.OnDamage += UnitBase_OnDamage;
+        UnitBase.OnDamage += UnitBase_OnDamage;
 
         character = GameObject.Find("Player" + order + "HPText");
         HPText = character.GetComponent<TextMeshProUGUI>();
@@ -38,7 +38,6 @@ public class CharacterInformationUI : MonoBehaviour {
     private void UnitBase_OnDamage( object sender, EventArgs e ) {
         UpdateHealthBar( );
         UpdateHealthText( );
-        Debug.Log( "PENDEJOOOOOOOOOOOOO" );
     }
     private void UpdateHealthBar( ) {
         healthBarImage.fillAmount = ( float )GetHealthNormalized( );
