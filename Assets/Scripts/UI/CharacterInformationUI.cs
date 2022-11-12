@@ -10,6 +10,7 @@ public class CharacterInformationUI : MonoBehaviour {
     [SerializeField] private HealthSystem healthSystem;
     [SerializeField] private AttackAction Attack;
     [SerializeField] private int order;
+    private UnitBase unitBase;
     GameObject character;
     private Image healthBarImage;
     private TextMeshProUGUI HPText;
@@ -17,24 +18,21 @@ public class CharacterInformationUI : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        character = GameObject.Find( "Player" + order + "Bar" );
-        healthBarImage = character.GetComponent<Image>( );
+        unitBase = GetComponent<UnitBase>();
+
+        character = GameObject.Find("Player" + order + "Bar");
+        healthBarImage = character.GetComponent<Image>();
         healthSystem.OnDamage += HealthSystem_OnDamage;
 
-        character = GameObject.Find( "Player" + order + "HPText" );
-        HPText = character.GetComponent<TextMeshProUGUI>( );
-        HPText.text = healthSystem.getHealth( ).ToString() + "/" + healthSystem.getMaxHealth( ).ToString( );
+        character = GameObject.Find("Player" + order + "HPText");
+        HPText = character.GetComponent<TextMeshProUGUI>();
+        HPText.text = unitBase.HP.ToString() + "/" + healthSystem.getMaxHealth().ToString();
 
-        character = GameObject.Find( "Player" + order + "AttackText" );
-        AttackText = character.GetComponent<TextMeshProUGUI>( );
-        AttackText.text = "Attack: " + Attack.getAttackDamage( );
+        character = GameObject.Find("Player" + order + "AttackText");
+        AttackText = character.GetComponent<TextMeshProUGUI>();
+        AttackText.text = "Attack: " + unitBase.ATK;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void HealthSystem_OnDamage( object sender, EventArgs e ) {
         UpdateHealthBar( );
         UpdateHealthText( );
