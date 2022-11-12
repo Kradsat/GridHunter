@@ -13,8 +13,8 @@ public class UnitActionSystem : MonoBehaviour
     public event EventHandler<bool> OnBusyChanged;
     public event EventHandler OnActionStarted;
 
-    [SerializeField] private Unit selectedUnit;
-    public Unit SelectedUnit
+    [SerializeField] private UnitBase selectedUnit;
+    public UnitBase SelectedUnit
     {
         set {
             selectedUnit = value;
@@ -135,7 +135,7 @@ public class UnitActionSystem : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out RaycastHit raycasthit, float.MaxValue, unitLayerMask))
             {
-                if(raycasthit.transform.TryGetComponent<Unit>(out Unit unit))
+                if(raycasthit.transform.TryGetComponent<UnitBase>(out UnitBase unit))
                 {
                     if (unit == selectedUnit)
                     {
@@ -155,7 +155,7 @@ public class UnitActionSystem : MonoBehaviour
         return false;
     }
 
-    private void SetSelectedUnit(Unit unit)
+    private void SetSelectedUnit(UnitBase unit)
     {
         selectedUnit = unit;
 
@@ -176,7 +176,7 @@ public class UnitActionSystem : MonoBehaviour
 
     }
 
-    public Unit GetSelectedUnit()
+    public UnitBase GetSelectedUnit()
     {
         return selectedUnit;
     }

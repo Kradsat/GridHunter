@@ -8,7 +8,7 @@ using System;
 public class UnitWorldUI : MonoBehaviour
 {
    [SerializeField] private TextMeshProUGUI actionPointsText;
-   [SerializeField] private Unit unit;
+   [SerializeField] private UnitBase unit;
    [SerializeField] public Image healthBarImage;
    [SerializeField] private HealthSystem healthSystem;
     GameObject BossBar;
@@ -16,7 +16,8 @@ public class UnitWorldUI : MonoBehaviour
 
     private void Start()
     {
-        Unit.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
+        unit = GetComponentInParent<UnitBase>();
+        UnitBase.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
         if( isBoss ) {
             BossBar = GameObject.Find( "BossBar" );
             healthBarImage = BossBar.GetComponent<Image>();

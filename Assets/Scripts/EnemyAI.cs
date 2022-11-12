@@ -74,7 +74,7 @@ public class EnemyAI : MonoBehaviour
     private bool TryTakeEnemyAIAction(Action onEnemyAIActionComplete)
     {
         Debug.Log("Take Enemy AI Action");
-        foreach (Unit enemyUnit in UnitManager.Instance.GetEnemyUnitList())
+        foreach (UnitBase enemyUnit in UnitManager.Instance.GetEnemyUnitList())
         {
             if (TryTakeEnemyAIAction(enemyUnit, onEnemyAIActionComplete))
             {
@@ -86,7 +86,7 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    private bool TryTakeEnemyAIAction(Unit enemyUnit, Action onEnemyAIActionComplete)
+    private bool TryTakeEnemyAIAction(UnitBase enemyUnit, Action onEnemyAIActionComplete)
     {
         EnemyAIAction bestEnemyAIAction = null;
         BaseAction bestBaseAction = null;

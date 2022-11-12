@@ -34,7 +34,7 @@ public class LevelGrid : MonoBehaviour
     private void Start(){
         Pathfinding.Instance.Setup(width, height, cellSize);
     }
-    public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
+    public void AddUnitAtGridPosition(GridPosition gridPosition, UnitBase unit)
     {
         if (!unit.IsEnemy)
         {
@@ -44,7 +44,7 @@ public class LevelGrid : MonoBehaviour
             return;
         }
 
-        if (unit.isBoss)
+        if (unit.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
         {
             GridPosition gridPos;
             gridPos.x = gridPosition.x - 1;
@@ -103,13 +103,13 @@ public class LevelGrid : MonoBehaviour
         }
     }
 
-    public List<Unit> GetUnitListAtGridPosition(GridPosition gridPosition)
+    public List<UnitBase> GetUnitListAtGridPosition(GridPosition gridPosition)
     {
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
         return gridObject.GetUnitList();
     }
 
-    public void RemoveUnitAtGridPosition(GridPosition gridPosition, Unit unit)
+    public void RemoveUnitAtGridPosition(GridPosition gridPosition, UnitBase unit)
     {
         if (!unit.IsEnemy)
         {
@@ -119,7 +119,7 @@ public class LevelGrid : MonoBehaviour
             return;
         }
 
-        if (unit.isBoss)
+        if (unit.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
         {
             GridPosition gridPos;
             gridPos.x = gridPosition.x - 1;
@@ -181,7 +181,7 @@ public class LevelGrid : MonoBehaviour
     }
 
     //Function that will be called whenever a unit changes its grid position
-    public void UnitMovedGridPosition(Unit unit,GridPosition fromGridPosition, GridPosition toGridPosition)
+    public void UnitMovedGridPosition(UnitBase unit,GridPosition fromGridPosition, GridPosition toGridPosition)
     {
         RemoveUnitAtGridPosition(fromGridPosition, unit);
         AddUnitAtGridPosition(toGridPosition, unit);
@@ -205,7 +205,7 @@ public class LevelGrid : MonoBehaviour
         return gridObject.HasAnyUnit();
     }
 
-    public Unit GetUnitAtGridPosition(GridPosition gridPosition)
+    public UnitBase GetUnitAtGridPosition(GridPosition gridPosition)
     {
         GridObject gridObject = gridSystem.GetGridObject(gridPosition);
         return gridObject.GetUnit();

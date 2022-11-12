@@ -24,7 +24,7 @@ public class UnityActionSystemUI : MonoBehaviour
         UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChange;
         UnitActionSystem.Instance.OnActionStarted += UnitActionSystem_OnActionStarted;
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
-        Unit.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
+        UnitBase.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
 
         UpdateActionPoints();
         CreateUnitActionButtons();
@@ -46,7 +46,7 @@ public class UnityActionSystemUI : MonoBehaviour
 
         actionButtonUIList.Clear();
 
-        Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+        UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
         foreach (BaseAction baseAction in selectedUnit.GetBaseActionArray())
         {
            Transform actionButtonTransform = Instantiate(actionButtonPrefab, actionButtonContainerTransform);
@@ -94,7 +94,7 @@ public class UnityActionSystemUI : MonoBehaviour
 
     private void UpdateActionPoints()
     {
-        Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+        UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
 
         actionPointText.text = "Action Points: " + selectedUnit.GetActionPoints();
     }

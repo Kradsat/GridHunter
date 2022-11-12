@@ -25,7 +25,7 @@ public class AttackAction : BaseAction
     private State state;
     private float stateTimer;
     private bool canAttack;
-    private Unit targetUnit;
+    private UnitBase targetUnit;
 
     private void Start( ) {
         originalRotationValue = transform.rotation;
@@ -168,7 +168,7 @@ public class AttackAction : BaseAction
                     continue;
                 }
 
-                Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(testGridPosition);
+                UnitBase targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(testGridPosition);
 
                 if (targetUnit.IsEnemy == unit.IsEnemy)
                 {
@@ -202,7 +202,7 @@ public class AttackAction : BaseAction
         ActionStart(onActionComplete);
     }
 
-    public Unit GetTargetUnit()
+    public UnitBase GetTargetUnit()
     {
         return targetUnit;
     }

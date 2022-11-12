@@ -7,9 +7,9 @@ public class UnitManager : MonoBehaviour
 {
     public static UnitManager Instance { get; private set; }
 
-    [SerializeField]private List<Unit> unitList;
-    [SerializeField]private List<Unit> allyUnitList;
-    [SerializeField]private List<Unit> enemyUnitList;
+    [SerializeField]private List<UnitBase> unitList;
+    [SerializeField]private List<UnitBase> allyUnitList;
+    [SerializeField]private List<UnitBase> enemyUnitList;
     [SerializeField] private GameObject Win;
     [SerializeField] private GameObject Lose;
 
@@ -23,22 +23,18 @@ public class UnitManager : MonoBehaviour
         }
         Instance = this;
 
-        unitList = new List<Unit>();
-        allyUnitList = new List<Unit>();
-        enemyUnitList = new List<Unit>();
-    }
-
-    private void Start()
-    {
-        Unit.OnAnyUnitSpawn += Unit_OnAnyUnitSpawn;
-        Unit.OnAnyUnitDead += Unit_OnAnyUnitDead;
+        unitList = new List<UnitBase>();
+        allyUnitList = new List<UnitBase>();
+        enemyUnitList = new List<UnitBase>();
+        UnitBase.OnAnyUnitSpawn += Unit_OnAnyUnitSpawn;
+        UnitBase.OnAnyUnitDead += Unit_OnAnyUnitDead;
         Win.SetActive(false);
-        Lose.SetActive(false);
+        Lose.SetActive(false);        
     }
 
     private void Unit_OnAnyUnitSpawn(object sender, EventArgs e)
     {
-        Unit unit = sender as Unit;
+        UnitBase unit = sender as UnitBase;
 
         Debug.Log(unit + "spawned");
 
@@ -56,7 +52,7 @@ public class UnitManager : MonoBehaviour
 
     private void Unit_OnAnyUnitDead(object sender, EventArgs e)
     {
-        Unit unit = sender as Unit;
+        UnitBase unit = sender as UnitBase;
 
         Debug.Log(unit + "died");
 
@@ -78,15 +74,15 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-    public List<Unit> GetUnitList()
+    public List<UnitBase> GetUnitList()
     {
         return unitList;
     }
-    public List<Unit> GetAllyUnitList()
+    public List<UnitBase> GetAllyUnitList()
     {
         return allyUnitList;
     }
-    public List<Unit> GetEnemyUnitList()
+    public List<UnitBase> GetEnemyUnitList()
     {
         return enemyUnitList;
     }

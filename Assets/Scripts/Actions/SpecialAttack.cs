@@ -24,7 +24,7 @@ public class SpecialAttack : BaseAction
     private State state;
     private float stateTimer;
     private bool canUseSpecialAttack;
-    private Unit targetUnit;
+    private UnitBase targetUnit;
 
 
 
@@ -165,7 +165,7 @@ public class SpecialAttack : BaseAction
                     continue;
                 }
 
-                Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(testGridPosition);
+                UnitBase targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(testGridPosition);
 
                 if (targetUnit.IsEnemy == unit.IsEnemy)
                 {
@@ -199,7 +199,7 @@ public class SpecialAttack : BaseAction
         ActionStart(onActionComplete);
     }
 
-    public Unit GetTargetUnit()
+    public UnitBase GetTargetUnit()
     {
         return targetUnit;
     }

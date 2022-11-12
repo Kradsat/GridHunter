@@ -62,7 +62,7 @@ public class GridSystemVisual : MonoBehaviour
         LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
 
         UpdateGridVisual();
-        Unit.OnAnyUnitDead += Unit_OnAnyUnitDied;
+        UnitBase.OnAnyUnitDead += Unit_OnAnyUnitDied;
     }
 
     //private void Update()
@@ -117,7 +117,7 @@ public class GridSystemVisual : MonoBehaviour
     {
         HideAllGridPosition();
 
-        Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+        UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
         BaseAction selectedAction = UnitActionSystem.Instance.GetSelectedAction();
 
         //default base color

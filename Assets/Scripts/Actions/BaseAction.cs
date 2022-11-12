@@ -8,7 +8,7 @@ using UnityEngine;
 public abstract class BaseAction : MonoBehaviour
 {
     
-    protected Unit unit;
+    protected UnitBase unit;
 
     protected bool isActive;
 
@@ -18,7 +18,7 @@ public abstract class BaseAction : MonoBehaviour
 
     protected virtual void Awake()
     {
-        unit = GetComponent<Unit>();
+        unit = GetComponent<UnitBase>();
     }
 
     public abstract string GetActionName();
@@ -50,7 +50,7 @@ public abstract class BaseAction : MonoBehaviour
         onActionComplete();
     }
 
-    public Unit GetUnit()
+    public UnitBase GetUnit()
     {
         return unit;
     }

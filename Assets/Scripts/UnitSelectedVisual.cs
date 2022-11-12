@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UnitSelectedVisual : MonoBehaviour
 {
-    [SerializeField] private Unit unit;
+    [SerializeField] private UnitBase unit;
     [SerializeField] private bool isSelectedPointer;
 
     private MeshRenderer meshRenderer;
@@ -17,7 +17,7 @@ public class UnitSelectedVisual : MonoBehaviour
 
     private void Awake()
     {
-
+        unit = GetComponentInParent<UnitBase>();
         if( !isSelectedPointer ) {
             meshRenderer = GetComponent<MeshRenderer>();
             
