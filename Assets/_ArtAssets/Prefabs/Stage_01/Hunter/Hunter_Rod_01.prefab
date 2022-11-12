@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 7244834353015090573}
+  unit: {fileID: 0}
   isSelectedPointer: 1
   Greenmaterial: {fileID: 0}
   Redmaterial: {fileID: 0}
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionPointsText: {fileID: 988263032976762661}
-  unit: {fileID: 7244834353015090573}
+  unit: {fileID: 0}
   healthBarImage: {fileID: 6159701276444206345}
   healthSystem: {fileID: 7907485400992941793}
   isBoss: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 7244834353015090573}
+  unit: {fileID: 0}
   isSelectedPointer: 0
   Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
   Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 7244834353015090573}
+  unit: {fileID: 0}
   isSelectedPointer: 0
   Greenmaterial: {fileID: 0}
   Redmaterial: {fileID: 0}
@@ -789,7 +789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  unit: {fileID: 7244834353015090573}
 --- !u!114 &-8126021063586756291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,10 +857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b3fdfa510db4149976683683e2a1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnemy: 0
-  isBoss: 0
-  canMove: 1
-  canAttack: 1
 --- !u!114 &-6524135394394576660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,7 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 7244834353015090573}
+  unit: {fileID: 0}
   isSelectedPointer: 0
   Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
   Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
@@ -902,6 +898,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec12f8097579a643bc18caf8c6b2b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
+  canAttack: 1
 --- !u!114 &3617670642716545090
 MonoBehaviour:
   m_ObjectHideFlags: 0

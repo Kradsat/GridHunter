@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 5225423195913099269}
+  unit: {fileID: 0}
   isSelectedPointer: 0
   Greenmaterial: {fileID: 0}
   Redmaterial: {fileID: 0}
@@ -113,7 +113,6 @@ GameObject:
   - component: {fileID: 4645909987191996052}
   - component: {fileID: 4931849269560806018}
   - component: {fileID: 5366659044230820091}
-  - component: {fileID: 3346686552040568752}
   - component: {fileID: 5225423195913099269}
   - component: {fileID: 9137310447612085771}
   - component: {fileID: 6407706457841540623}
@@ -161,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  unit: {fileID: 5225423195913099269}
 --- !u!114 &4645909987191996052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,20 +202,6 @@ MonoBehaviour:
   originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
   maxAttackDistance: 1
   damage: 50
---- !u!114 &3346686552040568752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760444733531138299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 363087ff86f3bbb41b1121b3fb37e71c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAttackDistance: 5
-  damage: 50
 --- !u!114 &5225423195913099269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,10 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b3fdfa510db4149976683683e2a1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnemy: 0
-  isBoss: 0
-  canMove: 1
-  canAttack: 1
 --- !u!114 &9137310447612085771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 5225423195913099269}
+  unit: {fileID: 0}
   isSelectedPointer: 0
   Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
   Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
@@ -274,6 +255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec12f8097579a643bc18caf8c6b2b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
+  canAttack: 1
 --- !u!114 &2915628350169354985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 5225423195913099269}
+  unit: {fileID: 0}
   isSelectedPointer: 0
   Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
   Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
@@ -861,7 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionPointsText: {fileID: 5150943267521822611}
-  unit: {fileID: 5225423195913099269}
+  unit: {fileID: 0}
   healthBarImage: {fileID: 4071923606088696084}
   healthSystem: {fileID: 2210721845540725885}
   isBoss: 0
@@ -1004,7 +987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 5225423195913099269}
+  unit: {fileID: 0}
   isSelectedPointer: 1
   Greenmaterial: {fileID: 0}
   Redmaterial: {fileID: 0}

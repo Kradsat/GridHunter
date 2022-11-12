@@ -36,7 +36,7 @@ public class UnitManager : MonoBehaviour
     {
         UnitBase unit = sender as UnitBase;
 
-        Debug.Log(unit + "spawned");
+        //Debug.Log(unit + "spawned");
 
         unitList.Add(unit);
 
