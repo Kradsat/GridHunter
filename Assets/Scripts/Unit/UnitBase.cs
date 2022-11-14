@@ -14,6 +14,7 @@ public class UnitBase : UnitStatus
     [SerializeField] public bool canAttack = true;
 
     private GridPosition gridPosition;
+    public GridPosition GridPosition { get { return gridPosition; } }
     private BaseAction[] baseActionArray;
     private int actionPoints = ACTION_POINTS_MAX;
 
@@ -30,7 +31,6 @@ public class UnitBase : UnitStatus
         LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         OnAnyUnitSpawn?.Invoke(this, EventArgs.Empty);
-        //Debug.Log("INITED");
     }
 
     void Update()

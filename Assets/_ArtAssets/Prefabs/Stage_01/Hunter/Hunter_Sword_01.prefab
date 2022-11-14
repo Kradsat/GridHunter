@@ -109,11 +109,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 760444733531138297}
-  - component: {fileID: 2210721845540725885}
   - component: {fileID: 4645909987191996052}
   - component: {fileID: 4931849269560806018}
   - component: {fileID: 5366659044230820091}
-  - component: {fileID: 5225423195913099269}
   - component: {fileID: 9137310447612085771}
   - component: {fileID: 6407706457841540623}
   - component: {fileID: 7396302487227950885}
@@ -148,19 +146,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2210721845540725885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760444733531138299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 5225423195913099269}
 --- !u!114 &4645909987191996052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,18 +187,6 @@ MonoBehaviour:
   originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
   maxAttackDistance: 1
   damage: 50
---- !u!114 &5225423195913099269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760444733531138299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b3fdfa510db4149976683683e2a1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9137310447612085771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,8 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352ad4f03604f8b459ea4e77715d7911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 5225423195913099269}
-  healthSystem: {fileID: 2210721845540725885}
+  unit: {fileID: 0}
   Attack: {fileID: 5366659044230820091}
   order: 2
 --- !u!114 &5251931382986982164
@@ -846,7 +818,7 @@ MonoBehaviour:
   actionPointsText: {fileID: 5150943267521822611}
   unit: {fileID: 0}
   healthBarImage: {fileID: 4071923606088696084}
-  healthSystem: {fileID: 2210721845540725885}
+  healthSystem: {fileID: 0}
   isBoss: 0
 --- !u!114 &8612977928135428463
 MonoBehaviour:

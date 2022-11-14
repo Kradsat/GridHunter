@@ -10,11 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2980580573726649697}
   - component: {fileID: 6173249762371815667}
-  - component: {fileID: 1138106451899612090}
-  - component: {fileID: -9039589402841525767}
   - component: {fileID: -5512441206590282636}
   - component: {fileID: 4041064476023997191}
-  - component: {fileID: -7289663929218946461}
+  - component: {fileID: 8265340338419066753}
   m_Layer: 7
   m_Name: Monster_2mass_01
   m_TagString: Untagged
@@ -52,31 +50,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1138106451899612090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 459611253589615705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b3fdfa510db4149976683683e2a1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-9039589402841525767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 459611253589615705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 1138106451899612090}
 --- !u!114 &-5512441206590282636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +78,7 @@ MonoBehaviour:
   originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
   maxAttackDistance: 1
   damage: 10
---- !u!114 &-7289663929218946461
+--- !u!114 &8265340338419066753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,11 +87,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 459611253589615705}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ec12f8097579a643bc18caf8c6b2b59, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e4d0a4a3d6715a4ca2dc03ad136035f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
   canAttack: 1
+  attackMode: 1
+  targetJob: 0
 --- !u!1 &1246488892729453768
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +348,6 @@ MonoBehaviour:
   actionPointsText: {fileID: 2418038927867931424}
   unit: {fileID: 0}
   healthBarImage: {fileID: 1334419987252063502}
-  healthSystem: {fileID: -9039589402841525767}
   isBoss: 0
 --- !u!114 &666891714410990409
 MonoBehaviour:

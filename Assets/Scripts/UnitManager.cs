@@ -10,6 +10,7 @@ public class UnitManager : MonoBehaviour
     [SerializeField]private List<UnitBase> unitList;
     [SerializeField]private List<UnitBase> allyUnitList;
     [SerializeField]private List<UnitBase> enemyUnitList;
+    [SerializeField]private List<EnemyAction> enemyActionList;
     [SerializeField] private GameObject Win;
     [SerializeField] private GameObject Lose;
 
@@ -28,6 +29,7 @@ public class UnitManager : MonoBehaviour
         enemyUnitList = new List<UnitBase>();
         UnitBase.OnAnyUnitSpawn += Unit_OnAnyUnitSpawn;
         UnitBase.OnAnyUnitDead += Unit_OnAnyUnitDead;
+
         Win.SetActive(false);
         Lose.SetActive(false);        
     }
@@ -36,13 +38,12 @@ public class UnitManager : MonoBehaviour
     {
         UnitBase unit = sender as UnitBase;
 
-        //Debug.Log(unit + "spawned");
-
         unitList.Add(unit);
 
         if (unit.IsEnemy)
         {
             enemyUnitList.Add(unit);
+            enemyActionList.Add(unit.GetComponent<EnemyAction>());
         }
         else
         {
@@ -85,5 +86,18 @@ public class UnitManager : MonoBehaviour
     public List<UnitBase> GetEnemyUnitList()
     {
         return enemyUnitList;
+    }
+
+    public List<EnemyAction> GetEnemyActionList()
+    {
+        return enemyActionList;
+    }
+
+    public void SetUnitListToEnemy()
+    {
+        foreach(var enemy in enemyActionList)
+        {
+            enemy.SetPlayerUnitList = allyUnitList;
+        }
     }
 }

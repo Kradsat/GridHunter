@@ -1446,7 +1446,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1460378923471753722}
-  - component: {fileID: -288966086302066162}
   - component: {fileID: 3379068311209202834}
   - component: {fileID: -6568203543188011282}
   - component: {fileID: -4933007183853864577}
@@ -1485,19 +1484,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-288966086302066162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460378923471753717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: -1301636463708153521}
 --- !u!114 &3379068311209202834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1607,7 +1593,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: -1301636463708153521}
-  healthSystem: {fileID: -288966086302066162}
   Attack: {fileID: -4933007183853864577}
   order: 3
 --- !u!114 &1960600247325697669
@@ -3480,7 +3465,7 @@ MonoBehaviour:
   actionPointsText: {fileID: 9212112469273673877}
   unit: {fileID: 0}
   healthBarImage: {fileID: 5325643686623942393}
-  healthSystem: {fileID: -288966086302066162}
+  healthSystem: {fileID: 0}
   isBoss: 0
 --- !u!114 &8546517223786653372
 MonoBehaviour:

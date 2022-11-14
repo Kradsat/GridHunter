@@ -10,7 +10,7 @@ public class UnitWorldUI : MonoBehaviour
    [SerializeField] private TextMeshProUGUI actionPointsText;
    [SerializeField] private UnitBase unit;
    [SerializeField] public Image healthBarImage;
-   [SerializeField] private HealthSystem healthSystem;
+
     GameObject BossBar;
     public bool isBoss;
 
@@ -44,6 +44,6 @@ public class UnitWorldUI : MonoBehaviour
 
     private void UpdateHealthBar()
     {
-        healthBarImage.fillAmount = ( float )healthSystem.GetHealthNormalized();
+        healthBarImage.fillAmount = (float)(unit.HP / unit.MAX_HP);
     }
 }

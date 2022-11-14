@@ -145,10 +145,9 @@ public class AttackAction : BaseAction
         return GetValidActionGridPositionList(unitGridPosition);
     }
 
-    public  List<GridPosition> GetValidActionGridPositionList(GridPosition unitGridPosition)
+    public List<GridPosition> GetValidActionGridPositionList(GridPosition unitGridPosition)
     {
         List<GridPosition> validGridPositionsList = new List<GridPosition>();
-        
 
         for (int x = -maxAttackDistance; x <= maxAttackDistance; x++)
         {
@@ -187,8 +186,6 @@ public class AttackAction : BaseAction
 
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
-        
-
         targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
 
        // Debug.Log("Aiming");

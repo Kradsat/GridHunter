@@ -1198,10 +1198,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5803220951515102143}
   - component: {fileID: 1854638047765382735}
-  - component: {fileID: 8612803085661518104}
   - component: {fileID: 9028165965212270071}
-  - component: {fileID: 2043202293349986848}
-  - component: {fileID: 6186056300799391285}
+  - component: {fileID: -5341227581054549863}
   m_Layer: 7
   m_Name: Monster_Boss_01
   m_TagString: Untagged
@@ -1239,18 +1237,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8612803085661518104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5803220951515102136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b3fdfa510db4149976683683e2a1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9028165965212270071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,7 +1252,7 @@ MonoBehaviour:
   originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
   maxAttackDistance: 1
   damage: 10
---- !u!114 &2043202293349986848
+--- !u!114 &-5341227581054549863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1275,24 +1261,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5803220951515102136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e4d0a4a3d6715a4ca2dc03ad136035f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 8612803085661518104}
---- !u!114 &6186056300799391285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5803220951515102136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ec12f8097579a643bc18caf8c6b2b59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canMove: 1
+  canMove: 0
   canAttack: 1
+  attackMode: 0
+  targetJob: 0
 --- !u!1 &6286836425459086018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,7 +1522,6 @@ MonoBehaviour:
   actionPointsText: {fileID: 213610223338078247}
   unit: {fileID: 0}
   healthBarImage: {fileID: 0}
-  healthSystem: {fileID: 2043202293349986848}
   isBoss: 1
 --- !u!114 &702493889354574128
 MonoBehaviour:

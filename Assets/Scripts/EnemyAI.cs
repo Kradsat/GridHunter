@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -74,9 +72,9 @@ public class EnemyAI : MonoBehaviour
     private bool TryTakeEnemyAIAction(Action onEnemyAIActionComplete)
     {
         Debug.Log("Take Enemy AI Action");
-        foreach (UnitBase enemyUnit in UnitManager.Instance.GetEnemyUnitList())
+        foreach (var enemy in UnitManager.Instance.GetEnemyActionList())
         {
-            if (TryTakeEnemyAIAction(enemyUnit, onEnemyAIActionComplete))
+            if (TryTakeEnemyAIAction(enemy, onEnemyAIActionComplete))
             {
                 return true;
             }
@@ -86,64 +84,34 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    private bool TryTakeEnemyAIAction(UnitBase enemyUnit, Action onEnemyAIActionComplete)
+    private bool TryTakeEnemyAIAction(EnemyAction enemy, Action onEnemyAIActionComplete)
     {
-        EnemyAIAction bestEnemyAIAction = null;
-        BaseAction bestBaseAction = null;
+        BaseAction _baseAction = null;
+        UnitBase _target = enemy.GetAttackTarget();
 
-        foreach (BaseAction baseAction in enemyUnit.GetBaseActionArray())
+        foreach (BaseAction baseAction in enemy.GetBaseActionArray())
         {
-            if (!enemyUnit.CanSpendActionPointsToTakeAction(baseAction))
+            if (!enemy.CanSpendActionPointsToTakeAction(baseAction))
             {
                 //enemy cannot make the action
                 continue;
             }
-            if (bestEnemyAIAction == null)
-            {
-                bestEnemyAIAction = baseAction.GetBestEnemyAIAction();
-                bestBaseAction = baseAction;
-            }
-            else
-            {
-                EnemyAIAction testEnemyAIAction = baseAction.GetBestEnemyAIAction();
-                if (testEnemyAIAction!=null && testEnemyAIAction.actionValue >bestEnemyAIAction.actionValue)
-                {
-                    bestEnemyAIAction = testEnemyAIAction;
-                    bestBaseAction = baseAction;
-                }
-            }
+            
+            _baseAction = baseAction;
+
         }
 
-        if (bestEnemyAIAction != null && enemyUnit.TrySpendActionPointsToTakeAction(bestBaseAction))
+        if (enemy.TrySpendActionPointsToTakeAction(_baseAction))
         {
-            bestBaseAction.TakeAction(bestEnemyAIAction.gridPosition, onEnemyAIActionComplete);
+            _baseAction.TakeAction(_target.GetGridPosition(), onEnemyAIActionComplete);
             return true;
         }
-
         else
         {
             return false;
         }
-
-        //SpinAction spinAction = enemyUnit.GetSpinAction();
-
-        //GridPosition actionGridPosition = enemyUnit.GetGridPosition();
-        //Debug.Log(spinAction);
-
-        //if (!spinAction.IsValidActionGridPosition(actionGridPosition))
-        //{
-        //    return false;
-        //}
-
-        //if (!enemyUnit.TrySpendActionPointsToTakeAction(spinAction))
-        //{
-        //    return false;
-        //}
-
-
-        //spinAction.TakeAction(actionGridPosition, onEnemyAIActionComplete);
-        //return true;
     }
+
 }
 
 

@@ -83,9 +83,9 @@ public class MoveAction : BaseAction
 
 
     #region Generic Method
-    public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
+    public override void TakeAction(GridPosition targetGridPosition, Action onActionComplete)
     {
-        List<GridPosition> pathGridPositionList = Pathfinding.Instance.FindPath(unit.GetGridPosition(), gridPosition);
+        List<GridPosition> pathGridPositionList = Pathfinding.Instance.FindPath(unit.GetGridPosition(), targetGridPosition);
        currentPositionIndex = 0;
         positionList = new List<Vector3>();
 

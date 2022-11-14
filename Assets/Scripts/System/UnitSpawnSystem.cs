@@ -36,12 +36,13 @@ public class UnitSpawnSystem : MonoBehaviour
                     var equip = unitType < 5 ? MasterDataContainer.Instance.UnitEquip[unitType - 1, 1] : 0;
                     unitData.Equipment = MasterDataContainer.Instance.EquipmentDatas.equipment_datas[equip];
 
-                    spawn.GetComponent<UnitStatus>().Init(unitData);
+                    spawnUnit.Init(unitData);
                 }
             }
         }
 
         unityActionSystemUI.Initialize();
         gridSystemVisual.Initialize();
+        UnitManager.Instance.SetUnitListToEnemy();
     }
 }
