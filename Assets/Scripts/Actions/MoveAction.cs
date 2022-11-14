@@ -60,6 +60,14 @@ public class MoveAction : BaseAction
                 OnStopMoving?.Invoke(this, EventArgs.Empty);
                 ActionComplete();
                 unit.canMove = false;
+                UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit( );
+                if ( !unit.IsEnemy )
+                foreach( BaseAction baseAction in selectedUnit.GetBaseActionArray( ) ) {
+                    if( baseAction.GetActionName( ) == "Attack" ) {
+                        UnitActionSystem.Instance.SetSelectedAction( baseAction );
+                        break;
+                    }
+                }
             }
 
             //transform.rotation = Quaternion.Slerp(transform.rotation, originalRotationValue, Time.deltaTime * rotationResetSpeed);

@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 2210721845540725885}
   - component: {fileID: 4645909987191996052}
   - component: {fileID: 4931849269560806018}
+  - component: {fileID: 3466543704659201331}
   - component: {fileID: 5366659044230820091}
   - component: {fileID: 5225423195913099269}
   - component: {fileID: 9137310447612085771}
@@ -160,7 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 5225423195913099269}
 --- !u!114 &4645909987191996052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +187,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMoveDistance: 4
+--- !u!114 &3466543704659201331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760444733531138299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84a9a6c58a3a0c468aec8e058e40522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5366659044230820091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 5225423195913099269}
-  healthSystem: {fileID: 2210721845540725885}
   Attack: {fileID: 5366659044230820091}
   order: 2
 --- !u!114 &5251931382986982164

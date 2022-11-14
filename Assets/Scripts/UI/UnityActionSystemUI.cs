@@ -7,7 +7,8 @@ using TMPro;
 public class UnityActionSystemUI : MonoBehaviour
 {
     [SerializeField] private Transform actionButtonPrefab;
-    [SerializeField] private Transform actionButtonContainerTransform;
+    [SerializeField] private Transform actionMoveButtonContainerTransform;
+    [SerializeField] private Transform actionATKButtonContainerTransform;
     [SerializeField] private TextMeshProUGUI actionPointText;
 
     private List<ActionButtonUI> actionButtonUIList;
@@ -39,9 +40,13 @@ public class UnityActionSystemUI : MonoBehaviour
 
     private void CreateUnitActionButtons()
     {
-        foreach (Transform buttonTransform in actionButtonContainerTransform)
+        foreach (Transform buttonTransform in actionMoveButtonContainerTransform )
         {
             Destroy(buttonTransform.gameObject);
+        }
+
+        foreach( Transform buttonTransform in actionATKButtonContainerTransform ) {
+            Destroy( buttonTransform.gameObject );
         }
 
         actionButtonUIList.Clear();
@@ -49,11 +54,20 @@ public class UnityActionSystemUI : MonoBehaviour
         UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
         foreach (BaseAction baseAction in selectedUnit.GetBaseActionArray())
         {
-           Transform actionButtonTransform = Instantiate(actionButtonPrefab, actionButtonContainerTransform);
-            ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>();
-            actionButtonUI.SetBaseAction(baseAction);
+           if( baseAction.GetActionName( ) == "Move" && selectedUnit.GetActionPoints( ) == 2 
+                || baseAction.GetActionName( ) == "Stay" && selectedUnit.GetActionPoints( ) == 2 ) {
+                Transform actionButtonTransform = Instantiate(actionButtonPrefab, actionMoveButtonContainerTransform );
+                ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>();
+                actionButtonUI.SetBaseAction(baseAction);
+                actionButtonUIList.Add(actionButtonUI);
+            } else if( baseAction.GetActionName( ) == "Attack" && selectedUnit.GetActionPoints( ) < 2 
+                || baseAction.GetActionName( ) == "Special Attack" && selectedUnit.GetActionPoints( ) < 2 ) {
+                Transform actionButtonTransform = Instantiate( actionButtonPrefab, actionATKButtonContainerTransform );
+                ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>( );
+                actionButtonUI.SetBaseAction( baseAction );
+                actionButtonUIList.Add( actionButtonUI );
+            }
 
-            actionButtonUIList.Add(actionButtonUI);
         }
     }
 
@@ -82,6 +96,8 @@ public class UnityActionSystemUI : MonoBehaviour
     private void Unit_OnAnyActionPointsChanged(object sender, EventArgs e)
     {
         UpdateActionPoints();
+        CreateUnitActionButtons( );
+        
     }
 
     private void UpdateSelectedVisual()
