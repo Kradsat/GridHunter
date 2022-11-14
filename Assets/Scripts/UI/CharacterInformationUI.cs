@@ -6,7 +6,6 @@ using TMPro;
 using System;
 
 public class CharacterInformationUI : MonoBehaviour {
-    [SerializeField] private Unit unit;
     [SerializeField] private AttackAction Attack;
     [SerializeField] private int order;
     private UnitBase unitBase;

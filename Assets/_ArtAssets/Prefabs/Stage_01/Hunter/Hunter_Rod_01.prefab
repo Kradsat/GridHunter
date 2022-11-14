@@ -91,8 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
   isSelectedPointer: 1
-  Greenmaterial: {fileID: 0}
-  Redmaterial: {fileID: 0}
+  greenMaterial: {fileID: 0}
+  redMaterial: {fileID: 0}
 --- !u!1 &679218812847403193
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +343,8 @@ MonoBehaviour:
   actionPointsText: {fileID: 988263032976762661}
   unit: {fileID: 0}
   healthBarImage: {fileID: 6159701276444206345}
-  healthSystem: {fileID: 7907485400992941793}
+  BossHPText: {fileID: 0}
+  healthSystem: {fileID: 0}
   isBoss: 0
 --- !u!114 &124362246987205237
 MonoBehaviour:
@@ -453,10 +454,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 0}
+  unit: {fileID: 8520021813170213439}
   isSelectedPointer: 0
-  Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
-  Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
+  greenMaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
+  redMaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
 --- !u!1 &3906629483587927822
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,8 +593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
   isSelectedPointer: 0
-  Greenmaterial: {fileID: 0}
-  Redmaterial: {fileID: 0}
+  greenMaterial: {fileID: 0}
+  redMaterial: {fileID: 0}
 --- !u!1 &6521676183468752158
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,14 +739,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7126295819214467792}
-  - component: {fileID: 7907485400992941793}
   - component: {fileID: -8126021063586756291}
   - component: {fileID: -3561952651897854022}
   - component: {fileID: 1849750176998843217}
   - component: {fileID: 4652361956179276740}
   - component: {fileID: -3647344468255576405}
-  - component: {fileID: 7244834353015090573}
-  - component: {fileID: -6524135394394576660}
   - component: {fileID: -6286486250325856335}
   - component: {fileID: 8520021813170213439}
   - component: {fileID: 3617670642716545090}
@@ -778,18 +776,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7907485400992941793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7126295819214467793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-8126021063586756291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,34 +843,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAttackDistance: 5
   damage: 50
---- !u!114 &7244834353015090573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7126295819214467793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b3fdfa510db4149976683683e2a1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-6524135394394576660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7126295819214467793}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 0}
-  isSelectedPointer: 0
-  Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
-  Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
 --- !u!65 &-6286486250325856335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -912,6 +870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   canAttack: 1
+  canStay: 1
 --- !u!114 &3617670642716545090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -924,7 +883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352ad4f03604f8b459ea4e77715d7911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 7244834353015090573}
   Attack: {fileID: 4652361956179276740}
   order: 4
 --- !u!1 &8245053336655397638

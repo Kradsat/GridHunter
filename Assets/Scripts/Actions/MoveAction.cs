@@ -102,6 +102,8 @@ public class MoveAction : BaseAction
             positionList.Add(LevelGrid.Instance.GetWorldPosition(pathGridPosition));
         }
 
+        Pathfinding.Instance.UpdateNode(unit, pathGridPositionList[pathGridPositionList.Count - 1]);
+
         OnStartMoving?.Invoke(this, EventArgs.Empty);
         ActionStart(onActionComplete);
     }
@@ -135,14 +137,14 @@ public class MoveAction : BaseAction
                     //grid position already ocupied with other unit
                     continue;
                 }
-                if (!Pathfinding.Instance.IsWalkableGridPosition(testGridPosition))
-                {
-                    continue;
-                }
-                if (!Pathfinding.Instance.HasPath(unitGridPostion, testGridPosition))
-                {
-                    continue;
-                }
+                //if (!Pathfinding.Instance.IsWalkableGridPosition(testGridPosition))
+                //{
+                //    continue;
+                //}
+                //if (!Pathfinding.Instance.HasPath(unitGridPostion, testGridPosition))
+                //{
+                //    continue;
+                //}
 
                 validGridPositionsList.Add(testGridPosition);
             }

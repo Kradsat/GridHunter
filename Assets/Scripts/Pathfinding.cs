@@ -35,6 +35,7 @@ public class Pathfinding : MonoBehaviour
 
     public void Setup(int width, int height, float cellSize)
     {
+        Debug.Log("SYSTEM SETUP");
         this.width = width;
         this.height = height;
         this.cellSize = cellSize;
@@ -71,6 +72,12 @@ public class Pathfinding : MonoBehaviour
         */
 
 
+    }
+
+    public void UpdateNode(UnitBase unit, GridPosition newPos)
+    {
+        GetNode(unit.GridPosition.x, unit.GridPosition.z).SetIsWalkable(true);
+        GetNode(newPos.x, newPos.z).SetIsWalkable(false);
     }
 
     public List<GridPosition> FindPath(GridPosition startGridPosition, GridPosition endGridPosition)
@@ -238,6 +245,8 @@ public class Pathfinding : MonoBehaviour
 
     public bool IsWalkableGridPosition(GridPosition gridPosition)
     {
+        if (gridSystem == null) Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        Debug.Log("GridSys: " + gridSystem + " / gridPos: " + gridPosition);
         return gridSystem.GetGridObject(gridPosition).IsWalkable();
     }
 

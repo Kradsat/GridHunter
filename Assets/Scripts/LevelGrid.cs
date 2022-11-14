@@ -31,9 +31,11 @@ public class LevelGrid : MonoBehaviour
         //gridSystem.CreateDebugObjects(gridDebugObjectPrefab, this.transform);
     }
 
-    private void Start(){
+    private void Start()
+    {
         Pathfinding.Instance.Setup(width, height, cellSize);
     }
+
     public void AddUnitAtGridPosition(GridPosition gridPosition, UnitBase unit)
     {
         if (!unit.IsEnemy)

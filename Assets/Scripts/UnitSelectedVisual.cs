@@ -11,8 +11,8 @@ public class UnitSelectedVisual : MonoBehaviour
 
     private MeshRenderer meshRenderer;
     private Image image;
-    public Material Greenmaterial;
-    public Material Redmaterial;
+    public Material greenMaterial;
+    public Material redMaterial;
     bool isMaterialChanged = false;
 
     private void Awake()
@@ -33,16 +33,16 @@ public class UnitSelectedVisual : MonoBehaviour
         UpdateVisual();
 
         if( !isSelectedPointer ) {
-            meshRenderer.material = Greenmaterial;
+            meshRenderer.material = greenMaterial;
         }
     }
 
     private void Update( ) {
         if( unit.GetActionPoints( ) < 1 && !isMaterialChanged && !isSelectedPointer ) {
-            meshRenderer.material = Redmaterial;
+            meshRenderer.material = redMaterial;
             isMaterialChanged = true;
         } else if( unit.GetActionPoints( ) > 1 && isMaterialChanged && !isSelectedPointer ) {
-            meshRenderer.material = Greenmaterial;
+            meshRenderer.material = greenMaterial;
             isMaterialChanged = false;
         }
     }

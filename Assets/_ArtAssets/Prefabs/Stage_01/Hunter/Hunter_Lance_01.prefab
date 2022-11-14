@@ -95,10 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 0}
+  unit: {fileID: 5482623528742419774}
   isSelectedPointer: 0
-  Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
-  Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
+  greenMaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
+  redMaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
 --- !u!1 &1212129540127681499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,17 +1446,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1460378923471753722}
-  - component: {fileID: -288966086302066162}
   - component: {fileID: 3379068311209202834}
   - component: {fileID: -6568203543188011282}
   - component: {fileID: 5325636201961513440}
   - component: {fileID: -4933007183853864577}
-  - component: {fileID: -1301636463708153521}
-  - component: {fileID: 6310224221516152973}
   - component: {fileID: -6818704849396996865}
   - component: {fileID: 5482623528742419774}
   - component: {fileID: 5194317796212032391}
-  - component: {fileID: 1960600247325697669}
   m_Layer: 7
   m_Name: Hunter_Lance_01
   m_TagString: Lancer
@@ -1486,18 +1482,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-288966086302066162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460378923471753717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3379068311209202834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1551,34 +1535,6 @@ MonoBehaviour:
   originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
   maxAttackDistance: 1
   damage: 30
---- !u!114 &-1301636463708153521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460378923471753717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b3fdfa510db4149976683683e2a1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6310224221516152973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460378923471753717}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dff172d7b6ff4f43852fbd39c09ec12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 0}
-  isSelectedPointer: 0
-  Greenmaterial: {fileID: 2100000, guid: 7fe2c4d0cbab8964e9362c0365c89292, type: 2}
-  Redmaterial: {fileID: 2100000, guid: 6b39945b657198d4cbdb1fc2447cdca3, type: 2}
 --- !u!65 &-6818704849396996865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1606,6 +1562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   canAttack: 1
+  canStay: 1
 --- !u!114 &5194317796212032391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1618,21 +1575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352ad4f03604f8b459ea4e77715d7911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: -1301636463708153521}
   Attack: {fileID: -4933007183853864577}
   order: 3
---- !u!114 &1960600247325697669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460378923471753717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db842398db740d41ada7034072778cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3559263667418764513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,8 +1840,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
   isSelectedPointer: 1
-  Greenmaterial: {fileID: 0}
-  Redmaterial: {fileID: 0}
+  greenMaterial: {fileID: 0}
+  redMaterial: {fileID: 0}
 --- !u!1 &3937587114471857007
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,8 +2054,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
   isSelectedPointer: 0
-  Greenmaterial: {fileID: 0}
-  Redmaterial: {fileID: 0}
+  greenMaterial: {fileID: 0}
+  redMaterial: {fileID: 0}
 --- !u!1 &8873958682121912736
 GameObject:
   m_ObjectHideFlags: 0
@@ -3491,7 +3435,8 @@ MonoBehaviour:
   actionPointsText: {fileID: 9212112469273673877}
   unit: {fileID: 0}
   healthBarImage: {fileID: 5325643686623942393}
-  healthSystem: {fileID: -288966086302066162}
+  BossHPText: {fileID: 0}
+  healthSystem: {fileID: 0}
   isBoss: 0
 --- !u!114 &8546517223786653372
 MonoBehaviour:
