@@ -89,27 +89,11 @@ public class EnemyAI : MonoBehaviour
         BaseAction _baseAction = null;
         UnitBase _target = enemy.GetAttackTarget();
 
-        foreach (BaseAction baseAction in enemy.GetBaseActionArray())
-        {
-            if (!enemy.CanSpendActionPointsToTakeAction(baseAction))
-            {
-                //enemy cannot make the action
-                continue;
-            }
-            
-            _baseAction = baseAction;
+        var _action = enemy.GetBaseActionArray();
+        _baseAction = _action[0];
 
-        }
-
-        if (enemy.TrySpendActionPointsToTakeAction(_baseAction))
-        {
-            _baseAction.TakeAction(_target.GetGridPosition(), onEnemyAIActionComplete);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        _baseAction.TakeAction(_target.GetGridPosition(), onEnemyAIActionComplete);
+        return true;
     }
 
 }

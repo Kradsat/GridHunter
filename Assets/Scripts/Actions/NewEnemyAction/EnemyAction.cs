@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,56 +12,62 @@ public class EnemyAction : UnitBase
 
     public UnitBase GetAttackTarget()
     {
-        UnitBase _targetUnit = null;
+        UnitBase _target = null;
 
         switch (attackMode)
         {
             case EnemyActionBase.AttackMode.HP:
-                _targetUnit = GetLowestHPUnit();
+                _target = GetLowestHPUnit();
                 break;
             case EnemyActionBase.AttackMode.Distance:
-                _targetUnit = GetClosestUnit();
+                _target = GetClosestUnit();
                 break;
             case EnemyActionBase.AttackMode.Job:
-                _targetUnit = GetSpecificJobUnit();
+                _target = GetSpecificJobUnit();
                 break;
         }
 
-        return _targetUnit;
+        Debug.Log(_target.Unit.Name);
+        return _target;
     }
 
     private UnitBase GetLowestHPUnit()
     {
         var _target = _playerUnitList[0];
-        var _lowestHP = 1000;
+        double _lowestHP = 1000;
 
         foreach (var unit in _playerUnitList)
         {
             var HP = unit.HP;
-            if(HP < _lowestHP)
+            if(_lowestHP > HP)
             {
+                _lowestHP = HP;
                 _target = unit;
             }
         }
 
+        Debug.Log(_target.Unit.Name);
         return _target;
     }
 
     private UnitBase GetClosestUnit()
     {
         var _target = _playerUnitList[0];
-        var _shortestDistance = 100;
+        float _shortestDistance = 1000;
+        var _selfVec2 = new Vector2(base.GridPosition.x, base.GridPosition.z);
 
         foreach (var unit in _playerUnitList)
         {
-            var distance = (unit.GridPosition.z - base.GridPosition.z) / (unit.GridPosition.x - base.GridPosition.x);
-            if (distance < _shortestDistance)
+            var targetVec2 = new Vector2(unit.GridPosition.x, unit.GridPosition.z);
+            var distance = Vector2.Distance(_selfVec2, targetVec2);
+            if (_shortestDistance > distance)
             {
                 _shortestDistance = distance;
                 _target = unit;
             }
         }
 
+        Debug.Log(_target.Unit.Name);
         return _target;
     }
 

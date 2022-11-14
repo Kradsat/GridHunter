@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   canAttack: 1
-  attackMode: 2
+  attackMode: 0
   targetJob: 1
 --- !u!1 &4855443866310743348
 GameObject:

@@ -14,7 +14,7 @@ public static class EnemyActionBase
     public enum TargetJob
     {
         NONE = 0,
-        DAGGER,
+        HAMMER,
         SWORD,
         LANCE,
         ROD,

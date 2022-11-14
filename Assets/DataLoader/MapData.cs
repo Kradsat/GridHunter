@@ -5,7 +5,7 @@ public static class MapData
     public enum OBJ_TYPE
     {
         NONE = 0,
-        DAGGER,
+        HAMMER,
         SWORD,
         LANCE,
         ROD,
