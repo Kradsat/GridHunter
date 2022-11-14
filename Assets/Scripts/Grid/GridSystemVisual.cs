@@ -50,10 +50,10 @@ public class GridSystemVisual : MonoBehaviour
         {
             for (int z = 0; z < LevelGrid.Instance.GetHeight(); z++)
             {
-                GridPosition gridPosition = new GridPosition(x,z);
+                GridPosition gridPosition = new GridPosition(x, z);
                 Transform grisdSystemVisualSingleTransform = Instantiate(gridSystemVisualSinglePrefab, LevelGrid.Instance.GetWorldPosition(gridPosition), Quaternion.identity);
                 grisdSystemVisualSingleTransform.SetParent(this.transform);
-                gridSystemVisualSingleArray[x,z] = grisdSystemVisualSingleTransform.GetComponent<GridSystemVisualSingle>();
+                gridSystemVisualSingleArray[x, z] = grisdSystemVisualSingleTransform.GetComponent<GridSystemVisualSingle>();
             }
         }
 
@@ -141,7 +141,7 @@ public class GridSystemVisual : MonoBehaviour
                 ShowGridPositionRange(selectedUnit.GetGridPosition(), SpecialAttack.GetMaxAttackDistance(), GridVisualType.White);
                 break;
         }
-        ShowGridPositionList(selectedAction.GetValidActionGridPositionList(),gridVisualType);
+        ShowGridPositionList(selectedAction.GetValidActionGridPositionList(), gridVisualType);
     }
 
     //Update the grid visual, but not in every frame as the "Update" function will do
@@ -157,7 +157,7 @@ public class GridSystemVisual : MonoBehaviour
 
     private Material GetGridVisualTypeMaterial(GridVisualType gridVisualType)
     {
-        foreach(GridVisualTypeMaterial gridVisualTypeMaterial in gridVisualMaterialList)
+        foreach (GridVisualTypeMaterial gridVisualTypeMaterial in gridVisualMaterialList)
         {
             if (gridVisualTypeMaterial.gridVisualType == gridVisualType)
             {

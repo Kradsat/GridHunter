@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pathfinding : MonoBehaviour
 {
     public static Pathfinding Instance { get; set; }
+
     /// <summary>
     /// Move cost should be 1 and 1.4(sqr(2)) but,
     /// In order to make the code and calculation a bit simplier 1 and 1.4 were multilpied by 10
@@ -13,6 +14,8 @@ public class Pathfinding : MonoBehaviour
 
     [SerializeField] private Transform gridDebugObjectPrefab;
     [SerializeField] private LayerMask nonWalkableLayer;
+
+    GridObject gridObject;
 
     private int width;
     private int height;
@@ -46,12 +49,17 @@ public class Pathfinding : MonoBehaviour
             {
                 GridPosition gridPosition = new GridPosition(x,z);
                 Vector3 worldPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
-                float raycastOffsetDistance = 5f;
-                if(Physics.Raycast(worldPosition +Vector3.up * raycastOffsetDistance, Vector3.down, raycastOffsetDistance * 2, nonWalkableLayer)){
-                    GetNode(x, z).SetIsWalkable(false);
-                }
+                float raycastOffsetDistance = 10f;
+                // if(Physics.Raycast(worldPosition + Vector3.down * raycastOffsetDistance, Vector3.up, raycastOffsetDistance * 2, nonWalkableLayer)){
+                //     GetNode(x, z).SetIsWalkable(false);
+                // }
+                // if(Physics.Raycast(worldPosition + Vector3.down * raycastOffsetDistance, Vector3.up, raycastOffsetDistance * 2, nonWalkableLayer) && gridObject.HasAnyUnit()){
+                // GetNode(x, z).SetIsWalkable(false);
+                // }
             }
         }
+
+
     }
 
     public List<GridPosition> FindPath(GridPosition startGridPosition, GridPosition endGridPosition)
@@ -216,4 +224,14 @@ public class Pathfinding : MonoBehaviour
         return gridPositionList;
 
     }
+
+    public bool IsWalkableGridPosition(GridPosition gridPosition)
+    {
+        return gridSystem.GetGridObject(gridPosition).IsWalkable();
+    }
+
+    public bool HasPath(GridPosition startGridPosition, GridPosition endGridPosition){
+        return FindPath(startGridPosition, endGridPosition)!= null;
+    }
+
 }

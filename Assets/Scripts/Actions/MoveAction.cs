@@ -11,7 +11,8 @@ public class MoveAction : BaseAction
     [SerializeField] private int maxMoveDistance = 4;
 
 
-    private Vector3 targetposition;
+    private List<Vector3> positionList;
+    private int currentPositionIndex;
 
     private Quaternion originalRotationValue;
     float rotationResetSpeed = 20f;
@@ -20,7 +21,7 @@ public class MoveAction : BaseAction
     protected override void Awake()
     {
         base.Awake();
-        targetposition = transform.position;
+        //positionList = transform.position;
     }
 
     void Start()
@@ -36,26 +37,32 @@ public class MoveAction : BaseAction
         {
             return;
         }
+        Vector3 targetPosition = positionList[currentPositionIndex];
+        Vector3 moveDirection = (targetPosition - transform.position).normalized;
 
-        Vector3 moveDirection = (targetposition - transform.position).normalized;
+        float rotateSpeed = 20f;
+        transform.forward = Vector3.Lerp( transform.forward, moveDirection, Time.deltaTime * rotateSpeed );
 
         float stoppingDistance = .1f;
-        if (Vector3.Distance(transform.position, targetposition) > stoppingDistance)
+        if (Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
         {
 
             float moveSpeed = 4f;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
-            float rotateSpeed = 20f;
-            transform.forward = Vector3.Lerp( transform.forward, moveDirection, Time.deltaTime * rotateSpeed );
+
 
 
         }
         else
         {
-            OnStopMoving?.Invoke(this, EventArgs.Empty);
-            ActionComplete();
-            unit.canMove = false;
-            transform.rotation = Quaternion.Slerp(transform.rotation, originalRotationValue, Time.deltaTime * rotationResetSpeed);
+            currentPositionIndex ++;
+            if(currentPositionIndex>=positionList.Count){
+                OnStopMoving?.Invoke(this, EventArgs.Empty);
+                ActionComplete();
+                unit.canMove = false;
+            }
+
+            //transform.rotation = Quaternion.Slerp(transform.rotation, originalRotationValue, Time.deltaTime * rotationResetSpeed);
 
 
         }
@@ -78,10 +85,17 @@ public class MoveAction : BaseAction
     #region Generic Method
     public override void TakeAction(GridPosition gridPosition, Action onActionComplete)
     {
-        ActionStart(onActionComplete);
+        List<GridPosition> pathGridPositionList = Pathfinding.Instance.FindPath(unit.GetGridPosition(), gridPosition);
+       currentPositionIndex = 0;
+        positionList = new List<Vector3>();
 
-        this.targetposition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+        foreach (GridPosition pathGridPosition in pathGridPositionList)
+        {
+            positionList.Add(LevelGrid.Instance.GetWorldPosition(pathGridPosition));
+        }
+
         OnStartMoving?.Invoke(this, EventArgs.Empty);
+        ActionStart(onActionComplete);
     }
     #endregion
 
@@ -113,6 +127,13 @@ public class MoveAction : BaseAction
                     //grid position already ocupied with other unit
                     continue;
                 }
+                // if (!Pathfinding.Instance.IsWalkableGridPosition(testGridPosition))
+                // {
+                //     continue;
+                // }
+                // if(!Pathfinding.Instance.HasPath(unitGridPostion, testGridPosition)){
+                //     continue;
+                // }
 
                 validGridPositionsList.Add(testGridPosition);
             }
