@@ -167,7 +167,7 @@ public class MoveAction : BaseAction
 
     public override int GetActionPointsCost()
     {
-        if (unit.canMove)
+        if (unit.canMove && unit.canStay)
         {
             return 1;
         }

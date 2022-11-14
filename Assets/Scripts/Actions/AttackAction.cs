@@ -227,7 +227,7 @@ public class AttackAction : BaseAction
 
     public override int GetActionPointsCost()
     {
-        if (unit.canAttack && unit.canMove==false)
+        if (unit.canAttack && !unit.canMove && !unit.canStay)
         {
             return 1;
         }

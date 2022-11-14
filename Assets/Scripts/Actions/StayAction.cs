@@ -23,6 +23,7 @@ public class StayAction : BaseAction
                 break;
             }
         }
+        Debug.Log( unit.GetActionPoints( ) );
     }
 
     public override void TakeAction( GridPosition gridPosition, Action onActionComplete ) {
@@ -50,7 +51,7 @@ public class StayAction : BaseAction
     }
 
     public override int GetActionPointsCost( ) {
-        if( !unit.canStay ) {
+        if( unit.canMove && unit.canStay ) {
             return 1;
         }
         return 2;
