@@ -12,6 +12,7 @@ public class UnitBase : UnitStatus
 
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool canAttack = true;
+    [SerializeField] public bool canStay = true;
 
     private GridPosition gridPosition;
     public GridPosition GridPosition { get { return gridPosition; } }

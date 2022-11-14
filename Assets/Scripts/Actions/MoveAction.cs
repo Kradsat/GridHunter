@@ -60,6 +60,14 @@ public class MoveAction : BaseAction
                 OnStopMoving?.Invoke(this, EventArgs.Empty);
                 ActionComplete();
                 unit.canMove = false;
+                UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit( );
+                if ( !unit.IsEnemy )
+                foreach( BaseAction baseAction in selectedUnit.GetBaseActionArray( ) ) {
+                    if( baseAction.GetActionName( ) == "Attack" ) {
+                        UnitActionSystem.Instance.SetSelectedAction( baseAction );
+                        break;
+                    }
+                }
             }
 
             //transform.rotation = Quaternion.Slerp(transform.rotation, originalRotationValue, Time.deltaTime * rotationResetSpeed);
@@ -127,13 +135,14 @@ public class MoveAction : BaseAction
                     //grid position already ocupied with other unit
                     continue;
                 }
-                // if (!Pathfinding.Instance.IsWalkableGridPosition(testGridPosition))
-                // {
-                //     continue;
-                // }
-                // if(!Pathfinding.Instance.HasPath(unitGridPostion, testGridPosition)){
-                //     continue;
-                // }
+                if (!Pathfinding.Instance.IsWalkableGridPosition(testGridPosition))
+                {
+                    continue;
+                }
+                if (!Pathfinding.Instance.HasPath(unitGridPostion, testGridPosition))
+                {
+                    continue;
+                }
 
                 validGridPositionsList.Add(testGridPosition);
             }
@@ -159,7 +168,7 @@ public class MoveAction : BaseAction
 
     public override int GetActionPointsCost()
     {
-        if (unit.canMove)
+        if (unit.canMove && unit.canStay)
         {
             return 1;
         }

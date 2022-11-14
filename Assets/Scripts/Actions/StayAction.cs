@@ -7,7 +7,6 @@ public class StayAction : BaseAction
 {
     private float totalSpinAmount;
 
-
     // Update is called once per frame
     void Update( ) {
         if( !isActive ) {
@@ -15,7 +14,16 @@ public class StayAction : BaseAction
         }
 
         ActionComplete( );
-
+        unit.canStay = false;
+        unit.canMove = false;
+        UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit( );
+        foreach( BaseAction baseAction in selectedUnit.GetBaseActionArray( ) ) {
+            if( baseAction.GetActionName( ) == "Attack" ) {
+                UnitActionSystem.Instance.SetSelectedAction( baseAction );
+                break;
+            }
+        }
+        Debug.Log( unit.GetActionPoints( ) );
     }
 
     public override void TakeAction( GridPosition gridPosition, Action onActionComplete ) {
@@ -40,5 +48,12 @@ public class StayAction : BaseAction
             gridPosition = gridPosition,
             actionValue = 0,
         };
+    }
+
+    public override int GetActionPointsCost( ) {
+        if( unit.canMove && unit.canStay ) {
+            return 1;
+        }
+        return 2;
     }
 }

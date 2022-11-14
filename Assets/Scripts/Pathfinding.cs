@@ -43,7 +43,17 @@ public class Pathfinding : MonoBehaviour
             (GridSystem<PathNode> g, GridPosition gridPosition) => new PathNode(gridPosition));
         gridSystem.CreateDebugObjects(gridDebugObjectPrefab, this.transform);
 
-        for (int x = 0; x < width; x++)
+        foreach(var unit in UnitManager.Instance.GetUnitList())
+        {
+            var gridPos = unit.GetGridPosition();
+            GetNode(gridPos.x, gridPos.z).SetIsWalkable(false);
+            Debug.Log(gridPos + " ADDED");
+        }
+
+        //GridPosition gridPosition = new GridPosition(x, z);
+
+
+        /* for (int x = 0; x < width; x++)
         {
             for (int z = 0; z < height; z++)
             {
@@ -58,6 +68,7 @@ public class Pathfinding : MonoBehaviour
                 // }
             }
         }
+        */
 
 
     }

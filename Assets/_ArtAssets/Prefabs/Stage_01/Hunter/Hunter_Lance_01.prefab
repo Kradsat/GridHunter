@@ -1446,8 +1446,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1460378923471753722}
+  - component: {fileID: -288966086302066162}
   - component: {fileID: 3379068311209202834}
   - component: {fileID: -6568203543188011282}
+  - component: {fileID: 5325636201961513440}
   - component: {fileID: -4933007183853864577}
   - component: {fileID: -1301636463708153521}
   - component: {fileID: 6310224221516152973}
@@ -1484,6 +1486,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-288966086302066162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460378923471753717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9505efe9d7c4679498ab3c7dd0dba586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3379068311209202834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1510,6 +1524,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMoveDistance: 4
+--- !u!114 &5325636201961513440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460378923471753717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84a9a6c58a3a0c468aec8e058e40522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-4933007183853864577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3465,7 +3491,7 @@ MonoBehaviour:
   actionPointsText: {fileID: 9212112469273673877}
   unit: {fileID: 0}
   healthBarImage: {fileID: 5325643686623942393}
-  healthSystem: {fileID: 0}
+  healthSystem: {fileID: -288966086302066162}
   isBoss: 0
 --- !u!114 &8546517223786653372
 MonoBehaviour:

@@ -37,10 +37,10 @@ public class UnitActionSystem : MonoBehaviour
         Instance = this;
     }
 
-    //private void Start()
-    //{
-    //    SetSelectedUnit(selectedUnit);
-    //}
+    private void Start( ) {
+        //SetSelectedUnit( selectedUnit );
+        TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+    }
 
     private void Update()
     {
@@ -159,7 +159,11 @@ public class UnitActionSystem : MonoBehaviour
     {
         selectedUnit = unit;
 
-        SetSelectedAction(unit.GetAction<MoveAction>());
+        if( unit.GetActionPoints( ) == 2 ) {
+            SetSelectedAction(unit.GetAction<MoveAction>());
+        } else {
+            SetSelectedAction( unit.GetAction<AttackAction>( ) );
+        }
 
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
         /* is the same as above
@@ -184,5 +188,11 @@ public class UnitActionSystem : MonoBehaviour
     public BaseAction GetSelectedAction()
     {
         return selectedAction;
+    }
+
+    private void TurnSystem_OnTurnChanged( object sender, EventArgs e ) {
+        if( TurnSystem.Instance.IsPlayerTurn ) {
+            SetSelectedAction( selectedUnit.GetAction<MoveAction>( ) );
+        }
     }
 }
