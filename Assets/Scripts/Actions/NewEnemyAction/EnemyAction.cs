@@ -26,9 +26,11 @@ public class EnemyAction : UnitBase
 
     private Action _attackCallback = null;
 
-    public  override void Update()
+    public override void Update()
     {
         base.Update();
+        GetAttackTarget();
+
         if (!isActive)
         {
             return;
@@ -71,13 +73,12 @@ public class EnemyAction : UnitBase
     public virtual void Attack(Action callback = null)
     {
         _attackCallback = callback;
-        _target = GetAttackTarget();
         FindPathToTarget();
     }
 
-    public UnitBase GetAttackTarget()
+    public void GetAttackTarget()
     {
-        UnitBase _target = null;
+        _playerUnitList = UnitManager.Instance.GetAllyUnitList();
 
         switch (_attackMode)
         {
@@ -91,12 +92,15 @@ public class EnemyAction : UnitBase
                 _target = GetSpecificJobUnit();
                 break;
         }
-
-        return _target;
     }
 
     private UnitBase GetLowestHPUnit()
     {
+        if (_playerUnitList.Count <= 0)
+        {
+            return null;
+        }
+
         var _target = _playerUnitList[0];
         double _lowestHP = 1000;
 
@@ -115,6 +119,11 @@ public class EnemyAction : UnitBase
 
     private UnitBase GetClosestUnit()
     {
+        if (_playerUnitList.Count <= 0)
+        {
+            return null;
+        }
+
         var _target = _playerUnitList[0];
         float _shortestDistance = 1000;
         var _selfVec2 = new Vector2(base.GridPosition.x, base.GridPosition.z);
@@ -135,6 +144,10 @@ public class EnemyAction : UnitBase
     public UnitBase GetSpecificJobUnit()
     {
         var _playerUnitList = UnitManager.Instance.GetAllyUnitList();
+        if(_targetJob.Count <= 0)
+        {
+            return null;
+        }
         var _target = _playerUnitList.FirstOrDefault(_ => _.Unit.Id == (int)_targetJob[0]);
 
         return _target;
@@ -142,6 +155,7 @@ public class EnemyAction : UnitBase
 
     public void FindPathToTarget()
     {
+        Debug.Log(_target);
         var targetGridPosition = _target.GridPosition;
 
         if(this.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
@@ -205,6 +219,7 @@ public class EnemyAction : UnitBase
         isActive = false;
         _target.Damage(this.Unit.Attack, () =>
         {
+            Debug.Log("CALLBACK");
             CheckTargetJobAlive();
         });
         _attackCallback?.Invoke();
@@ -212,9 +227,16 @@ public class EnemyAction : UnitBase
 
     public void CheckTargetJobAlive()
     {
+        Debug.Log("ENTER REMOVE");
+
         if (_attackMode == EnemyActionBase.AttackMode.Job && _target.Unit.Hp <= 0)
         {
-            _targetJob.Remove(0);
+            _targetJob.RemoveAt(0);
+            Debug.Log("REMOVED from " + this);
+            foreach(var item in _targetJob)
+            {
+                Debug.Log(item);
+            }
         }
     }
 }

@@ -73,8 +73,6 @@ public class UnitManager : MonoBehaviour
                 Lose.SetActive( true );
             }
         }
-
-        SetUnitListToEnemy();
     }
 
     public List<UnitBase> GetUnitList()

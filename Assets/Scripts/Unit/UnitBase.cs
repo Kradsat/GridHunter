@@ -123,7 +123,7 @@ public class UnitBase : UnitStatus
         {
             LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
             Destroy(gameObject);
-
+            TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
             OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
         }
 
@@ -132,11 +132,8 @@ public class UnitBase : UnitStatus
     public void Damage(int damageAmount, Action callback = null)
     {
         base.HP -= (double)damageAmount;
-
-        OnHPChange?.Invoke(this, EventArgs.Empty);
-
-        OnHPChange?.Invoke( this, EventArgs.Empty );
         callback?.Invoke();
+        OnHPChange?.Invoke(this, EventArgs.Empty);
     }
 
     public void HealPlayer(int healAmount)
@@ -145,7 +142,6 @@ public class UnitBase : UnitStatus
         if (base.HP < base.MAX_HP)
         {
             base.HP += (double)healAmount;
-
             OnHPChange?.Invoke(this, EventArgs.Empty);
         }
     }

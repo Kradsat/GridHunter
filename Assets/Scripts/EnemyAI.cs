@@ -70,7 +70,6 @@ public class EnemyAI : MonoBehaviour
         foreach (var enemy in UnitManager.Instance.GetEnemyActionList())
         {
             enemy.Attack(() => {
-                Debug.Log("CALLBACK BY " + enemy.Unit.Id);
                 _enemiesActionCount++;
                 if (_enemiesActionCount >= (UnitManager.Instance.GetEnemyActionList()).Count)
                 {
