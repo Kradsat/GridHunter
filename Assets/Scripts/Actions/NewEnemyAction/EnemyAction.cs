@@ -32,8 +32,7 @@ public class EnemyAction : UnitBase
 
         if (base.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
         {
-            isActive = false;
-            _target.Damage(this.Unit.Attack);
+            AttackTarget();
             return;
         }
 
@@ -54,14 +53,10 @@ public class EnemyAction : UnitBase
             currentPositionIndex++;
             if (currentPositionIndex >= positionList.Count)
             {
-                OnStopMoving?.Invoke(this, EventArgs.Empty);
                 isActive = false;
+                OnStopMoving?.Invoke(this, EventArgs.Empty);
                 this.canMove = false;
-                UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
-                if (!this.IsEnemy)
-                {
-                    AttackTarget();
-                }
+                AttackTarget();
             }
         }
     }
@@ -210,6 +205,7 @@ public class EnemyAction : UnitBase
     private void AttackTarget()
     {
         Debug.Log("ATTACK");
+        isActive = false;
         _target.Damage(this.Unit.Attack);
         _attackCallback?.Invoke();
     }
