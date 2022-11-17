@@ -8,7 +8,7 @@ public class MoveAction : BaseAction
     public event EventHandler OnStartMoving;
     public event EventHandler OnStopMoving;
     //[SerializeField] private Animator unitAnimator;
-    [SerializeField] private int maxMoveDistance = 4;
+    [SerializeField] private int _maxMoveDistance = 4;
 
 
     private List<Vector3> positionList;
@@ -97,7 +97,7 @@ public class MoveAction : BaseAction
         currentPositionIndex = 0;
         positionList = new List<Vector3>();
         
-        if (pathGridPositionList.Count > 4)
+        if (pathGridPositionList.Count > _maxMoveDistance)
         {
             pathGridPositionList.RemoveRange(4, pathGridPositionList.Count - 4);
         }
@@ -119,25 +119,24 @@ public class MoveAction : BaseAction
         List<GridPosition> validGridPositionsList = new List<GridPosition>();
         GridPosition unitGridPostion = unit.GetGridPosition();
 
-        for (int x = -maxMoveDistance; x <= maxMoveDistance; x++)
+        for (int x = 0; x <= LevelGrid.Instance.GetWidth(); x++)
         {
-            for (int z = -maxMoveDistance; z <= maxMoveDistance; z++)
+            for (int z = 0; z <= LevelGrid.Instance.GetHeight(); z++)
             {
                 GridPosition offsetGridPosition = new GridPosition(x, z);
-                GridPosition testGridPosition = unitGridPostion + offsetGridPosition;
 
-                if (!LevelGrid.Instance.IsValidGridPosition(testGridPosition))
+                if (!LevelGrid.Instance.IsValidGridPosition(offsetGridPosition))
                 {
                     continue;
                 }
 
-                if (unitGridPostion==testGridPosition)
+                if (unitGridPostion== offsetGridPosition)
                 {
                     //same grid position where the unit is already at
                     continue;
                 }
 
-                if (LevelGrid.Instance.HasAnyUnitOnGridPosition(testGridPosition))
+                if (LevelGrid.Instance.HasAnyUnitOnGridPosition(offsetGridPosition))
                 {
                     //grid position already ocupied with other unit
                     continue;
@@ -151,7 +150,7 @@ public class MoveAction : BaseAction
                 //    continue;
                 //}
 
-                validGridPositionsList.Add(testGridPosition);
+                validGridPositionsList.Add(offsetGridPosition);
             }
         }
 
