@@ -8,22 +8,31 @@ public class UnitSpawnSystem : MonoBehaviour
     [SerializeField] private UnityActionSystemUI unityActionSystemUI;
     [SerializeField] private GridSystemVisual gridSystemVisual;
 
+    private const int GRID_SIZE = 2;
+
     private void Awake()
     {
         dataLoader.LoadAllDatas();
         var _mapData = MasterDataContainer.Instance.Map;
         var _unitData = MasterDataContainer.Instance.UnitDatas;
 
-        for (int y = 0; y < 10; y++)
+        for (int z = 0; z < 10; z++)
         {
             for (int x = 0; x < 10; x++)
             {
-                var unitType = _mapData[x, y];
+                var unitType = _mapData[x, z];
                 if(unitType != 0)
                 {
                     var spawn = Instantiate(unit[unitType - 1]);
                     spawn.transform.SetParent(transform, false);
-                    spawn.transform.position = new Vector3(x * 2, 0, y * 2);
+                    float xPos = x * GRID_SIZE;
+                    float zPos = z * GRID_SIZE;
+                    if(unitType == (int)MapData.OBJ_TYPE.BOSS)
+                    {
+                        xPos = (x + 1.5f) * GRID_SIZE;
+                        zPos = (z + 1.5f) * GRID_SIZE;
+                    }
+                    spawn.transform.position = new Vector3(xPos, 0, zPos);
                     var spawnUnit = spawn.GetComponent<UnitBase>();
                     if (unitType == 3)  unitActionSystem.SelectedUnit = spawnUnit;
                     
