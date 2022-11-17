@@ -67,13 +67,11 @@ public class EnemyAI : MonoBehaviour
 
     private void TryTakeEnemiesAIAction(Action onEnemyAIActionComplete)
     {
-        Debug.Log("Take Enemy AI Action");
         foreach (var enemy in UnitManager.Instance.GetEnemyActionList())
         {
-            Debug.Log("ENEMY ATTACK " + enemy.Unit.Id);
             enemy.Attack(() => {
+                Debug.Log("CALLBACK BY " + enemy.Unit.Id);
                 _enemiesActionCount++;
-                Debug.Log("enemycount: " + _enemiesActionCount);
                 if (_enemiesActionCount >= (UnitManager.Instance.GetEnemyActionList()).Count)
                 {
                     TurnSystem.Instance.NextTurn();

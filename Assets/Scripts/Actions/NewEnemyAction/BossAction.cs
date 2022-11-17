@@ -8,7 +8,7 @@ public class BossAction : EnemyAction
     //　ターンに応じ、取るアクション
     private enum TURN_ACTION
     {
-        Attack = 1,
+        Attack = 0,
         Predict,
         AOE,
         MAX,
@@ -66,18 +66,18 @@ public class BossAction : EnemyAction
     // 攻撃する際に呼ぶ
     public override void Attack(Action callback = null)
     {
-        _turn = TurnSystem.Instance.TurnNumber / 2;
+        _turn = TurnSystem.Instance.TurnNumber / 2 - 1;
         switch (_turn % (int)TURN_ACTION.MAX)
         {
             case (int)TURN_ACTION.Attack:
                 NormalAttack(callback);
                 break;
             case (int)TURN_ACTION.Predict:
-                NormalAttack();
+                NormalAttack(callback);
                 PickAoeType();
                 break;
             case (int)TURN_ACTION.AOE:
-                AreaAttack();
+                AreaAttack(callback);
                 break;
         }
     }
@@ -85,9 +85,8 @@ public class BossAction : EnemyAction
     /// <summary>
     /// 普通攻撃
     /// </summary>
-    private void NormalAttack(Action callback = null)
+    private void NormalAttack(Action callback)
     {
-        Debug.Log("NORMAL ATTACK");
         base.Attack(callback);
     }
 
@@ -102,18 +101,22 @@ public class BossAction : EnemyAction
     /// <summary>
     /// 範囲攻撃
     /// </summary>
-    private void AreaAttack()
+    private void AreaAttack(Action callback)
     {
         if (_aoe_type == (int)AOE_TYPE.MAX)
         {
             PickAoeType();
         }
 
-        foreach(var gridPos in _area[_aoe_type])
+        foreach(var unit in UnitManager.Instance.GetAllyUnitList())
         {
-            //attack
+            if (_area[_aoe_type].Any(_ => _ == unit.GridPosition))
+            {
+                unit.Damage(this.Unit.Attack);
+            }
         }
         _aoe_type = (int)AOE_TYPE.MAX;
+        callback();
     }
 
     /// <summary>

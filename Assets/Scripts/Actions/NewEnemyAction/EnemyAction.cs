@@ -21,6 +21,8 @@ public class EnemyAction : UnitBase
     private List<UnitBase> _playerUnitList;
     public List<UnitBase> SetPlayerUnitList { set { _playerUnitList = value; } }
 
+    private int[] TARGET_ORDER = new int[4] { (int)MapData.OBJ_TYPE.ROD, (int)MapData.OBJ_TYPE.SWORD, (int)MapData.OBJ_TYPE.HAMMER, (int)MapData.OBJ_TYPE.LANCE };
+
     private Action _attackCallback = null;
 
     public virtual void Update()
@@ -32,7 +34,6 @@ public class EnemyAction : UnitBase
 
         if (this.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
         {
-            Debug.Log("BOSS ATTACK");
             AttackTarget();
             return;
         }
