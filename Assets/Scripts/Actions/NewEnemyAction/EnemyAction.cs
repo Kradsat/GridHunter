@@ -10,6 +10,10 @@ public class EnemyAction : UnitBase
     private List<UnitBase> _playerUnitList;
     public List<UnitBase> SetPlayerUnitList { set { _playerUnitList = value; } }
 
+    public virtual void Attack()
+    {
+        var target = GetAttackTarget();
+    }
     public UnitBase GetAttackTarget()
     {
         UnitBase _target = null;

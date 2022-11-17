@@ -22,20 +22,19 @@ public class BossAction : EnemyAction
     private int _turn = 0;
     private int _aoe_type = (int)AOE_TYPE.MAX;
 
-    private static List<GridPosition> _square_area_list = new List<GridPosition>()
-    {
-
-    };
-
-    private static List<GridPosition> _cross_area_list = new List<GridPosition>()
-    {
-
-    };
+    private static List<GridPosition> _square_area_list = new List<GridPosition>();
+    private static List<GridPosition> _cross_area_list = new List<GridPosition>();
 
     private List<List<GridPosition>> _area = new List<List<GridPosition>>
     {
         _square_area_list, _cross_area_list
     };
+
+    public override void Init(UnitStruct unit)
+    {
+        base.Init(unit);
+        Debug.Log(base.GridPosition);
+    }
 
     private void Update()
     {
@@ -45,8 +44,9 @@ public class BossAction : EnemyAction
         }
     }
 
-    public void Attack()
+    public override void Attack()
     {
+        _turn = TurnSystem.Instance.TurnNumber;
         switch (_turn % (int)TURN_ACTION.MAX)
         {
             case (int)TURN_ACTION.Attack:
@@ -64,8 +64,7 @@ public class BossAction : EnemyAction
 
     private void NormalAttack()
     {
-        // attack
-        var target = base.GetAttackTarget();
+        base.Attack();
     }
 
     private void PickAoeType()
