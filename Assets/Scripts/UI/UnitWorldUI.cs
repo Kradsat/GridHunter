@@ -22,7 +22,7 @@ public class UnitWorldUI : MonoBehaviour
     {
         unit = GetComponentInParent<UnitBase>();
         UnitBase.OnAnyActionPointsChanged += Unit_OnAnyActionPointsChanged;
-        UnitBase.OnDamage += UnitBase_OnDamage;
+        UnitBase.OnHPChange += UnitBase_OnDamage;
         if( isBoss ) {
             BossBar = GameObject.Find( "BossBar" );
             healthBarImage = BossBar.GetComponent<Image>();

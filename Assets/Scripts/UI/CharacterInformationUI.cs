@@ -23,7 +23,7 @@ public class CharacterInformationUI : MonoBehaviour {
 
         character = GameObject.Find("Player" + order + "Bar");
         healthBarImage = character.GetComponent<Image>();
-        UnitBase.OnDamage += UnitBase_OnDamage;
+        UnitBase.OnHPChange += UnitBase_OnDamage;
 
         character = GameObject.Find("Player" + order + "HPText");
         HPText = character.GetComponent<TextMeshProUGUI>();

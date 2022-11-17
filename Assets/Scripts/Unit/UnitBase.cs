@@ -8,8 +8,7 @@ public class UnitBase : UnitStatus
     public static event EventHandler OnAnyActionPointsChanged;
     public static event EventHandler OnAnyUnitSpawn;
     public static event EventHandler OnAnyUnitDead;
-    public static event EventHandler OnDamage;
-    public static event EventHandler OnHeal;
+    public static event EventHandler OnHPChange;
 
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool canAttack = true;
@@ -120,21 +119,35 @@ public class UnitBase : UnitStatus
             canAttack = true;
         }
 
+        if ( base.HP <= 0)
+        {
+            LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
+            Destroy(gameObject);
+
+            OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
+        }
+
     }
 
     public void Damage(int damageAmount, Action callback = null)
     {
-        base.HP -= ( double )damageAmount;
+        base.HP -= (double)damageAmount;
 
-        OnDamage?.Invoke( this, EventArgs.Empty );
+        OnHPChange?.Invoke(this, EventArgs.Empty);
+
+        OnHPChange?.Invoke( this, EventArgs.Empty );
         callback?.Invoke();
     }
 
     public void HealPlayer(int healAmount)
     {
-        base.HP += ( double )healAmount;
 
-        OnHeal?.Invoke( this, EventArgs.Empty );
+        if (base.HP < base.MAX_HP)
+        {
+            base.HP += (double)healAmount;
+
+            OnHPChange?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void HealthSystem_OnDead(object sender, EventArgs e)
@@ -144,4 +157,5 @@ public class UnitBase : UnitStatus
 
         OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
     }
+
 }
