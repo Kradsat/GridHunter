@@ -38,66 +38,21 @@ public class LevelGrid : MonoBehaviour
 
     public void AddUnitAtGridPosition(GridPosition gridPosition, UnitBase unit)
     {
-        if (!unit.IsEnemy)
+        if (unit.Unit.Id != (int)MapData.OBJ_TYPE.BOSS)
         {
-            // �v���C���[�̏ꍇ�A1x1
             GridObject gridObject = gridSystem.GetGridObject(gridPosition);
             gridObject.AddUnit(unit);
             return;
-        }
-
-        if (unit.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
-        {
+        } else {
             GridPosition gridPos;
             gridPos.x = gridPosition.x - 1;
             gridPos.z = gridPosition.z - 1;
             for (int i = 0; i < 4; i++)
             {
                 gridPosition.z = gridPos.z + i;
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     gridPosition.x = gridPos.x + j;
-                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-                    gridObject.AddUnit(unit);
-                }
-            }
-        } else {
-            if (unit.transform.rotation.y >= -44.99 && unit.transform.rotation.y <= 44.99 ||
-                 unit.transform.rotation.y >= 315 || unit.transform.rotation.y <= -315)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    gridPosition.z += i;
-                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-                    gridObject.AddUnit(unit);
-                }
-            }
-            else if (unit.transform.rotation.y >= 45 && unit.transform.rotation.y <= 134.99 ||
-                       unit.transform.rotation.y >= -314.99 && unit.transform.rotation.y <= -225)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    gridPosition.x += i;
-                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-                    gridObject.AddUnit(unit);
-                }
-            }
-            else if (unit.transform.rotation.y >= 225 && unit.transform.rotation.y <= 314.99 ||
-                       unit.transform.rotation.y >= -134.99 && unit.transform.rotation.y <= -45)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    gridPosition.x -= i;
-                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-                    gridObject.AddUnit(unit);
-                }
-            }
-            else if (unit.transform.rotation.y >= 135 && unit.transform.rotation.y <= 224.99 ||
-                       unit.transform.rotation.y >= -135 && unit.transform.rotation.y <= -224.99)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    gridPosition.z -= i;
                     GridObject gridObject = gridSystem.GetGridObject(gridPosition);
                     gridObject.AddUnit(unit);
                 }
@@ -113,68 +68,21 @@ public class LevelGrid : MonoBehaviour
 
     public void RemoveUnitAtGridPosition(GridPosition gridPosition, UnitBase unit)
     {
-        if (!unit.IsEnemy)
+        if (unit.Unit.Id != (int)MapData.OBJ_TYPE.BOSS)
         {
-            // �v���C���[�̏ꍇ�A1x1
             GridObject gridObject = gridSystem.GetGridObject(gridPosition);
             gridObject.RemoveUnit(unit);
             return;
-        }
-
-        if (unit.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
-        {
+        } else {
             GridPosition gridPos;
             gridPos.x = gridPosition.x - 1;
             gridPos.z = gridPosition.z - 1;
             for (int i = 0; i < 4; i++)
             {
                 gridPosition.z = gridPos.z + i;
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     gridPosition.x = gridPos.x + j;
-                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-                    gridObject.RemoveUnit(unit);
-                }
-            }
-        }
-        else
-        {
-            if (unit.transform.rotation.y >= -44.99 && unit.transform.rotation.y <= 44.99 ||
-                 unit.transform.rotation.y >= 315 || unit.transform.rotation.y <= -315)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    gridPosition.z += i;
-                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-                    gridObject.RemoveUnit(unit);
-                }
-            }
-            else if (unit.transform.rotation.y >= 45 && unit.transform.rotation.y <= 134.99 ||
-                       unit.transform.rotation.y >= -314.99 && unit.transform.rotation.y <= -225)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    gridPosition.x += i;
-                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-                    gridObject.RemoveUnit(unit);
-                }
-            }
-            else if (unit.transform.rotation.y >= 225 && unit.transform.rotation.y <= 314.99 ||
-                       unit.transform.rotation.y >= -134.99 && unit.transform.rotation.y <= -45)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    gridPosition.x -= i;
-                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
-                    gridObject.RemoveUnit(unit);
-                }
-            }
-            else if (unit.transform.rotation.y >= 135 && unit.transform.rotation.y <= 224.99 ||
-                       unit.transform.rotation.y >= -135 && unit.transform.rotation.y <= -224.99)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    gridPosition.z -= i;
                     GridObject gridObject = gridSystem.GetGridObject(gridPosition);
                     gridObject.RemoveUnit(unit);
                 }
