@@ -20,7 +20,8 @@ public class GridSystemVisual : MonoBehaviour
         White,
         Blue,
         Red,
-        Purple
+        Purple,
+        Orange
     }
 
     [SerializeField] private Transform gridSystemVisualSinglePrefab;
@@ -167,5 +168,13 @@ public class GridSystemVisual : MonoBehaviour
 
         Debug.LogError("Could not find GridVisualTypeMaterial for GridVisualType" + gridVisualType);
         return null;
+    }
+
+    public void ShowAoePrediction(List<GridPosition> gridPositions)
+    {
+        foreach(GridPosition gridPosition in gridPositions)
+        {
+            gridSystemVisualSingleArray[gridPosition.x, gridPosition.z].Show(GetGridVisualTypeMaterial(GridVisualType.Orange));
+        }
     }
 }

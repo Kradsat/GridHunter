@@ -22,8 +22,32 @@ public class BossAction : EnemyAction
     private int _turn = 0;
     private int _aoe_type = (int)AOE_TYPE.MAX;
 
+    private static List<GridPosition> _square_area_list = new List<GridPosition>()
+    {
+
+    };
+
+    private static List<GridPosition> _cross_area_list = new List<GridPosition>()
+    {
+
+    };
+
+    private List<List<GridPosition>> _area = new List<List<GridPosition>>
+    {
+        _square_area_list, _cross_area_list
+    };
+
+    private void Update()
+    {
+        if(_aoe_type != (int)AOE_TYPE.MAX)
+        {
+            GridSystemVisual.Instance.ShowAoePrediction(_area[_aoe_type]);
+        }
+    }
+
     public void Attack()
     {
+
         switch (_turn % (int)TURN_ACTION.MAX)
         {
             case (int)TURN_ACTION.Attack:
@@ -32,10 +56,8 @@ public class BossAction : EnemyAction
             case (int)TURN_ACTION.Predict:
                 NormalAttack();
                 PickAoeType();
-                ShowPrediction();
                 break;
             case (int)TURN_ACTION.AOE:
-                HidePrediction();
                 AreaAttack();
                 break;
         }
@@ -43,26 +65,16 @@ public class BossAction : EnemyAction
 
     private void NormalAttack()
     {
-        //attack
+        base.GetAttackTarget();
     }
 
     private void PickAoeType()
     {
         _aoe_type = Random.Range(0, (int)AOE_TYPE.MAX);
-    }
-
-    private void ShowPrediction()
-    {
-        // show ui
-    }
-
-    private void HidePrediction()
-    {
-        //hide ui
-    }
+    } 
 
     private void AreaAttack()
     {
-        //aoe
+        _aoe_type = (int)AOE_TYPE.MAX;
     }
 }
