@@ -9,8 +9,7 @@ public class EnemyAction : UnitBase
     public event EventHandler OnStopMoving;
     public event EventHandler OnAttackStart;
 
-    [SerializeField] private EnemyActionBase.AttackMode attackMode;
-    [SerializeField] private EnemyActionBase.TargetJob targetJob;
+    [SerializeField] private EnemyActionBase.AttackMode _attackMode;
 
     private int currentPositionIndex = 0;
     private List<Vector3> positionList;
@@ -21,7 +20,9 @@ public class EnemyAction : UnitBase
     private List<UnitBase> _playerUnitList;
     public List<UnitBase> SetPlayerUnitList { set { _playerUnitList = value; } }
 
-    private int[] TARGET_ORDER = new int[4] { (int)MapData.OBJ_TYPE.ROD, (int)MapData.OBJ_TYPE.SWORD, (int)MapData.OBJ_TYPE.HAMMER, (int)MapData.OBJ_TYPE.LANCE };
+    [SerializeField] private List<EnemyActionBase.TargetJob> _targetJob = new List<EnemyActionBase.TargetJob> {
+        EnemyActionBase.TargetJob.ROD , EnemyActionBase.TargetJob.SWORD, EnemyActionBase.TargetJob.HAMMER, EnemyActionBase.TargetJob.LANCE
+    };
 
     private Action _attackCallback = null;
 
@@ -78,7 +79,7 @@ public class EnemyAction : UnitBase
     {
         UnitBase _target = null;
 
-        switch (attackMode)
+        switch (_attackMode)
         {
             case EnemyActionBase.AttackMode.HP:
                 _target = GetLowestHPUnit();
@@ -134,7 +135,7 @@ public class EnemyAction : UnitBase
     public UnitBase GetSpecificJobUnit()
     {
         var _playerUnitList = UnitManager.Instance.GetAllyUnitList();
-        var _target = _playerUnitList.FirstOrDefault(_ => _.Unit.Id == (int)targetJob);
+        var _target = _playerUnitList.FirstOrDefault(_ => _.Unit.Id == (int)_targetJob[0]);
 
         return _target;
     }
@@ -202,7 +203,18 @@ public class EnemyAction : UnitBase
     private void AttackTarget()
     {
         isActive = false;
-        _target.Damage(this.Unit.Attack);
+        _target.Damage(this.Unit.Attack, () =>
+        {
+            CheckTargetJobAlive();
+        });
         _attackCallback?.Invoke();
+    }
+
+    public void CheckTargetJobAlive()
+    {
+        if (_attackMode == EnemyActionBase.AttackMode.Job && _target.Unit.Hp <= 0)
+        {
+            _targetJob.Remove(0);
+        }
     }
 }

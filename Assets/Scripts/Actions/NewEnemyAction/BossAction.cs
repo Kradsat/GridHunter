@@ -112,7 +112,7 @@ public class BossAction : EnemyAction
         {
             if (_area[_aoe_type].Any(_ => _ == unit.GridPosition))
             {
-                unit.Damage(this.Unit.Attack);
+                unit.Damage(this.Unit.Attack, ()=> { base.CheckTargetJobAlive(); });
             }
         }
         _aoe_type = (int)AOE_TYPE.MAX;

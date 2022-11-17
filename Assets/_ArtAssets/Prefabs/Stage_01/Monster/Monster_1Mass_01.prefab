@@ -236,8 +236,8 @@ MonoBehaviour:
   canMove: 1
   canAttack: 1
   canStay: 1
-  attackMode: 1
-  targetJob: 0
+  _attackMode: 0
+  _targetJob: 04000000020000000100000003000000
 --- !u!1 &4855443866310743348
 GameObject:
   m_ObjectHideFlags: 0

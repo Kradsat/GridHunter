@@ -122,11 +122,12 @@ public class UnitBase : UnitStatus
 
     }
 
-    public void Damage(int damageAmount)
+    public void Damage(int damageAmount, Action callback = null)
     {
         base.HP -= ( double )damageAmount;
 
         OnDamage?.Invoke( this, EventArgs.Empty );
+        callback?.Invoke();
     }
 
     public void HealPlayer(int healAmount)
