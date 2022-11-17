@@ -11,7 +11,14 @@ public class UnitAnimator : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
 
-        if(TryGetComponent<MoveAction>(out MoveAction moveAction))
+
+        if (TryGetComponent<EnemyAction>(out EnemyAction enemyAction))
+        {
+            enemyAction.OnStartMoving += MoveAction_OnStartMoving;
+            enemyAction.OnStopMoving += MoveAction_OnStopMoving;
+            enemyAction.OnAttackStart += AttackAction_OnAttackStart;
+        }
+        if (TryGetComponent<MoveAction>(out MoveAction moveAction))
         {
             moveAction.OnStartMoving += MoveAction_OnStartMoving;
             moveAction.OnStopMoving += MoveAction_OnStopMoving;

@@ -13,6 +13,8 @@ public class EnemyAI : MonoBehaviour
     private State state;
     private float timer;
 
+    private int _enemiesActionCount = 0;
+
     private void Awake()
     {
         state = State.WaitingForEnemyTurn;
@@ -38,15 +40,9 @@ public class EnemyAI : MonoBehaviour
                 timer -= Time.deltaTime;
                 if (timer <= 0f)
                 {
-                    if (TryTakeEnemyAIAction(SetStateTakingTurn))
-                    {
-                        state = State.Busy;
-                    }
-                    else
-                    {
-                        // No more enemies have actions they can take, end enemy turn
-                        TurnSystem.Instance.NextTurn();
-                    }
+                    state = State.Busy;
+                    _enemiesActionCount = 0;
+                    TryTakeEnemiesAIAction(SetStateTakingTurn);
                 }
                 break;
             case State.Busy:
@@ -69,33 +65,83 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private bool TryTakeEnemyAIAction(Action onEnemyAIActionComplete)
+    private void TryTakeEnemiesAIAction(Action onEnemyAIActionComplete)
     {
         Debug.Log("Take Enemy AI Action");
         foreach (var enemy in UnitManager.Instance.GetEnemyActionList())
         {
-            if (TryTakeEnemyAIAction(enemy, onEnemyAIActionComplete))
-            {
-                return true;
-            }
+            Debug.Log("ENEMY ATTACK " + enemy.Unit.Id);
+            enemy.Attack(() => {
+            _enemiesActionCount++;
+                if (_enemiesActionCount >= (UnitManager.Instance.GetEnemyActionList()).Count)
+                {
+                    TurnSystem.Instance.NextTurn();
+                }
+            });
         }
-
-        return false;
     }
-
 
     private bool TryTakeEnemyAIAction(EnemyAction enemy, Action onEnemyAIActionComplete)
     {
-        BaseAction _baseAction = null;
-        UnitBase _target = enemy.GetAttackTarget();
+        EnemyAIAction bestEnemyAIAction = null;
+        BaseAction bestBaseAction = null;
+        foreach (BaseAction baseAction in enemy.GetBaseActionArray())
+        {
+            if (!enemy.CanSpendActionPointsToTakeAction(baseAction))
+            {
+                continue;
+            }
+            if (bestEnemyAIAction == null)
+            {
+                bestEnemyAIAction = baseAction.GetBestEnemyAIAction();
+                bestBaseAction = baseAction;
+            }
+            else
+            {
+                EnemyAIAction testEnemyAIAction = baseAction.GetBestEnemyAIAction();
+                if (testEnemyAIAction != null && testEnemyAIAction.actionValue > bestEnemyAIAction.actionValue)
+                {
+                    bestEnemyAIAction = testEnemyAIAction;
+                    bestBaseAction = baseAction;
+                }
+            }
+        }
+        if (bestEnemyAIAction != null && enemy.TrySpendActionPointsToTakeAction(bestBaseAction))
+        {
+            bestBaseAction.TakeAction(bestEnemyAIAction.gridPosition, onEnemyAIActionComplete);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 
-        var _action = enemy.GetBaseActionArray();
-        _baseAction = _action[0];
+        //Debug.Log("???????????? " + enemy.Unit.Id);
+        //BaseAction _baseAction = null;
+        //UnitBase _target = enemy.GetAttackTarget();
+        //foreach (BaseAction baseAction in enemy.GetBaseActionArray())
+        //{
+        //    Debug.Log("!!!!!!!!!!!!!! " + enemy.Unit.Id);
+        //    if (!enemy.CanSpendActionPointsToTakeAction(baseAction))
+        //    {
+        //        //enemy cannot make the action
+        //        continue;
+        //    }
+            
+        //    _baseAction = baseAction;
+        //}
 
-        _baseAction.TakeAction(_target.GetGridPosition(), onEnemyAIActionComplete);
-        return true;
+        //Debug.Log("Base; " + _baseAction);
+        //if (enemy.TrySpendActionPointsToTakeAction(_baseAction))
+        //{
+        //    _baseAction.TakeAction(_target.GetGridPosition(), onEnemyAIActionComplete);
+        //    return true;
+        //}
+        //else
+        //{
+        //    return false;
+        //}
     }
-
 }
 
 

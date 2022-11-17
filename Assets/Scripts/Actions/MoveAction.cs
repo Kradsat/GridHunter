@@ -93,59 +93,12 @@ public class MoveAction : BaseAction
     #region Generic Method
     public override void TakeAction(GridPosition targetGridPosition, Action onActionComplete)
     {
-        var unitPos = unit.GetGridPosition();
-        var targetNeighbour = new List<GridPosition>();
-        for(int x = targetGridPosition.x-1; x<targetGridPosition.x+1; x++)
-        {
-            for (int z = targetGridPosition.z - 1; z < targetGridPosition.z + 1; z++)
-            {
-                var neighbour = new GridPosition(x, z);
-                if (GridPosition.CheckIfInside(neighbour) && neighbour != targetGridPosition && !LevelGrid.Instance.HasAnyUnitOnGridPosition(neighbour))
-                {
-                    targetNeighbour.Add(neighbour);
-                }
-            }
-        }
-
-        GridPosition target = new GridPosition(-1, -1);
-        var xDis = unitPos.x - targetGridPosition.x;
-        var zDis = unitPos.z - targetGridPosition.z;
-        if(zDis > xDis)
-        {
-            if (xDis > 0)
-            {
-                target = targetNeighbour.Find(_ => _.x == targetGridPosition.x + 1);
-            }
-            else
-            {
-                target = targetNeighbour.Find(_ => _.x == targetGridPosition.x + 1);
-            }
-        }
-        else
-        {
-            if (zDis > 0)
-            {
-                target = targetNeighbour.Find(_ => _.z == targetGridPosition.z + 1);
-            }
-            else
-            {
-                target = targetNeighbour.Find(_ => _.z == targetGridPosition.z + 1);
-            }
-        }
-
-        if(target == new GridPosition(-1, -1))
-        {
-            target = targetNeighbour[UnityEngine.Random.Range(0, targetNeighbour.Count - 1)];
-        }
-
-
-        List<GridPosition> pathGridPositionList = Pathfinding.Instance.FindPath(unit.GetGridPosition(), target);
+        List<GridPosition> pathGridPositionList = Pathfinding.Instance.FindPath(unit.GetGridPosition(), targetGridPosition);
         currentPositionIndex = 0;
         positionList = new List<Vector3>();
 
         foreach (GridPosition pathGridPosition in pathGridPositionList)
         {
-            Debug.Log("LIST: " +pathGridPosition);
             positionList.Add(LevelGrid.Instance.GetWorldPosition(pathGridPosition));
         }
 

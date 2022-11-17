@@ -1198,7 +1198,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5803220951515102143}
   - component: {fileID: 1854638047765382735}
-  - component: {fileID: 9028165965212270071}
   - component: {fileID: -8208397483998099285}
   m_Layer: 7
   m_Name: Monster_Boss_01
@@ -1237,21 +1236,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9028165965212270071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5803220951515102136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ee499e1424f7b4e891523b78f31d7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
-  maxAttackDistance: 1
-  damage: 10
 --- !u!114 &-8208397483998099285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,6 +1250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   canAttack: 1
+  canStay: 1
+  baseActionArray: []
   attackMode: 0
   targetJob: 0
 --- !u!1 &6286836425459086018
@@ -1522,6 +1508,8 @@ MonoBehaviour:
   actionPointsText: {fileID: 213610223338078247}
   unit: {fileID: 0}
   healthBarImage: {fileID: 0}
+  BossHPText: {fileID: 0}
+  healthSystem: {fileID: 0}
   isBoss: 1
 --- !u!114 &702493889354574128
 MonoBehaviour:

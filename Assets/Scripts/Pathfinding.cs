@@ -151,8 +151,10 @@ public class Pathfinding : MonoBehaviour
                 }
             }
         }
+
+        Debug.Log("not found");
         //not path found
-        return null;
+        return new List<GridPosition> { new GridPosition(-1, -1) };
     }
 
     public int CalculateDistance(GridPosition gridPositionA, GridPosition gridPositionB)

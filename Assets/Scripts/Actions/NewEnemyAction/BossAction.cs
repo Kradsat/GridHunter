@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public class BossAction : EnemyAction
@@ -8,7 +8,7 @@ public class BossAction : EnemyAction
     //　ターンに応じ、取るアクション
     private enum TURN_ACTION
     {
-        Attack = 0,
+        Attack = 1,
         Predict,
         AOE,
         MAX,
@@ -29,6 +29,8 @@ public class BossAction : EnemyAction
 
     private int _turn = 0;
     private int _aoe_type = (int)AOE_TYPE.MAX;
+
+    private Action _attackCallback = null;
 
     // 四角攻撃のエリア
     private static List<GridPosition> _square_area_list = new List<GridPosition>();
@@ -63,9 +65,10 @@ public class BossAction : EnemyAction
     }
 
     // 攻撃する際に呼ぶ
-    public override void Attack()
+    public override void Attack(Action callback = null)
     {
-        _turn = TurnSystem.Instance.TurnNumber;
+        _attackCallback = callback;
+        _turn = TurnSystem.Instance.TurnNumber / 2;
         switch (_turn % (int)TURN_ACTION.MAX)
         {
             case (int)TURN_ACTION.Attack:
@@ -86,7 +89,7 @@ public class BossAction : EnemyAction
     /// </summary>
     private void NormalAttack()
     {
-        base.Attack();
+        base.Attack(_attackCallback);
     }
 
     /// <summary>
@@ -94,7 +97,7 @@ public class BossAction : EnemyAction
     /// </summary>
     private void PickAoeType()
     {
-        _aoe_type = Random.Range(0, (int)AOE_TYPE.MAX);
+        _aoe_type = UnityEngine.Random.Range(0, (int)AOE_TYPE.MAX);
     } 
 
     /// <summary>
@@ -102,6 +105,11 @@ public class BossAction : EnemyAction
     /// </summary>
     private void AreaAttack()
     {
+        if (_aoe_type == (int)AOE_TYPE.MAX)
+        {
+            PickAoeType();
+        }
+
         foreach(var gridPos in _area[_aoe_type])
         {
             //attack

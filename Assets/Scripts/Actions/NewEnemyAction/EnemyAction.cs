@@ -1,18 +1,76 @@
 using UnityEngine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public class EnemyAction : UnitBase
 {
+    public event EventHandler OnStartMoving;
+    public event EventHandler OnStopMoving;
+    public event EventHandler OnAttackStart;
+
     [SerializeField] private EnemyActionBase.AttackMode attackMode;
     [SerializeField] private EnemyActionBase.TargetJob targetJob;
+
+    private int currentPositionIndex = 0;
+    private List<Vector3> positionList;
+    private bool isActive = false;
+
+    private UnitBase _target = null;
 
     private List<UnitBase> _playerUnitList;
     public List<UnitBase> SetPlayerUnitList { set { _playerUnitList = value; } }
 
-    public virtual void Attack()
+    private Action _attackCallback = null;
+
+    private void Update()
     {
-        var target = GetAttackTarget();
+        if (!isActive)
+        {
+            return;
+        }
+
+        if (base.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
+        {
+            isActive = false;
+            _target.Damage(this.Unit.Attack);
+            return;
+        }
+
+        Vector3 targetPosition = positionList[currentPositionIndex];
+        Vector3 moveDirection = (targetPosition - transform.position).normalized;
+
+        float rotateSpeed = 20f;
+        transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
+
+        float stoppingDistance = .1f;
+        if (Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
+        {
+            float moveSpeed = 4f;
+            transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            currentPositionIndex++;
+            if (currentPositionIndex >= positionList.Count)
+            {
+                OnStopMoving?.Invoke(this, EventArgs.Empty);
+                isActive = false;
+                this.canMove = false;
+                UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
+                if (!this.IsEnemy)
+                {
+                    AttackTarget();
+                }
+            }
+        }
+    }
+
+    public virtual void Attack(Action callback = null)
+    {
+        _target = GetAttackTarget();
+        Move();
+        _attackCallback = callback;
     }
     public UnitBase GetAttackTarget()
     {
@@ -31,7 +89,6 @@ public class EnemyAction : UnitBase
                 break;
         }
 
-        Debug.Log(_target.Unit.Name);
         return _target;
     }
 
@@ -50,7 +107,6 @@ public class EnemyAction : UnitBase
             }
         }
 
-        Debug.Log(_target.Unit.Name);
         return _target;
     }
 
@@ -70,8 +126,6 @@ public class EnemyAction : UnitBase
                 _target = unit;
             }
         }
-
-        Debug.Log(_target.Unit.Name);
         return _target;
     }
 
@@ -81,5 +135,71 @@ public class EnemyAction : UnitBase
         var _target = _playerUnitList.FirstOrDefault(_ => _.Unit.Id == (int)targetJob);
 
         return _target;
+    }
+
+    public void Move()
+    {
+        var targetGridPosition = _target.GridPosition;
+
+        if(base.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
+        {
+            isActive = true;
+            return;
+        }
+
+        var unitPos = base.GridPosition;
+        var targetNeighbours = new List<GridPosition>();
+        var targetNeighbourPaths = new List<List<GridPosition>>();
+        for (int x = targetGridPosition.x - 1; x < targetGridPosition.x + 1; x++)
+        {
+            for (int z = targetGridPosition.z - 1; z < targetGridPosition.z + 1; z++)
+            {
+                var neighbour = new GridPosition(x, z);
+                if (GridPosition.CheckIfInside(neighbour) && neighbour != targetGridPosition && !LevelGrid.Instance.HasAnyUnitOnGridPosition(neighbour))
+                {
+                    Debug.Log("ADDED NEIGHBOUR: " + neighbour + " / " + base.Unit.Id + " / " + _target);
+                    Debug.Log("ADDED PATH");
+                    targetNeighbours.Add(neighbour);
+                    targetNeighbourPaths.Add(Pathfinding.Instance.FindPath(GridPosition, neighbour));
+                }
+            }
+        }
+
+        List<GridPosition> pathGridPositionList = null;
+        int count = 100;
+        foreach (var path in targetNeighbourPaths)
+        {
+            if (path.Count() < count && path != new List<GridPosition> { new GridPosition (-1, -1)})
+            {
+                count = path.Count();
+                pathGridPositionList = path;
+            }
+        }
+
+        currentPositionIndex = 0;
+        positionList = new List<Vector3>();
+
+        if (pathGridPositionList != null)
+        {
+            foreach (GridPosition pathGridPosition in pathGridPositionList)
+            {
+                positionList.Add(LevelGrid.Instance.GetWorldPosition(pathGridPosition));
+                Pathfinding.Instance.UpdateNode(this, pathGridPositionList[pathGridPositionList.Count - 1]);
+                OnStartMoving?.Invoke(this, EventArgs.Empty);
+                isActive = true;
+            }
+        }
+        else
+        {
+            AttackTarget();
+        }
+
+    }
+
+    private void AttackTarget()
+    {
+        Debug.Log("ATTACK");
+        _target.Damage(this.Unit.Attack);
+        _attackCallback?.Invoke();
     }
 }

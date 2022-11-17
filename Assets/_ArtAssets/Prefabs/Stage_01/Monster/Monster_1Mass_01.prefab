@@ -157,6 +157,8 @@ MonoBehaviour:
   actionPointsText: {fileID: 4612808173407605182}
   unit: {fileID: 0}
   healthBarImage: {fileID: 3063663102687431041}
+  BossHPText: {fileID: 0}
+  healthSystem: {fileID: 0}
   isBoss: 0
 --- !u!114 &3356682424637462630
 MonoBehaviour:
@@ -181,8 +183,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3479434587083016422}
   - component: {fileID: -4074370416777491452}
-  - component: {fileID: -7107399793187841868}
-  - component: {fileID: 4093217587763956314}
   - component: {fileID: -2352273073457152028}
   m_Layer: 7
   m_Name: Monster_1Mass_01
@@ -221,34 +221,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &-7107399793187841868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2976700525459903488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360aedca94f314843babc73302f4d60e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxMoveDistance: 4
---- !u!114 &4093217587763956314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2976700525459903488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69ee499e1424f7b4e891523b78f31d7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalRotationValue: {x: 0, y: 0, z: 0, w: 0}
-  maxAttackDistance: 1
-  damage: 10
 --- !u!114 &-2352273073457152028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,8 +235,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   canAttack: 1
-  attackMode: 0
-  targetJob: 1
+  canStay: 1
+  attackMode: 1
+  targetJob: 0
 --- !u!1 &4855443866310743348
 GameObject:
   m_ObjectHideFlags: 0
