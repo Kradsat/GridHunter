@@ -52,4 +52,19 @@ public struct GridPosition : IEquatable<GridPosition>
     {
         return new GridPosition(a.x - b.x, a.z - b.z);
     }
+
+    public static bool CheckIfInside(GridPosition gridPosition)
+    {
+        if(gridPosition.x < 0 || gridPosition.z < 0)
+        {
+            return false;
+        }
+
+        if (gridPosition.x >= LevelGrid.Instance.GetWidth() || gridPosition.z >= LevelGrid.Instance.GetHeight())
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

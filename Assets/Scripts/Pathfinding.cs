@@ -48,7 +48,6 @@ public class Pathfinding : MonoBehaviour
         {
             var gridPos = unit.GetGridPosition();
             GetNode(gridPos.x, gridPos.z).SetIsWalkable(false);
-            Debug.Log(gridPos + " ADDED");
         }
 
         //GridPosition gridPosition = new GridPosition(x, z);
