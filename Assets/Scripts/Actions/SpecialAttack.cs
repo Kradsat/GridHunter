@@ -12,7 +12,7 @@ public class SpecialAttack : BaseAction
 
 
     [SerializeField] private int maxAttackDistance = 5;
-    [SerializeField] private int damage = 50;
+    [SerializeField] private int healAmount = 50;
 
     private enum State
     {
@@ -38,7 +38,7 @@ public class SpecialAttack : BaseAction
 
         stateTimer -= Time.deltaTime;
 
-        #region 3 states 
+        #region 3 states
         /*
         switch (state)
         {
@@ -116,7 +116,7 @@ public class SpecialAttack : BaseAction
                 state = State.SwingingSwordAfterHit;
                 float afterHitStateTime = 0.5f;
                 stateTimer = afterHitStateTime;
-                targetUnit.Damage(damage);
+                targetUnit.HealPlayer(healAmount);
                 OnAnySwordHit?.Invoke(this, EventArgs.Empty);
                 break;
             case State.SwingingSwordAfterHit:
@@ -131,7 +131,7 @@ public class SpecialAttack : BaseAction
 
     public override string GetActionName()
     {
-        return "Special Attack";
+        return "Heal Ally";
     }
 
     public override List<GridPosition> GetValidActionGridPositionList()
@@ -143,7 +143,7 @@ public class SpecialAttack : BaseAction
     public List<GridPosition> GetValidActionGridPositionList(GridPosition unitGridPosition)
     {
         List<GridPosition> validGridPositionsList = new List<GridPosition>();
-       
+
 
         for (int x = -maxAttackDistance; x <= maxAttackDistance; x++)
         {
@@ -167,7 +167,7 @@ public class SpecialAttack : BaseAction
 
                 UnitBase targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(testGridPosition);
 
-                if (targetUnit.IsEnemy == unit.IsEnemy)
+                if (!targetUnit.IsEnemy == unit.IsEnemy)
                 {
                     // Both Units on same 'team'
                     continue;

@@ -25,8 +25,9 @@ public class EnemyAction : UnitBase
 
     private Action _attackCallback = null;
 
-    public virtual void Update()
+    public  override void Update()
     {
+        base.Update();
         if (!isActive)
         {
             return;
@@ -64,7 +65,7 @@ public class EnemyAction : UnitBase
     }
 
     /// <summary>
-    /// UŒ‚
+    /// ï¿½Uï¿½ï¿½
     /// </summary>
     public virtual void Attack(Action callback = null)
     {

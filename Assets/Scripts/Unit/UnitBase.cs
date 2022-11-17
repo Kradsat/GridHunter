@@ -9,6 +9,7 @@ public class UnitBase : UnitStatus
     public static event EventHandler OnAnyUnitSpawn;
     public static event EventHandler OnAnyUnitDead;
     public static event EventHandler OnDamage;
+    public static event EventHandler OnHeal;
 
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool canAttack = true;
@@ -34,7 +35,7 @@ public class UnitBase : UnitStatus
         OnAnyUnitSpawn?.Invoke(this, EventArgs.Empty);
     }
 
-    void Update()
+    public virtual void Update()
     {
         GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         if (newGridPosition != gridPosition)
@@ -126,6 +127,13 @@ public class UnitBase : UnitStatus
         base.HP -= ( double )damageAmount;
 
         OnDamage?.Invoke( this, EventArgs.Empty );
+    }
+
+    public void HealPlayer(int healAmount)
+    {
+        base.HP += ( double )healAmount;
+
+        OnHeal?.Invoke( this, EventArgs.Empty );
     }
 
     private void HealthSystem_OnDead(object sender, EventArgs e)

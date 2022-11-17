@@ -54,14 +54,14 @@ public class UnityActionSystemUI : MonoBehaviour
         UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
         foreach (BaseAction baseAction in selectedUnit.GetBaseActionArray())
         {
-           if( baseAction.GetActionName( ) == "Move" && selectedUnit.GetActionPoints( ) == 2 
+           if( baseAction.GetActionName( ) == "Move" && selectedUnit.GetActionPoints( ) == 2
                 || baseAction.GetActionName( ) == "Stay" && selectedUnit.GetActionPoints( ) == 2 ) {
                 Transform actionButtonTransform = Instantiate(actionButtonPrefab, actionMoveButtonContainerTransform );
                 ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>();
                 actionButtonUI.SetBaseAction(baseAction);
                 actionButtonUIList.Add(actionButtonUI);
-            } else if( baseAction.GetActionName( ) == "Attack" && selectedUnit.GetActionPoints( ) < 2 
-                || baseAction.GetActionName( ) == "Special Attack" && selectedUnit.GetActionPoints( ) < 2 ) {
+            } else if( baseAction.GetActionName( ) == "Attack" && selectedUnit.GetActionPoints( ) < 2
+                || baseAction.GetActionName( ) == "Heal Ally" && selectedUnit.GetActionPoints( ) < 2 ) {
                 Transform actionButtonTransform = Instantiate( actionButtonPrefab, actionATKButtonContainerTransform );
                 ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>( );
                 actionButtonUI.SetBaseAction( baseAction );
@@ -97,7 +97,7 @@ public class UnityActionSystemUI : MonoBehaviour
     {
         UpdateActionPoints();
         CreateUnitActionButtons( );
-        
+
     }
 
     private void UpdateSelectedVisual()
