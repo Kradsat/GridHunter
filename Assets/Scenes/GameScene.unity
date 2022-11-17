@@ -171,6 +171,7 @@ MonoBehaviour:
   unitList: []
   allyUnitList: []
   enemyUnitList: []
+  enemyActionList: []
   Win: {fileID: 1988345908}
   Lose: {fileID: 120338237}
 --- !u!1 &20212765
@@ -6982,6 +6983,8 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 82c4a7860eadc4f45b6c1d708a48c959, type: 2}
   - gridVisualType: 3
     material: {fileID: 2100000, guid: d3e3d3a1ea2b6ff4dbd15e52adedf26b, type: 2}
+  - gridVisualType: 4
+    material: {fileID: 2100000, guid: 6e93bff4b6804014f86a3fad6b6f75a7, type: 2}
 --- !u!4 &1441736803
 Transform:
   m_ObjectHideFlags: 0

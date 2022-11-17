@@ -47,7 +47,6 @@ public class BossAction : EnemyAction
 
     public void Attack()
     {
-
         switch (_turn % (int)TURN_ACTION.MAX)
         {
             case (int)TURN_ACTION.Attack:
@@ -65,7 +64,8 @@ public class BossAction : EnemyAction
 
     private void NormalAttack()
     {
-        base.GetAttackTarget();
+        // attack
+        var target = base.GetAttackTarget();
     }
 
     private void PickAoeType()
@@ -75,6 +75,10 @@ public class BossAction : EnemyAction
 
     private void AreaAttack()
     {
+        foreach(var gridPos in _area[_aoe_type])
+        {
+            //attack
+        }
         _aoe_type = (int)AOE_TYPE.MAX;
     }
 }
