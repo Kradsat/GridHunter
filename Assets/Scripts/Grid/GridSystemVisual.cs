@@ -174,7 +174,10 @@ public class GridSystemVisual : MonoBehaviour
     {
         foreach(GridPosition gridPosition in gridPositions)
         {
-            gridSystemVisualSingleArray[gridPosition.x, gridPosition.z].Show(GetGridVisualTypeMaterial(GridVisualType.Orange));
+            if (GridPosition.CheckIfInside(gridPosition))
+            {
+                gridSystemVisualSingleArray[gridPosition.x, gridPosition.z].Show(GetGridVisualTypeMaterial(GridVisualType.Orange));
+            }
         }
     }
 }

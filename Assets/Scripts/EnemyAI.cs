@@ -73,6 +73,7 @@ public class EnemyAI : MonoBehaviour
             Debug.Log("ENEMY ATTACK " + enemy.Unit.Id);
             enemy.Attack(() => {
                 _enemiesActionCount++;
+                Debug.Log("enemycount: " + _enemiesActionCount);
                 if (_enemiesActionCount >= (UnitManager.Instance.GetEnemyActionList()).Count)
                 {
                     TurnSystem.Instance.NextTurn();

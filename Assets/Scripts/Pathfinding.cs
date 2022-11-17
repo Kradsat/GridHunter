@@ -152,7 +152,6 @@ public class Pathfinding : MonoBehaviour
             }
         }
 
-        Debug.Log("not found");
         //not path found
         return null;
     }

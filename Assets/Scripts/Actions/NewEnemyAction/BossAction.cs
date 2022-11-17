@@ -30,8 +30,6 @@ public class BossAction : EnemyAction
     private int _turn = 0;
     private int _aoe_type = (int)AOE_TYPE.MAX;
 
-    private Action _attackCallback = null;
-
     // 四角攻撃のエリア
     private static List<GridPosition> _square_area_list = new List<GridPosition>();
     // 十字攻撃のエリア
@@ -47,7 +45,6 @@ public class BossAction : EnemyAction
     public override void Init(UnitStruct unit)
     {
         base.Init(unit);
-        Debug.Log(base.GridPosition);
         var xPos = base.GridPosition.x - 1;
         var zPos = base.GridPosition.z - 1;
 
@@ -55,8 +52,10 @@ public class BossAction : EnemyAction
         SetCrossArea(xPos, zPos);
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
+
         // AOEタイプがセットした際、予測エリアを表示する
         if(_aoe_type != (int)AOE_TYPE.MAX)
         {
@@ -67,12 +66,11 @@ public class BossAction : EnemyAction
     // 攻撃する際に呼ぶ
     public override void Attack(Action callback = null)
     {
-        _attackCallback = callback;
         _turn = TurnSystem.Instance.TurnNumber / 2;
         switch (_turn % (int)TURN_ACTION.MAX)
         {
             case (int)TURN_ACTION.Attack:
-                NormalAttack();
+                NormalAttack(callback);
                 break;
             case (int)TURN_ACTION.Predict:
                 NormalAttack();
@@ -87,9 +85,10 @@ public class BossAction : EnemyAction
     /// <summary>
     /// 普通攻撃
     /// </summary>
-    private void NormalAttack()
+    private void NormalAttack(Action callback = null)
     {
-        base.Attack(_attackCallback);
+        Debug.Log("NORMAL ATTACK");
+        base.Attack(callback);
     }
 
     /// <summary>
@@ -122,9 +121,9 @@ public class BossAction : EnemyAction
     /// </summary>
     private void SetSquareArea(int x, int z)
     {
-        for (var zPos = x - SQUARE_WIDTH; zPos <= x + SQUARE_WIDTH + BOSS_SIZE; zPos++)
+        for (var zPos = x - SQUARE_WIDTH; zPos < x + SQUARE_WIDTH + BOSS_SIZE; zPos++)
         {
-            for (var xPos = z - SQUARE_WIDTH; xPos <= z + SQUARE_WIDTH + BOSS_SIZE; xPos++)
+            for (var xPos = z - SQUARE_WIDTH; xPos < z + SQUARE_WIDTH + BOSS_SIZE; xPos++)
             {
                 _square_area_list.Add(new GridPosition(zPos, xPos));
             }

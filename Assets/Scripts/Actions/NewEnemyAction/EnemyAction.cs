@@ -23,15 +23,16 @@ public class EnemyAction : UnitBase
 
     private Action _attackCallback = null;
 
-    private void Update()
+    public virtual void Update()
     {
         if (!isActive)
         {
             return;
         }
 
-        if (base.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
+        if (this.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
         {
+            Debug.Log("BOSS ATTACK");
             AttackTarget();
             return;
         }
@@ -66,9 +67,9 @@ public class EnemyAction : UnitBase
     /// </summary>
     public virtual void Attack(Action callback = null)
     {
+        _attackCallback = callback;
         _target = GetAttackTarget();
         FindPathToTarget();
-        _attackCallback = callback;
     }
 
     public UnitBase GetAttackTarget()
@@ -140,7 +141,7 @@ public class EnemyAction : UnitBase
     {
         var targetGridPosition = _target.GridPosition;
 
-        if(base.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
+        if(this.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
         {
             isActive = true;
             return;
@@ -154,16 +155,10 @@ public class EnemyAction : UnitBase
             for (int z = targetGridPosition.z - 1; z <= targetGridPosition.z + 1; z++)
             {
                 var neighbour = new GridPosition(x, z);
-                if(base.Unit.Id == 6)
-                {
-                    Debug.Log(neighbour);
-                }
                 if (GridPosition.CheckIfInside(neighbour) && neighbour != targetGridPosition && !LevelGrid.Instance.HasAnyUnitOnGridPosition(neighbour))
                 {
                     if(Pathfinding.Instance.FindPath(GridPosition, neighbour) != null)
                     {
-                        Debug.Log("ADDED NEIGHBOUR: " + neighbour + " / " + base.Unit.Id + " / " + _target);
-                        Debug.Log("ADDED PATH");
                         targetNeighbours.Add(neighbour);
                         targetNeighbourPaths.Add(Pathfinding.Instance.FindPath(GridPosition, neighbour));
                     }
@@ -204,7 +199,6 @@ public class EnemyAction : UnitBase
 
     private void AttackTarget()
     {
-        Debug.Log("ATTACK");
         isActive = false;
         _target.Damage(this.Unit.Attack);
         _attackCallback?.Invoke();
