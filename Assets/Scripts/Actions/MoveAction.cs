@@ -94,13 +94,8 @@ public class MoveAction : BaseAction
     public override void TakeAction(GridPosition targetGridPosition, Action onActionComplete)
     {
         List<GridPosition> pathGridPositionList = Pathfinding.Instance.FindPath(unit.GetGridPosition(), targetGridPosition);
-        currentPositionIndex = 0;
+       currentPositionIndex = 0;
         positionList = new List<Vector3>();
-        
-        if (pathGridPositionList.Count > 4)
-        {
-            pathGridPositionList.RemoveRange(4, pathGridPositionList.Count - 4);
-        }
 
         foreach (GridPosition pathGridPosition in pathGridPositionList)
         {
