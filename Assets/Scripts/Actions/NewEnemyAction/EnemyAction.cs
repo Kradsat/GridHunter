@@ -66,12 +66,16 @@ public class EnemyAction : UnitBase
         }
     }
 
+    /// <summary>
+    /// çUåÇ
+    /// </summary>
     public virtual void Attack(Action callback = null)
     {
         _target = GetAttackTarget();
-        Move();
+        FindPathToTarget();
         _attackCallback = callback;
     }
+
     public UnitBase GetAttackTarget()
     {
         UnitBase _target = null;
@@ -137,7 +141,7 @@ public class EnemyAction : UnitBase
         return _target;
     }
 
-    public void Move()
+    public void FindPathToTarget()
     {
         var targetGridPosition = _target.GridPosition;
 
@@ -150,17 +154,24 @@ public class EnemyAction : UnitBase
         var unitPos = base.GridPosition;
         var targetNeighbours = new List<GridPosition>();
         var targetNeighbourPaths = new List<List<GridPosition>>();
-        for (int x = targetGridPosition.x - 1; x < targetGridPosition.x + 1; x++)
+        for (int x = targetGridPosition.x - 1; x <= targetGridPosition.x + 1; x++)
         {
-            for (int z = targetGridPosition.z - 1; z < targetGridPosition.z + 1; z++)
+            for (int z = targetGridPosition.z - 1; z <= targetGridPosition.z + 1; z++)
             {
                 var neighbour = new GridPosition(x, z);
+                if(base.Unit.Id == 6)
+                {
+                    Debug.Log(neighbour);
+                }
                 if (GridPosition.CheckIfInside(neighbour) && neighbour != targetGridPosition && !LevelGrid.Instance.HasAnyUnitOnGridPosition(neighbour))
                 {
-                    Debug.Log("ADDED NEIGHBOUR: " + neighbour + " / " + base.Unit.Id + " / " + _target);
-                    Debug.Log("ADDED PATH");
-                    targetNeighbours.Add(neighbour);
-                    targetNeighbourPaths.Add(Pathfinding.Instance.FindPath(GridPosition, neighbour));
+                    if(Pathfinding.Instance.FindPath(GridPosition, neighbour) != null)
+                    {
+                        Debug.Log("ADDED NEIGHBOUR: " + neighbour + " / " + base.Unit.Id + " / " + _target);
+                        Debug.Log("ADDED PATH");
+                        targetNeighbours.Add(neighbour);
+                        targetNeighbourPaths.Add(Pathfinding.Instance.FindPath(GridPosition, neighbour));
+                    }
                 }
             }
         }
@@ -169,7 +180,7 @@ public class EnemyAction : UnitBase
         int count = 100;
         foreach (var path in targetNeighbourPaths)
         {
-            if (path.Count() < count && path != new List<GridPosition> { new GridPosition (-1, -1)})
+            if (path.Count() < count)
             {
                 count = path.Count();
                 pathGridPositionList = path;

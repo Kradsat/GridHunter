@@ -72,75 +72,13 @@ public class EnemyAI : MonoBehaviour
         {
             Debug.Log("ENEMY ATTACK " + enemy.Unit.Id);
             enemy.Attack(() => {
-            _enemiesActionCount++;
+                _enemiesActionCount++;
                 if (_enemiesActionCount >= (UnitManager.Instance.GetEnemyActionList()).Count)
                 {
                     TurnSystem.Instance.NextTurn();
                 }
             });
         }
-    }
-
-    private bool TryTakeEnemyAIAction(EnemyAction enemy, Action onEnemyAIActionComplete)
-    {
-        EnemyAIAction bestEnemyAIAction = null;
-        BaseAction bestBaseAction = null;
-        foreach (BaseAction baseAction in enemy.GetBaseActionArray())
-        {
-            if (!enemy.CanSpendActionPointsToTakeAction(baseAction))
-            {
-                continue;
-            }
-            if (bestEnemyAIAction == null)
-            {
-                bestEnemyAIAction = baseAction.GetBestEnemyAIAction();
-                bestBaseAction = baseAction;
-            }
-            else
-            {
-                EnemyAIAction testEnemyAIAction = baseAction.GetBestEnemyAIAction();
-                if (testEnemyAIAction != null && testEnemyAIAction.actionValue > bestEnemyAIAction.actionValue)
-                {
-                    bestEnemyAIAction = testEnemyAIAction;
-                    bestBaseAction = baseAction;
-                }
-            }
-        }
-        if (bestEnemyAIAction != null && enemy.TrySpendActionPointsToTakeAction(bestBaseAction))
-        {
-            bestBaseAction.TakeAction(bestEnemyAIAction.gridPosition, onEnemyAIActionComplete);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
-        //Debug.Log("???????????? " + enemy.Unit.Id);
-        //BaseAction _baseAction = null;
-        //UnitBase _target = enemy.GetAttackTarget();
-        //foreach (BaseAction baseAction in enemy.GetBaseActionArray())
-        //{
-        //    Debug.Log("!!!!!!!!!!!!!! " + enemy.Unit.Id);
-        //    if (!enemy.CanSpendActionPointsToTakeAction(baseAction))
-        //    {
-        //        //enemy cannot make the action
-        //        continue;
-        //    }
-            
-        //    _baseAction = baseAction;
-        //}
-
-        //Debug.Log("Base; " + _baseAction);
-        //if (enemy.TrySpendActionPointsToTakeAction(_baseAction))
-        //{
-        //    _baseAction.TakeAction(_target.GetGridPosition(), onEnemyAIActionComplete);
-        //    return true;
-        //}
-        //else
-        //{
-        //    return false;
-        //}
     }
 }
 

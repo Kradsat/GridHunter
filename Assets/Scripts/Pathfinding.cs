@@ -154,7 +154,7 @@ public class Pathfinding : MonoBehaviour
 
         Debug.Log("not found");
         //not path found
-        return new List<GridPosition> { new GridPosition(-1, -1) };
+        return null;
     }
 
     public int CalculateDistance(GridPosition gridPositionA, GridPosition gridPositionB)
