@@ -11,6 +11,7 @@ public static class MapData
         ROD,
         ENEMY,
         ENEMY2,
+        ENEMY3,
         BOSS,
         MAX,
     }

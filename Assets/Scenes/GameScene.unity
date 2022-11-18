@@ -5937,6 +5937,7 @@ MonoBehaviour:
   - {fileID: 7126295819214467793, guid: 39a7b6d6a98ac6446b8d9075866b6d11, type: 3}
   - {fileID: 2976700525459903488, guid: fb7a80b57f3158f4aa1bb6a8659d9604, type: 3}
   - {fileID: 459611253589615705, guid: fb783d5ddd2ca8846bf681090e4de6a8, type: 3}
+  - {fileID: 8845809463210739547, guid: ef09042d89120d04da27bf0a75371ff4, type: 3}
   - {fileID: 5803220951515102136, guid: 8b3b070c131b0564f9303d0e2b35d62d, type: 3}
   dataLoader: {fileID: 2056676127}
   unitActionSystem: {fileID: 1829696810}
