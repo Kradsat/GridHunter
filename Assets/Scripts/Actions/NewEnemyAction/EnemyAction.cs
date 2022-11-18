@@ -265,4 +265,9 @@ public class EnemyAction : UnitBase
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        UnitManager.Instance.RemoveEnemyAction(this);
+    }
 }

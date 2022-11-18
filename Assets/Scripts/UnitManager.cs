@@ -54,7 +54,7 @@ public class UnitManager : MonoBehaviour
     private void Unit_OnAnyUnitDead(object sender, EventArgs e)
     {
         UnitBase unit = sender as UnitBase;
-
+        
         Debug.Log(unit + "died");
 
         unitList.Remove(unit);
@@ -62,7 +62,7 @@ public class UnitManager : MonoBehaviour
         if (unit.IsEnemy)
         {
             enemyUnitList.Remove(unit);
-            if( enemyUnitList.Count == 0 ) {
+            if ( enemyUnitList.Count == 0 ) {
                 Win.SetActive( true );
             }
         }
@@ -99,5 +99,10 @@ public class UnitManager : MonoBehaviour
         {
             enemy.SetPlayerUnitList = allyUnitList;
         }
+    }
+
+    public void RemoveEnemyAction(EnemyAction enemy)
+    {
+        enemyActionList.Remove(enemy);
     }
 }
