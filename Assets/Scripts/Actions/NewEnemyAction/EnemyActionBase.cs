@@ -6,7 +6,8 @@ public static class EnemyActionBase
 {
     public enum AttackMode
     {
-        HP = 0,
+        HP_HIGH = 0,
+        HP_LOW,
         Distance,
         Job,
     }

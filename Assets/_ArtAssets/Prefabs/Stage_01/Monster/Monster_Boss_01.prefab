@@ -1251,7 +1251,7 @@ MonoBehaviour:
   canMove: 0
   canAttack: 1
   canStay: 1
-  _attackMode: 2
+  _attackMode: 0
   _targetJob: 04000000020000000100000003000000
 --- !u!1 &6286836425459086018
 GameObject:

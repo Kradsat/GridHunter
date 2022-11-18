@@ -82,7 +82,10 @@ public class EnemyAction : UnitBase
 
         switch (_attackMode)
         {
-            case EnemyActionBase.AttackMode.HP:
+            case EnemyActionBase.AttackMode.HP_HIGH:
+                _target = GetHighestHPUnit();
+                break;
+            case EnemyActionBase.AttackMode.HP_LOW:
                 _target = GetLowestHPUnit();
                 break;
             case EnemyActionBase.AttackMode.Distance:
@@ -92,6 +95,29 @@ public class EnemyAction : UnitBase
                 _target = GetSpecificJobUnit();
                 break;
         }
+    }
+
+    private UnitBase GetHighestHPUnit()
+    {
+        if (_playerUnitList.Count <= 0)
+        {
+            return null;
+        }
+
+        var _target = _playerUnitList[0];
+        double _highestHP = 0;
+
+        foreach (var unit in _playerUnitList)
+        {
+            var HP = unit.HP;
+            if (_highestHP < HP)
+            {
+                _highestHP = HP;
+                _target = unit;
+            }
+        }
+
+        return _target;
     }
 
     private UnitBase GetLowestHPUnit()
