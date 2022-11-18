@@ -132,6 +132,9 @@ public class UnitBase : UnitStatus
     public void Damage(int damageAmount, Action callback = null)
     {
         base.HP -= (double)damageAmount;
+        if( base.HP < 0 ) {
+            base.HP = 0;
+        }
         callback?.Invoke();
         OnHPChange?.Invoke(this, EventArgs.Empty);
     }
