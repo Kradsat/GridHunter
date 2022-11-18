@@ -60,6 +60,7 @@ public class MoveAction : BaseAction
                 OnStopMoving?.Invoke(this, EventArgs.Empty);
                 ActionComplete();
                 unit.canMove = false;
+                unit.canStay = false;
                 UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit( );
                 if ( !unit.IsEnemy )
                 foreach( BaseAction baseAction in selectedUnit.GetBaseActionArray( ) ) {
