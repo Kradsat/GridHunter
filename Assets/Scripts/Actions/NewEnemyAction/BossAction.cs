@@ -22,6 +22,8 @@ public class BossAction : EnemyAction
         MAX,
     }
 
+    [SerializeField] private int _aoe_damage = 280;
+
     //　ボスサイズ
     private const int BOSS_SIZE = 4;
     // 四角範囲攻撃のサイズ
@@ -112,7 +114,7 @@ public class BossAction : EnemyAction
         {
             if (_area[_aoe_type].Any(_ => _ == unit.GridPosition))
             {
-                unit.Damage(this.Unit.Attack, ()=> { base.CheckTargetJobAlive(); });
+                unit.Damage(_aoe_damage, ()=> { base.CheckTargetJobAlive(); });
             }
         }
         _aoe_type = (int)AOE_TYPE.MAX;
