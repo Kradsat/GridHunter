@@ -117,6 +117,7 @@ public class UnitBase : UnitStatus
             OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
             canMove = true;
             canAttack = true;
+            canStay = true;
         }
 
         if ( base.HP <= 0)
