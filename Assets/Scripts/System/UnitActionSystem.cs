@@ -162,7 +162,14 @@ public class UnitActionSystem : MonoBehaviour
         if( unit.GetActionPoints( ) == 2 ) {
             SetSelectedAction(unit.GetAction<MoveAction>());
         } else {
-            SetSelectedAction( unit.GetAction<AttackAction>( ) );
+            foreach( BaseAction baseAction in selectedUnit.GetBaseActionArray( ) ) {
+                if( baseAction.GetActionName( ) == "Attack" ) {
+                    SetSelectedAction( unit.GetAction<MoveAction>( ) );
+                } else if( baseAction.GetActionName( ) == "Heal Ally") {
+                    SetSelectedAction( unit.GetAction<SpecialAttack>( ) );
+                }
+
+            }
         }
 
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);

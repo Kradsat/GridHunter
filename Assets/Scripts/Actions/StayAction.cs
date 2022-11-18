@@ -18,7 +18,7 @@ public class StayAction : BaseAction
         unit.canMove = false;
         UnitBase selectedUnit = UnitActionSystem.Instance.GetSelectedUnit( );
         foreach( BaseAction baseAction in selectedUnit.GetBaseActionArray( ) ) {
-            if( baseAction.GetActionName( ) == "Attack" ) {
+            if( baseAction.GetActionName( ) == "Attack" || baseAction.GetActionName( ) == "Heal Ally" ) {
                 UnitActionSystem.Instance.SetSelectedAction( baseAction );
                 break;
             }
