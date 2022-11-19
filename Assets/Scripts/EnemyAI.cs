@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class EnemyAI : MonoBehaviour
 
     private State state;
     private float timer;
-
     private int _enemiesActionCount = 0;
+    private bool _isAttacking = false;
 
     private void Awake()
     {
@@ -42,10 +43,11 @@ public class EnemyAI : MonoBehaviour
                 {
                     state = State.Busy;
                     _enemiesActionCount = 0;
-                    TryTakeEnemiesAIAction(SetStateTakingTurn);
+                    //TryTakeEnemiesAIAction();
                 }
                 break;
             case State.Busy:
+                StartCoroutine(TakeEnemyAction(_enemiesActionCount));
                 break;
         }
     }
@@ -65,11 +67,13 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void TryTakeEnemiesAIAction(Action onEnemyAIActionComplete)
+    private void TryTakeEnemiesAIAction()
     {
         foreach (var enemy in UnitManager.Instance.GetEnemyActionList())
         {
+            _isAttacking = true;
             enemy.Attack(() => {
+                _isAttacking = false;
                 _enemiesActionCount++;
                 if (_enemiesActionCount >= (UnitManager.Instance.GetEnemyActionList()).Count)
                 {
@@ -77,6 +81,28 @@ public class EnemyAI : MonoBehaviour
                 }
             });
         }
+    }
+
+    private IEnumerator TakeEnemyAction(int index)
+    {
+        if (_isAttacking)
+        {
+            yield break;
+        }
+
+        Debug.Log("ATTACK ENTER");
+        _isAttacking = true;
+
+        UnitManager.Instance.GetEnemyActionList()[index].Attack(() => {
+            Debug.Log("Attack Callback");
+            _enemiesActionCount++;
+            _isAttacking = false;
+            if (_enemiesActionCount >= (UnitManager.Instance.GetEnemyActionList()).Count)
+            {
+                _enemiesActionCount = 0;
+                TurnSystem.Instance.NextTurn();
+            }
+        });
     }
 }
 

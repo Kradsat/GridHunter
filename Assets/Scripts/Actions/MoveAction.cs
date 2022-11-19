@@ -32,26 +32,20 @@ public class MoveAction : BaseAction
     // Update is called once per frame
     void Update()
     {
-
         if (!isActive)
         {
             return;
         }
-        Vector3 targetPosition = positionList[currentPositionIndex];
-        Vector3 moveDirection = (targetPosition - transform.position).normalized;
 
-        float rotateSpeed = 20f;
-        transform.forward = Vector3.Lerp( transform.forward, moveDirection, Time.deltaTime * rotateSpeed );
+        Vector3 targetPosition = positionList[currentPositionIndex];
 
         float stoppingDistance = .1f;
-        if (Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
+        if (Vector3.Distance(transform.position, targetPosition) >= stoppingDistance)
         {
-
             float moveSpeed = 4f;
-            transform.position += moveDirection * moveSpeed * Time.deltaTime;
-
-
-
+            // transform.position += moveDirection * moveSpeed * Time.deltaTime;
+            var step = moveSpeed * Time.deltaTime; // calculate distance to move
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
         }
         else
         {
@@ -70,9 +64,7 @@ public class MoveAction : BaseAction
                     }
                 }
             }
-
             //transform.rotation = Quaternion.Slerp(transform.rotation, originalRotationValue, Time.deltaTime * rotationResetSpeed);
-
 
         }
 

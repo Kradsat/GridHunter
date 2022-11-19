@@ -52,6 +52,5 @@ public class UnitSpawnSystem : MonoBehaviour
 
         unityActionSystemUI.Initialize();
         gridSystemVisual.Initialize();
-        UnitManager.Instance.SetUnitListToEnemy();
     }
 }

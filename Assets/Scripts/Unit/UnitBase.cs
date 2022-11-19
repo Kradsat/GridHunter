@@ -119,15 +119,6 @@ public class UnitBase : UnitStatus
             canAttack = true;
             canStay = true;
         }
-
-        if ( base.HP <= 0)
-        {
-            LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
-            Destroy(gameObject);
-            TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
-            OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
-        }
-
     }
 
     public void Damage(int damageAmount, Action callback = null)
@@ -138,6 +129,14 @@ public class UnitBase : UnitStatus
         }
         callback?.Invoke();
         OnHPChange?.Invoke(this, EventArgs.Empty);
+
+        if (base.HP <= 0)
+        {
+            LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
+            Destroy(gameObject);
+            TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
+            OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public void HealPlayer(int healAmount)

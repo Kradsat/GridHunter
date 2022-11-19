@@ -110,11 +110,11 @@ public class BossAction : EnemyAction
             PickAoeType();
         }
 
-        foreach(var unit in UnitManager.Instance.GetAllyUnitList())
+        foreach(var targetGrid in _area[_aoe_type])
         {
-            if (_area[_aoe_type].Any(_ => _ == unit.GridPosition))
+            if(UnitManager.Instance.GetAllyUnitList().Any(_ => _.GridPosition == targetGrid))
             {
-                unit.Damage(_aoe_damage, ()=> { base.CheckTargetJobAlive(); });
+                UnitManager.Instance.GetAllyUnitList().Find(_ => _.GridPosition == targetGrid).Damage(_aoe_damage);
             }
         }
         _aoe_type = (int)AOE_TYPE.MAX;

@@ -32,14 +32,17 @@ public class UnityActionSystemUI : MonoBehaviour
         UpdateSelectedVisual();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void CreateUnitActionButtons()
     {
+        if(actionMoveButtonContainerTransform == null)
+        {
+            actionMoveButtonContainerTransform = GameObject.Find("UnitMoveActionButtonContainer").transform;
+        }
+        if (actionATKButtonContainerTransform == null)
+        {
+            actionATKButtonContainerTransform = GameObject.Find("UnitATKActionButtonContainer").transform;
+        }
+
         foreach (Transform buttonTransform in actionMoveButtonContainerTransform )
         {
             Destroy(buttonTransform.gameObject);
@@ -56,13 +59,13 @@ public class UnityActionSystemUI : MonoBehaviour
         {
            if( baseAction.GetActionName( ) == "Move" && selectedUnit.GetActionPoints( ) == 2
                 || baseAction.GetActionName( ) == "Stay" && selectedUnit.GetActionPoints( ) == 2 ) {
-                Transform actionButtonTransform = Instantiate(actionButtonPrefab, actionMoveButtonContainerTransform );
+                var actionButtonTransform = Instantiate(actionButtonPrefab, actionMoveButtonContainerTransform );
                 ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>();
                 actionButtonUI.SetBaseAction(baseAction);
                 actionButtonUIList.Add(actionButtonUI);
             } else if( baseAction.GetActionName( ) == "Attack" && selectedUnit.GetActionPoints( ) < 2
                 || baseAction.GetActionName( ) == "Heal Ally" && selectedUnit.GetActionPoints( ) < 2 ) {
-                Transform actionButtonTransform = Instantiate( actionButtonPrefab, actionATKButtonContainerTransform );
+                var actionButtonTransform = Instantiate( actionButtonPrefab, actionATKButtonContainerTransform );
                 ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>( );
                 actionButtonUI.SetBaseAction( baseAction );
                 actionButtonUIList.Add( actionButtonUI );

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class UnitManager : MonoBehaviour
 {
@@ -69,7 +70,7 @@ public class UnitManager : MonoBehaviour
         else
         {
             allyUnitList.Remove(unit);
-            if( allyUnitList.Count == 0 ) {
+            if ( allyUnitList.Count == 0 ) {
                 Lose.SetActive( true );
             }
         }
@@ -83,22 +84,10 @@ public class UnitManager : MonoBehaviour
     {
         return allyUnitList;
     }
-    public List<UnitBase> GetEnemyUnitList()
-    {
-        return enemyUnitList;
-    }
 
     public List<EnemyAction> GetEnemyActionList()
     {
-        return enemyActionList;
-    }
-
-    public void SetUnitListToEnemy()
-    {
-        foreach(var enemy in enemyActionList)
-        {
-            enemy.SetPlayerUnitList = allyUnitList;
-        }
+        return enemyActionList.OrderBy(_ => _.Unit.Id).ToList();
     }
 
     public void RemoveEnemyAction(EnemyAction enemy)

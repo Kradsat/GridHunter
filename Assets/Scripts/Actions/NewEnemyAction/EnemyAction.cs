@@ -9,27 +9,32 @@ public class EnemyAction : UnitBase
     public event EventHandler OnStopMoving;
     public event EventHandler OnAttackStart;
 
-    [SerializeField] private EnemyActionBase.AttackMode _attackMode;
+    [SerializeField] private float _rotateSpeed = 20f;
+    [SerializeField] private float _stoppingDistance = .1f;
+    [SerializeField] private float _moveSpeed = 4f;
 
+    [SerializeField] private EnemyActionBase.AttackMode _attackMode;
+    [SerializeField] private List<EnemyActionBase.TargetJob> _targetJob = new List<EnemyActionBase.TargetJob> {
+        EnemyActionBase.TargetJob.ROD , EnemyActionBase.TargetJob.SWORD, EnemyActionBase.TargetJob.HAMMER, EnemyActionBase.TargetJob.LANCE
+    };
+    [SerializeField] private int _targetIndex = 0;
+
+    [SerializeField] private int _moveDistance = 4;
+    [SerializeField] private int _attackDistance = 1;
+
+    private Action _attackCallback = null;
+    
     private int currentPositionIndex = 0;
     private List<Vector3> positionList;
     private bool isActive = false;
 
     private UnitBase _target = null;
-
     private List<UnitBase> _playerUnitList;
-    public List<UnitBase> SetPlayerUnitList { set { _playerUnitList = value; } }
-
-    [SerializeField] private List<EnemyActionBase.TargetJob> _targetJob = new List<EnemyActionBase.TargetJob> {
-        EnemyActionBase.TargetJob.ROD , EnemyActionBase.TargetJob.SWORD, EnemyActionBase.TargetJob.HAMMER, EnemyActionBase.TargetJob.LANCE
-    };
-
-    private Action _attackCallback = null;
+    private List<GridPosition> pathGridPositionList = null;
 
     public override void Update()
     {
         base.Update();
-        GetAttackTarget();
 
         if (!isActive)
         {
@@ -43,36 +48,46 @@ public class EnemyAction : UnitBase
         }
 
         Vector3 targetPosition = positionList[currentPositionIndex];
-        Vector3 moveDirection = (targetPosition - transform.position).normalized;
 
-        float rotateSpeed = 20f;
-        transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
-
-        float stoppingDistance = .1f;
-        if (Vector3.Distance(transform.position, targetPosition) > stoppingDistance)
+        if (Vector3.Distance(transform.position, targetPosition) > _stoppingDistance)
         {
-            float moveSpeed = 4f;
-            transform.position += moveDirection * moveSpeed * Time.deltaTime;
+            var step = _moveSpeed * Time.deltaTime; // calculate distance to move
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+            Pathfinding.Instance.UpdateNode(this, pathGridPositionList[currentPositionIndex]);
         }
         else
         {
-            currentPositionIndex++;
-            if (currentPositionIndex >= positionList.Count)
+            if(currentPositionIndex < _moveDistance)
+            {
+                currentPositionIndex++;
+                if (currentPositionIndex >= positionList.Count)
+                {
+                    isActive = false;
+                    OnStopMoving?.Invoke(this, EventArgs.Empty);
+                    this.canMove = false;
+                    AttackTarget();
+                }
+            }
+            else
             {
                 isActive = false;
                 OnStopMoving?.Invoke(this, EventArgs.Empty);
                 this.canMove = false;
-                AttackTarget();
+                _attackCallback?.Invoke();
             }
+
         }
     }
 
-    /// <summary>
-    /// �U��
-    /// </summary>
     public virtual void Attack(Action callback = null)
     {
         _attackCallback = callback;
+        GetAttackTarget();
+        if (_playerUnitList.Count == 0)
+        {
+            callback?.Invoke();
+            return;
+        }
         FindPathToTarget();
     }
 
@@ -95,6 +110,7 @@ public class EnemyAction : UnitBase
                 _target = GetSpecificJobUnit();
                 break;
         }
+
     }
 
     private UnitBase GetHighestHPUnit()
@@ -127,7 +143,7 @@ public class EnemyAction : UnitBase
             return null;
         }
 
-        var _target = _playerUnitList[0];
+        var target = _playerUnitList[0];
         double _lowestHP = 1000;
 
         foreach (var unit in _playerUnitList)
@@ -136,11 +152,11 @@ public class EnemyAction : UnitBase
             if(_lowestHP > HP)
             {
                 _lowestHP = HP;
-                _target = unit;
+                target = unit;
             }
         }
 
-        return _target;
+        return target;
     }
 
     private UnitBase GetClosestUnit()
@@ -150,7 +166,7 @@ public class EnemyAction : UnitBase
             return null;
         }
 
-        var _target = _playerUnitList[0];
+        var target = _playerUnitList[0];
         float _shortestDistance = 1000;
         var _selfVec2 = new Vector2(base.GridPosition.x, base.GridPosition.z);
 
@@ -161,23 +177,33 @@ public class EnemyAction : UnitBase
             if (_shortestDistance > distance)
             {
                 _shortestDistance = distance;
-                _target = unit;
+                target = unit;
             }
         }
-        return _target;
+        return target;
     }
 
     public UnitBase GetSpecificJobUnit()
     {
-        var _playerUnitList = UnitManager.Instance.GetAllyUnitList();
+        var target = _playerUnitList[0];
+
+        if (_playerUnitList.Count != _targetJob.Count)
+        {
+            _targetIndex = (_targetJob.Count - _playerUnitList.Count);
+            Debug.Log("TARGET INDEX: " + _targetIndex);
+        }
+
         if(_targetJob.Count <= 0)
         {
             return null;
         }
-        var _target = _playerUnitList.FirstOrDefault(_ => _.Unit.Id == (int)_targetJob[0]);
 
-        return _target;
+        target = _playerUnitList.FirstOrDefault(_ => _.Unit.Id == (int)_targetJob[_targetIndex]);
+
+        return target;
     }
+
+
 
     public void FindPathToTarget()
     {
@@ -193,6 +219,7 @@ public class EnemyAction : UnitBase
         var unitPos = base.GridPosition;
         var targetNeighbours = new List<GridPosition>();
         var targetNeighbourPaths = new List<List<GridPosition>>();
+
         for (int x = targetGridPosition.x - 1; x <= targetGridPosition.x + 1; x++)
         {
             for (int z = targetGridPosition.z - 1; z <= targetGridPosition.z + 1; z++)
@@ -209,7 +236,7 @@ public class EnemyAction : UnitBase
             }
         }
 
-        List<GridPosition> pathGridPositionList = null;
+        pathGridPositionList = null;
         int count = 100;
         foreach (var path in targetNeighbourPaths)
         {
@@ -228,7 +255,6 @@ public class EnemyAction : UnitBase
             foreach (GridPosition pathGridPosition in pathGridPositionList)
             {
                 positionList.Add(LevelGrid.Instance.GetWorldPosition(pathGridPosition));
-                Pathfinding.Instance.UpdateNode(this, pathGridPositionList[pathGridPositionList.Count - 1]);
                 OnStartMoving?.Invoke(this, EventArgs.Empty);
                 isActive = true;
             }
@@ -243,27 +269,8 @@ public class EnemyAction : UnitBase
     private void AttackTarget()
     {
         isActive = false;
-        _target.Damage(this.Unit.Attack, () =>
-        {
-            Debug.Log("CALLBACK");
-            CheckTargetJobAlive();
-        });
+        _target.Damage(this.Unit.Attack);
         _attackCallback?.Invoke();
-    }
-
-    public void CheckTargetJobAlive()
-    {
-        Debug.Log("ENTER REMOVE");
-
-        if (_attackMode == EnemyActionBase.AttackMode.Job && _target.Unit.Hp <= 0)
-        {
-            _targetJob.RemoveAt(0);
-            Debug.Log("REMOVED from " + this);
-            foreach(var item in _targetJob)
-            {
-                Debug.Log(item);
-            }
-        }
     }
 
     private void OnDestroy()
