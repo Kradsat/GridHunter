@@ -12,11 +12,13 @@ public class UnitWorldUI : MonoBehaviour
    [SerializeField] public Image healthBarImage;
 
    [SerializeField] private TextMeshProUGUI BossHPText;
-   [SerializeField] private HealthSystem healthSystem;
+   [SerializeField] private TextMeshProUGUI HPText;
+    [SerializeField] private HealthSystem healthSystem;
 
     GameObject BossBar;
     public bool isBoss;
     private double bossMaxHeath;
+    private double MaxHeath;
 
     private void Start()
     {
@@ -30,6 +32,9 @@ public class UnitWorldUI : MonoBehaviour
             bossMaxHeath = unit.HP;
             BossHPText = BossBar.GetComponent<TextMeshProUGUI>( );
             BossHPText.text = unit.HP.ToString( ) + "/" + bossMaxHeath;
+        } else if( unit.IsEnemy ) {
+            MaxHeath = unit.HP;
+            UpdateHealthText( );
         }
         UpdateActionPointsText();
         UpdateHealthBar();
@@ -39,6 +44,8 @@ public class UnitWorldUI : MonoBehaviour
     {
         UpdateHealthBar();
         if( isBoss ) {
+            UpdateBossHealthText( );
+        } else if( unit.IsEnemy ) {
             UpdateHealthText( );
         }
     }
@@ -58,7 +65,11 @@ public class UnitWorldUI : MonoBehaviour
         healthBarImage.fillAmount = (float)(unit.HP / unit.MAX_HP);
     }
 
-    private void UpdateHealthText(  ) {
+    private void UpdateBossHealthText(  ) {
         BossHPText.text = unit.HP.ToString( ) + "/" + bossMaxHeath;
+    }
+
+    private void UpdateHealthText( ) {
+        HPText.text = unit.HP.ToString( ) + "/" + MaxHeath;
     }
 }

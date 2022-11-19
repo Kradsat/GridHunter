@@ -1257,6 +1257,8 @@ MonoBehaviour:
   _attackMode: 0
   _targetJob: 04000000020000000100000003000000
   _targetIndex: 0
+  _moveDistance: 4
+  _attackDistance: 1
   _aoe_damage: 280
 --- !u!1 &6286836425459086018
 GameObject:
@@ -1275,7 +1277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &838253609832001114
 RectTransform:
   m_ObjectHideFlags: 0

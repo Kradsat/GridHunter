@@ -141,11 +141,13 @@ public class UnitBase : UnitStatus
 
     public void HealPlayer(int healAmount)
     {
-
-        if (base.HP < base.MAX_HP)
+        base.HP += ( double )healAmount;
+        if (base.HP > base.MAX_HP)
         {
-            base.HP += (double)healAmount;
+            base.HP = base.MAX_HP;
             OnHPChange?.Invoke(this, EventArgs.Empty);
+        } else {
+            OnHPChange?.Invoke( this, EventArgs.Empty );
         }
     }
 
