@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Material 1_64
+  m_Shader: {fileID: 4800000, guid: c01c46de0b354807abcf2b73f2915b4f, type: 3}
+  m_ShaderKeywords: _ALPHADIS_ON _FOG_ON _FRESNELMULTIPLYALPHA_ON _HIT_ON _LIGHT_OFF
+    _MULTSECONDTEX_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 26ffc16a4b1f41a88438b9e3da467721, type: 3}
+        m_Scale: {x: 2, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TurbulenceTex:
+        m_Texture: {fileID: 2800000, guid: dc22613972f042e7b982e5fe59e639e9, type: 3}
+        m_Scale: {x: 2, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AlphaDis: -2
+    - _Brightness: 1.5
+    - _BumpScale: 1
+    - _ClipAddTexDynmaticUV: 0
+    - _ClipAddTexPannerX: 0
+    - _ClipAddTexPannerY: 0
+    - _Contrast: 1.8
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _Dis: 1
+    - _DisAmount: 0
+    - _DstBlend: 0
+    - _FrenselValue: 0.39
+    - _FresnelBrightness: 0.12
+    - _FresnelMultiplyAlpha: 1
+    - _FresnelValue: 1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _MainTexBrightness: 1.2
+    - _MainTexContrast: 1
+    - _MainTexDynmaticUV: 0
+    - _MainTexPannerX: 0
+    - _MainTexPannerY: 0
+    - _MainTexPower: 1.5
+    - _MaskTexPannerX: 0
+    - _MaskTexPannerY: 0
+    - _Metallic: 0
+    - _Mode: 0
+    - _MultSecondTex: -2
+    - _NormalTexPannerX: 0.05
+    - _NormalTexPannerY: -0.05
+    - _OcclusionStrength: 1
+    - _OpacityMultAlpha: 0
+    - _Parallax: 0.02
+    - _Shininess: 0.123
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _TurbulencePower: 0
+    - _TurbulenceTexPannerX: 1
+    - _TurbulenceTexPannerY: 0.2
+    - _UVEffectPower: 0.1
+    - _UVSec: 0
+    - _ZWrite: 1
+    - _ambient: 0.41
+    - _aoArea: 0.54
+    - _bumpPower: 1
+    - _cubeLodLevel: 0.8
+    - _diff_power: 0.2
+    - _fog: 1
+    - _glowTimeSpeed: 1
+    - _halfL: 0.26
+    - _hit: 1
+    - _hitStrength: 0.17
+    - _light: 0
+    - _reflPower: 0.768
+    - _sideLight_Area: 2
+    - _specPower: 3.1
+    - _specluarColorStrength: 1.71
+    - _sssPower: 0.62
+    m_Colors:
+    - _Color: {r: 0.7205882, g: 0.7205882, b: 0.7205882, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FrenselColor: {r: 0, g: 0.33793116, b: 1, a: 1}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
+    - _glowColor: {r: 0.8308824, g: 0.8308824, b: 0.8308824, a: 1}
+    - _hitColor: {r: 1, g: 1, b: 1, a: 1}
+    - _sideLight_color: {r: 0.3, g: 0.7, b: 1, a: 1}
+    - _sss: {r: 1, g: 0, b: 0, a: 1}

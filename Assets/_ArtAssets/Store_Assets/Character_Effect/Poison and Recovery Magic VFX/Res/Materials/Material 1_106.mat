@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Material 1_106
+  m_Shader: {fileID: 4800000, guid: 961e1034586041ea9dd4e9895e1d3691, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 5ccce5dfe2d84dcb9f4bbb580bd1f998, type: 3}
+        m_Scale: {x: 2, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TurbulenceTex:
+        m_Texture: {fileID: 2800000, guid: d34c9d2554dd4aa18f3d7c7765ced063, type: 3}
+        m_Scale: {x: 2, y: 0}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Brightness: 2.69
+    - _BumpScale: 1
+    - _Contrast: 1.88
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _Dis: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _MainTexBrightness: 1
+    - _MainTexContrast: 1.5
+    - _MainTexPannerX: 0
+    - _MainTexPannerY: -5
+    - _MainTexPower: 1
+    - _MainTexUVDymatic: 0
+    - _MaskTexDynmatic: 0
+    - _MaskTexPannerX: -0.2
+    - _MaskTexPannerY: 0
+    - _MaskTexUV2: 0
+    - _MaskTexUVDymatic: 0
+    - _Metallic: 0
+    - _Mode: 0
+    - _NormalTexPannerX: 0
+    - _NormalTexPannerY: 2
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _TurbulenceTexPannerX: 0
+    - _TurbulenceTexPannerY: 0
+    - _UVEffectPower: 0.15
+    - _UVSec: 0
+    - _ZTest: 4
+    - _ZWrite: 1
+    - _globeDayNightUse: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _LineForceColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 0.98388666, g: 1, b: 0.7028302, a: 1}

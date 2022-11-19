@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Material 1_79
+  m_Shader: {fileID: 4800000, guid: c01c46de0b354807abcf2b73f2915b4f, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 939d039a99b84ed293ffe3414b9536ff, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TurbulenceTex:
+        m_Texture: {fileID: 2800000, guid: f30aa34b20b24442af3ca4f097b560cd, type: 3}
+        m_Scale: {x: 0.7, y: 0.7}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - DstBlend: 1
+    - SrcBlend: 5
+    - _Brightness: 1
+    - _Cutoff: 0.5
+    - _MainTexBrightness: 3
+    - _MainTexPannerX: 0
+    - _MainTexPannerY: 0
+    - _MainTexPower: 2
+    - _TurbulenceTexPannerX: 0.3
+    - _TurbulenceTexPannerY: 0
+    - _ZTest: 4
+    - _ZWrite: 0
+    m_Colors:
+    - _FixColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
