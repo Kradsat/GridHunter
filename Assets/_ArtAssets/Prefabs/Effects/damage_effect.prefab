@@ -19863,7 +19863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5790314615000959131}
   m_Layer: 0
-  m_Name: attack_effect
+  m_Name: damage_effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
