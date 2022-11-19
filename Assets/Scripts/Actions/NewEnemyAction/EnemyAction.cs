@@ -111,6 +111,8 @@ public class EnemyAction : UnitBase
                 break;
         }
 
+        Debug.Log(this + " is targeting: " + _target);
+
     }
 
     private UnitBase GetHighestHPUnit()
@@ -269,6 +271,7 @@ public class EnemyAction : UnitBase
     private void AttackTarget()
     {
         isActive = false;
+        Debug.Log("Attack Target: " + _target);
         _target.Damage(this.Unit.Attack);
         _attackCallback?.Invoke();
     }

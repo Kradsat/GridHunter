@@ -1251,6 +1251,10 @@ MonoBehaviour:
   canMove: 0
   canAttack: 1
   canStay: 1
+  _damageEffect: {fileID: 8715778948686599409, guid: 7747993743e67a942b42128a914b4d8b,
+    type: 3}
+  _healEffect: {fileID: 6671303523487081338, guid: c816cb316c50de54fa7b553d21fec87b,
+    type: 3}
   _rotateSpeed: 20
   _stoppingDistance: 0.1
   _moveSpeed: 4
@@ -1515,6 +1519,7 @@ MonoBehaviour:
   unit: {fileID: 0}
   healthBarImage: {fileID: 0}
   BossHPText: {fileID: 0}
+  HPText: {fileID: 0}
   healthSystem: {fileID: 0}
   isBoss: 1
 --- !u!114 &702493889354574128

@@ -14,6 +14,9 @@ public class UnitBase : UnitStatus
     [SerializeField] public bool canAttack = true;
     [SerializeField] public bool canStay = true;
 
+    [SerializeField] private GameObject _damageEffect;
+    [SerializeField] private GameObject _healEffect;
+
     private GridPosition gridPosition;
     public GridPosition GridPosition { get { return gridPosition; } }
     private BaseAction[] baseActionArray;
@@ -137,6 +140,7 @@ public class UnitBase : UnitStatus
             TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
             OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
         }
+        CreateDamageEffect();
     }
 
     public void HealPlayer(int healAmount)
@@ -149,6 +153,7 @@ public class UnitBase : UnitStatus
         } else {
             OnHPChange?.Invoke( this, EventArgs.Empty );
         }
+        CreateHealEffect();
     }
 
     private void HealthSystem_OnDead(object sender, EventArgs e)
@@ -157,6 +162,19 @@ public class UnitBase : UnitStatus
         Destroy(gameObject);
 
         OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void CreateDamageEffect()
+    {
+        var effect = Instantiate(_damageEffect, this.transform.position, Quaternion.identity) ;
+
+        Destroy(effect, 1f);
+    }
+
+    private void CreateHealEffect()
+    {
+        var effect = Instantiate(_healEffect, this.transform.position, Quaternion.identity);
+        Destroy(effect, 1f);
     }
 
 }
