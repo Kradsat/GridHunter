@@ -20,7 +20,24 @@ public class EnemyAction : UnitBase
     [SerializeField] private int _targetIndex = 0;
 
     [SerializeField] private int _moveDistance = 4;
+
+    [SerializeField] private bool _isShowAttackDistance = true;
     [SerializeField] private int _attackDistance = 1;
+    private static List<GridPosition> _attackDistance1 = new List<GridPosition>()
+    {
+        new GridPosition(-1,0),new GridPosition(1,0),new GridPosition(0,1),new GridPosition(0,-1),
+    };
+    private static List<GridPosition> _attackDistance2 = new List<GridPosition>()
+    {
+        new GridPosition(-2,0),new GridPosition(2,0),new GridPosition(0,2),new GridPosition(0,-2),
+        new GridPosition(1,-1),new GridPosition(1,0),new GridPosition(1,1),
+        new GridPosition(0,-1),new GridPosition(0,1),
+        new GridPosition(-1,-1),new GridPosition(-1,0),new GridPosition(-1,1),
+    };
+    private List<List<GridPosition>> _attackDistanceList = new List<List<GridPosition>>
+    {
+        _attackDistance1, _attackDistance2
+    };
 
     private Action _attackCallback = null;
     
@@ -51,6 +68,8 @@ public class EnemyAction : UnitBase
 
         if (Vector3.Distance(transform.position, targetPosition) > _stoppingDistance)
         {
+            var dir = (this.transform.position - targetPosition).normalized;
+            this.transform.rotation.SetFromToRotation(this.transform.position, targetPosition);
             var step = _moveSpeed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
             Pathfinding.Instance.UpdateNode(this, pathGridPositionList[currentPositionIndex]);
@@ -210,6 +229,12 @@ public class EnemyAction : UnitBase
     public void FindPathToTarget()
     {
         Debug.Log(_target);
+        if(_target == null)
+        {
+            _playerUnitList = UnitManager.Instance.GetAllyUnitList();
+            _target = _playerUnitList[0];
+        }
+
         var targetGridPosition = _target.GridPosition;
 
         if(this.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
@@ -221,21 +246,23 @@ public class EnemyAction : UnitBase
         var unitPos = base.GridPosition;
         var targetNeighbours = new List<GridPosition>();
         var targetNeighbourPaths = new List<List<GridPosition>>();
-
-        for (int x = targetGridPosition.x - 1; x <= targetGridPosition.x + 1; x++)
+        foreach(var offset in _attackDistanceList[_attackDistance - 1])
         {
-            for (int z = targetGridPosition.z - 1; z <= targetGridPosition.z + 1; z++)
+            var neighbour = targetGridPosition + offset;
+            Debug.Log("neighbour: " + neighbour);
+            if (GridPosition.CheckIfInside(neighbour) && neighbour != targetGridPosition && !LevelGrid.Instance.HasAnyUnitOnGridPosition(neighbour))
             {
-                var neighbour = new GridPosition(x, z);
-                if (GridPosition.CheckIfInside(neighbour) && neighbour != targetGridPosition && !LevelGrid.Instance.HasAnyUnitOnGridPosition(neighbour))
+                if (Pathfinding.Instance.FindPath(GridPosition, neighbour) != null)
                 {
-                    if(Pathfinding.Instance.FindPath(GridPosition, neighbour) != null)
-                    {
-                        targetNeighbours.Add(neighbour);
-                        targetNeighbourPaths.Add(Pathfinding.Instance.FindPath(GridPosition, neighbour));
-                    }
+                    targetNeighbours.Add(neighbour);
+                    targetNeighbourPaths.Add(Pathfinding.Instance.FindPath(GridPosition, neighbour));
                 }
             }
+        }
+
+        if (_isShowAttackDistance)
+        {
+            GridSystemVisual.Instance.ShowAoePrediction(targetNeighbours);
         }
 
         pathGridPositionList = null;

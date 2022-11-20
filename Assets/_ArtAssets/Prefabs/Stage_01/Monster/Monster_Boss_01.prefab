@@ -1262,6 +1262,7 @@ MonoBehaviour:
   _targetJob: 04000000020000000100000003000000
   _targetIndex: 0
   _moveDistance: 4
+  _isShowAttackDistance: 0
   _attackDistance: 1
   _aoe_damage: 280
 --- !u!1 &6286836425459086018
