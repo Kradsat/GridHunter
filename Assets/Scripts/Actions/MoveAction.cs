@@ -42,8 +42,10 @@ public class MoveAction : BaseAction
         float stoppingDistance = .1f;
         if (Vector3.Distance(transform.position, targetPosition) >= stoppingDistance)
         {
+            Vector3 relativePos = targetPosition - transform.position;
+            this.transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+
             float moveSpeed = 4f;
-            // transform.position += moveDirection * moveSpeed * Time.deltaTime;
             var step = moveSpeed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
         }

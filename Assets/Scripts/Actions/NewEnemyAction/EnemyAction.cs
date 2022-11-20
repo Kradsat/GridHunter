@@ -70,9 +70,14 @@ public class EnemyAction : UnitBase
 
         if (Vector3.Distance(transform.position, targetPosition) > _stoppingDistance)
         {
-            var dir = (this.transform.position - targetPosition).normalized;
-            this.transform.rotation.SetFromToRotation(this.transform.position, targetPosition);
-            var step = _moveSpeed * Time.deltaTime; // calculate distance to move
+            //var dir = (this.transform.position - targetPosition).normalized;
+            //Debug.Log(dir);
+            //this.transform.rotation = Quaternion.Euler(0, 90 * dir.x, 0);
+
+            Vector3 relativePos = transform.position - targetPosition;
+            this.transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+
+            var step = _moveSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
             Pathfinding.Instance.UpdateNode(this, pathGridPositionList[currentPositionIndex]);
         }
@@ -86,6 +91,8 @@ public class EnemyAction : UnitBase
                     isActive = false;
                     OnStopMoving?.Invoke(this, EventArgs.Empty);
                     this.canMove = false;
+                    Vector3 relativePos = transform.position - _target.transform.position;
+                    this.transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up);
                     AttackTarget();
                 }
             }
@@ -131,9 +138,6 @@ public class EnemyAction : UnitBase
                 _target = GetSpecificJobUnit();
                 break;
         }
-
-        Debug.Log(this + " is targeting: " + _target);
-
     }
 
     private UnitBase GetHighestHPUnit()
@@ -230,7 +234,6 @@ public class EnemyAction : UnitBase
 
     public void FindPathToTarget()
     {
-        Debug.Log(_target);
         if(_target == null)
         {
             _playerUnitList = UnitManager.Instance.GetAllyUnitList();
@@ -251,7 +254,6 @@ public class EnemyAction : UnitBase
         foreach(var offset in _attackDistanceList[_attackDistance - 1])
         {
             var neighbour = targetGridPosition + offset;
-            Debug.Log("neighbour: " + neighbour);
             if (GridPosition.CheckIfInside(neighbour) && neighbour != targetGridPosition && !LevelGrid.Instance.HasAnyUnitOnGridPosition(neighbour))
             {
                 if (Pathfinding.Instance.FindPath(GridPosition, neighbour) != null)
@@ -300,7 +302,7 @@ public class EnemyAction : UnitBase
     private void AttackTarget()
     {
         isActive = false;
-        Debug.Log("Attack Target: " + _target);
+        Debug.Log(this + " / Attack Target: " + _target);
         _target.Damage(this.Unit.Attack);
         _attackCallback?.Invoke();
     }
