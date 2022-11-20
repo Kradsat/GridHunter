@@ -9,18 +9,20 @@ public class EnemyAction : UnitBase
     public event EventHandler OnStopMoving;
     public event EventHandler OnAttackStart;
 
+    [Header("Movement")]
     [SerializeField] private float _rotateSpeed = 20f;
     [SerializeField] private float _stoppingDistance = .1f;
     [SerializeField] private float _moveSpeed = 4f;
+    [SerializeField] private int _moveDistance = 4;
 
+    [Header("Attack Mode")]
     [SerializeField] private EnemyActionBase.AttackMode _attackMode;
     [SerializeField] private List<EnemyActionBase.TargetJob> _targetJob = new List<EnemyActionBase.TargetJob> {
         EnemyActionBase.TargetJob.ROD , EnemyActionBase.TargetJob.SWORD, EnemyActionBase.TargetJob.HAMMER, EnemyActionBase.TargetJob.LANCE
     };
-    [SerializeField] private int _targetIndex = 0;
+    private int _targetIndex = 0;
 
-    [SerializeField] private int _moveDistance = 4;
-
+    [Header("Attack Distance")]
     [SerializeField] private bool _isShowAttackDistance = true;
     [SerializeField] private int _attackDistance = 1;
     private static List<GridPosition> _attackDistance1 = new List<GridPosition>()

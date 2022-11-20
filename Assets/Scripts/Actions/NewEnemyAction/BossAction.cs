@@ -22,6 +22,7 @@ public class BossAction : EnemyAction
         MAX,
     }
 
+    [Header("AOE Damage")]
     [SerializeField] private int _aoe_damage = 280;
 
     //　ボスサイズ
