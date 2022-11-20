@@ -13,6 +13,7 @@ public class SpecialAttack : BaseAction
 
     [SerializeField] private int maxAttackDistance = 5;
     [SerializeField] private int healAmount = 50;
+    [SerializeField] AudioSource audioSource;
 
     private enum State
     {
@@ -122,6 +123,7 @@ public class SpecialAttack : BaseAction
             case State.SwingingSwordAfterHit:
                 OnAttackEnd?.Invoke(this, EventArgs.Empty);
                 ActionComplete();
+                audioSource.Stop();
                 unit.canAttack = false;
                 break;
 
@@ -192,7 +194,7 @@ public class SpecialAttack : BaseAction
         state = State.SwingingSwordBeforeHit;
         float aimingStateTime = .7f;
         stateTimer = aimingStateTime;
-
+        audioSource.Play();
         OnAttackStart?.Invoke(this, EventArgs.Empty);
         //canAttack = true;
 
