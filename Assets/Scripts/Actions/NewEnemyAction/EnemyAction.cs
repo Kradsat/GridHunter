@@ -9,18 +9,37 @@ public class EnemyAction : UnitBase
     public event EventHandler OnStopMoving;
     public event EventHandler OnAttackStart;
 
+    [Header("Movement")]
     [SerializeField] private float _rotateSpeed = 20f;
     [SerializeField] private float _stoppingDistance = .1f;
     [SerializeField] private float _moveSpeed = 4f;
+    [SerializeField] private int _moveDistance = 4;
 
+    [Header("Attack Mode")]
     [SerializeField] private EnemyActionBase.AttackMode _attackMode;
     [SerializeField] private List<EnemyActionBase.TargetJob> _targetJob = new List<EnemyActionBase.TargetJob> {
         EnemyActionBase.TargetJob.ROD , EnemyActionBase.TargetJob.SWORD, EnemyActionBase.TargetJob.HAMMER, EnemyActionBase.TargetJob.LANCE
     };
-    [SerializeField] private int _targetIndex = 0;
+    private int _targetIndex = 0;
 
-    [SerializeField] private int _moveDistance = 4;
+    [Header("Attack Distance")]
+    [SerializeField] private bool _isShowAttackDistance = true;
     [SerializeField] private int _attackDistance = 1;
+    private static List<GridPosition> _attackDistance1 = new List<GridPosition>()
+    {
+        new GridPosition(-1,0),new GridPosition(1,0),new GridPosition(0,1),new GridPosition(0,-1),
+    };
+    private static List<GridPosition> _attackDistance2 = new List<GridPosition>()
+    {
+        new GridPosition(-2,0),new GridPosition(2,0),new GridPosition(0,2),new GridPosition(0,-2),
+        new GridPosition(1,-1),new GridPosition(1,0),new GridPosition(1,1),
+        new GridPosition(0,-1),new GridPosition(0,1),
+        new GridPosition(-1,-1),new GridPosition(-1,0),new GridPosition(-1,1),
+    };
+    private List<List<GridPosition>> _attackDistanceList = new List<List<GridPosition>>
+    {
+        _attackDistance1, _attackDistance2
+    };
 
     private Action _attackCallback = null;
     
@@ -51,7 +70,14 @@ public class EnemyAction : UnitBase
 
         if (Vector3.Distance(transform.position, targetPosition) > _stoppingDistance)
         {
-            var step = _moveSpeed * Time.deltaTime; // calculate distance to move
+            //var dir = (this.transform.position - targetPosition).normalized;
+            //Debug.Log(dir);
+            //this.transform.rotation = Quaternion.Euler(0, 90 * dir.x, 0);
+
+            Vector3 relativePos = transform.position - targetPosition;
+            this.transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+
+            var step = _moveSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
             Pathfinding.Instance.UpdateNode(this, pathGridPositionList[currentPositionIndex]);
         }
@@ -65,6 +91,8 @@ public class EnemyAction : UnitBase
                     isActive = false;
                     OnStopMoving?.Invoke(this, EventArgs.Empty);
                     this.canMove = false;
+                    Vector3 relativePos = transform.position - _target.transform.position;
+                    this.transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up);
                     AttackTarget();
                 }
             }
@@ -110,9 +138,6 @@ public class EnemyAction : UnitBase
                 _target = GetSpecificJobUnit();
                 break;
         }
-
-        Debug.Log(this + " is targeting: " + _target);
-
     }
 
     private UnitBase GetHighestHPUnit()
@@ -209,7 +234,12 @@ public class EnemyAction : UnitBase
 
     public void FindPathToTarget()
     {
-        Debug.Log(_target);
+        if(_target == null)
+        {
+            _playerUnitList = UnitManager.Instance.GetAllyUnitList();
+            _target = _playerUnitList[0];
+        }
+
         var targetGridPosition = _target.GridPosition;
 
         if(this.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
@@ -221,21 +251,22 @@ public class EnemyAction : UnitBase
         var unitPos = base.GridPosition;
         var targetNeighbours = new List<GridPosition>();
         var targetNeighbourPaths = new List<List<GridPosition>>();
-
-        for (int x = targetGridPosition.x - 1; x <= targetGridPosition.x + 1; x++)
+        foreach(var offset in _attackDistanceList[_attackDistance - 1])
         {
-            for (int z = targetGridPosition.z - 1; z <= targetGridPosition.z + 1; z++)
+            var neighbour = targetGridPosition + offset;
+            if (GridPosition.CheckIfInside(neighbour) && neighbour != targetGridPosition && !LevelGrid.Instance.HasAnyUnitOnGridPosition(neighbour))
             {
-                var neighbour = new GridPosition(x, z);
-                if (GridPosition.CheckIfInside(neighbour) && neighbour != targetGridPosition && !LevelGrid.Instance.HasAnyUnitOnGridPosition(neighbour))
+                if (Pathfinding.Instance.FindPath(GridPosition, neighbour) != null)
                 {
-                    if(Pathfinding.Instance.FindPath(GridPosition, neighbour) != null)
-                    {
-                        targetNeighbours.Add(neighbour);
-                        targetNeighbourPaths.Add(Pathfinding.Instance.FindPath(GridPosition, neighbour));
-                    }
+                    targetNeighbours.Add(neighbour);
+                    targetNeighbourPaths.Add(Pathfinding.Instance.FindPath(GridPosition, neighbour));
                 }
             }
+        }
+
+        if (_isShowAttackDistance)
+        {
+            GridSystemVisual.Instance.ShowAoePrediction(targetNeighbours);
         }
 
         pathGridPositionList = null;
@@ -271,7 +302,7 @@ public class EnemyAction : UnitBase
     private void AttackTarget()
     {
         isActive = false;
-        Debug.Log("Attack Target: " + _target);
+        Debug.Log(this + " / Attack Target: " + _target);
         _target.Damage(this.Unit.Attack);
         _attackCallback?.Invoke();
     }

@@ -43,7 +43,6 @@ public class EnemyAI : MonoBehaviour
                 {
                     state = State.Busy;
                     _enemiesActionCount = 0;
-                    //TryTakeEnemiesAIAction();
                 }
                 break;
             case State.Busy:
@@ -67,34 +66,15 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void TryTakeEnemiesAIAction()
-    {
-        foreach (var enemy in UnitManager.Instance.GetEnemyActionList())
-        {
-            _isAttacking = true;
-            enemy.Attack(() => {
-                _isAttacking = false;
-                _enemiesActionCount++;
-                if (_enemiesActionCount >= (UnitManager.Instance.GetEnemyActionList()).Count)
-                {
-                    TurnSystem.Instance.NextTurn();
-                }
-            });
-        }
-    }
-
     private IEnumerator TakeEnemyAction(int index)
     {
         if (_isAttacking)
         {
             yield break;
         }
-
-        Debug.Log("ATTACK ENTER");
         _isAttacking = true;
 
         UnitManager.Instance.GetEnemyActionList()[index].Attack(() => {
-            Debug.Log("Attack Callback");
             _enemiesActionCount++;
             _isAttacking = false;
             if (_enemiesActionCount >= (UnitManager.Instance.GetEnemyActionList()).Count)

@@ -14,6 +14,7 @@ public class UnitBase : UnitStatus
     [SerializeField] public bool canAttack = true;
     [SerializeField] public bool canStay = true;
 
+    [Header("Effect")]
     [SerializeField] private GameObject _damageEffect;
     [SerializeField] private GameObject _healEffect;
 
