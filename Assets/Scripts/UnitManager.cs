@@ -64,6 +64,9 @@ public class UnitManager : MonoBehaviour
         {
             enemyUnitList.Remove(unit);
             if ( enemyUnitList.Count == 0 ) {
+                if( Win == null ) {
+                    return;
+                }
                 Win.SetActive( true );
             }
         }
@@ -71,6 +74,9 @@ public class UnitManager : MonoBehaviour
         {
             allyUnitList.Remove(unit);
             if ( allyUnitList.Count == 0 ) {
+                if( Lose == null ) {
+                    return;
+                }
                 Lose.SetActive( true );
             }
         }
