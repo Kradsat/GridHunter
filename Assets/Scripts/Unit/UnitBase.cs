@@ -137,6 +137,7 @@ public class UnitBase : UnitStatus
         if (base.HP <= 0)
         {
             LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
+            Pathfinding.Instance.OnUnitDestroy(this);
             Destroy(gameObject);
             TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
             OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
@@ -155,14 +156,6 @@ public class UnitBase : UnitStatus
             OnHPChange?.Invoke( this, EventArgs.Empty );
         }
         CreateHealEffect();
-    }
-
-    private void HealthSystem_OnDead(object sender, EventArgs e)
-    {
-        LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
-        Destroy(gameObject);
-
-        OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
     }
 
     private void CreateDamageEffect()

@@ -79,6 +79,11 @@ public class Pathfinding : MonoBehaviour
         GetNode(newPos.x, newPos.z).SetIsWalkable(false);
     }
 
+    public void OnUnitDestroy(UnitBase unit)
+    {
+        GetNode(unit.GridPosition.x, unit.GridPosition.z).SetIsWalkable(true);
+    }
+
     public List<GridPosition> FindPath(GridPosition startGridPosition, GridPosition endGridPosition)
     {
         List<PathNode> openList = new List<PathNode>(); //openlist contain all the nodes that are qued for searching /jp:openlist には，検索対象となるすべてのノードが含まれます．
