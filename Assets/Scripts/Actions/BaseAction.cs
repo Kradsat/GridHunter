@@ -41,12 +41,14 @@ public abstract class BaseAction : MonoBehaviour
     protected void ActionStart(Action onActionComplete)
     {
         isActive = true;
+        UnitActionSystem.Instance.HideAllTargetArrow();
         this.onActionComplete = onActionComplete;
     }
 
     protected void ActionComplete()
     {
         isActive = false;
+        UnitActionSystem.Instance.ShowTargetArrow();
         onActionComplete( );
     }
 

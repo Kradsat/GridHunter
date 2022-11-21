@@ -14,6 +14,9 @@ public class UnitActionSystem : MonoBehaviour
     public event EventHandler OnActionStarted;
 
     [SerializeField] private UnitBase selectedUnit;
+    [SerializeField] private Transform _arrowParent;
+    [SerializeField] private GameObject _targetArrow;
+    [SerializeField] private List<GameObject> _arrowList;
     public UnitBase SelectedUnit
     {
         set {
@@ -157,6 +160,8 @@ public class UnitActionSystem : MonoBehaviour
 
     private void SetSelectedUnit(UnitBase unit)
     {
+        HideAllTargetArrow();
+
         selectedUnit = unit;
 
         if( unit.GetActionPoints( ) == 2 ) {
@@ -173,18 +178,13 @@ public class UnitActionSystem : MonoBehaviour
         }
 
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
-        /* is the same as above
-        if (OnSelectedUnitChanged!=null)
-        {
-            OnSelectedUnitChanged(this, EventArgs.Empty);
-        }*/
+        ShowTargetArrow();
     }
 
     public void SetSelectedAction(BaseAction baseAction)
     {
         selectedAction = baseAction;
         OnSelectedActionChanged?.Invoke(this, EventArgs.Empty);
-
     }
 
     public UnitBase GetSelectedUnit()
@@ -200,6 +200,35 @@ public class UnitActionSystem : MonoBehaviour
     private void TurnSystem_OnTurnChanged( object sender, EventArgs e ) {
         if( TurnSystem.Instance.IsPlayerTurn ) {
             SetSelectedAction( selectedUnit.GetAction<MoveAction>( ) );
+            ShowTargetArrow();
         }
+        else
+        {
+            HideAllTargetArrow();
+        }
+    }
+
+    public void ShowTargetArrow()
+    {
+        var enemyList = UnitManager.Instance.GetEnemyActionList();
+        foreach (var enemy in enemyList)
+        {
+            if (enemy.Target == selectedUnit)
+            {
+                var arrow = Instantiate(_targetArrow, _arrowParent);
+                arrow.GetComponent<TargetArrowController>().ShowArrow(enemy.transform.position, selectedUnit.transform.position);
+                _arrowList.Add(arrow);
+            }
+        }
+    }
+
+    public void HideAllTargetArrow()
+    {
+        foreach (Transform child in _arrowParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        _arrowList.Clear();
     }
 }

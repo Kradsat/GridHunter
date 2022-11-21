@@ -48,6 +48,8 @@ public class EnemyAction : UnitBase
     private bool isActive = false;
 
     private UnitBase _target = null;
+    public UnitBase Target => _target;
+
     private List<UnitBase> _playerUnitList;
     private List<GridPosition> pathGridPositionList = null;
 
@@ -55,6 +57,7 @@ public class EnemyAction : UnitBase
     {
         base.Update();
 
+        UpdateAttackTarget();
         if (!isActive)
         {
             return;
@@ -110,7 +113,7 @@ public class EnemyAction : UnitBase
     public virtual void Attack(Action callback = null)
     {
         _attackCallback = callback;
-        GetAttackTarget();
+        UpdateAttackTarget();
         if (_playerUnitList.Count == 0)
         {
             callback?.Invoke();
@@ -119,7 +122,7 @@ public class EnemyAction : UnitBase
         FindPathToTarget();
     }
 
-    public void GetAttackTarget()
+    public void UpdateAttackTarget()
     {
         _playerUnitList = UnitManager.Instance.GetAllyUnitList();
 
@@ -217,7 +220,6 @@ public class EnemyAction : UnitBase
         if (_playerUnitList.Count != _targetJob.Count)
         {
             _targetIndex = (_targetJob.Count - _playerUnitList.Count);
-            Debug.Log("TARGET INDEX: " + _targetIndex);
         }
 
         if(_targetJob.Count <= 0)
@@ -305,6 +307,7 @@ public class EnemyAction : UnitBase
         Debug.Log(this + " / Attack Target: " + _target);
         _target.Damage(this.Unit.Attack);
         _attackCallback?.Invoke();
+        UpdateAttackTarget();
     }
 
     private void OnDestroy()
