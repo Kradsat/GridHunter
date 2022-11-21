@@ -43,7 +43,7 @@ public class AttackAction : BaseAction
 
         stateTimer -= Time.deltaTime;
 
-        #region 3 states 
+        #region 3 states
         /*
         switch (state)
         {
@@ -129,7 +129,7 @@ public class AttackAction : BaseAction
             case State.SwingingSwordAfterHit:
                 OnAttackEnd?.Invoke(this, EventArgs.Empty);
                 ActionComplete();
-                audioSource.Stop();
+                //audioSource.Stop();
                 unit.canAttack = false;
                 break;
 
@@ -195,7 +195,7 @@ public class AttackAction : BaseAction
         state = State.SwingingSwordBeforeHit;
         float aimingStateTime = .7f;
         stateTimer = aimingStateTime;
-        audioSource.Play();
+        //audioSource.Play();
         OnAttackStart?.Invoke(this, EventArgs.Empty);
         //canAttack = true;
 

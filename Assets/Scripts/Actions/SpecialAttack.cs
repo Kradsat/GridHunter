@@ -123,7 +123,7 @@ public class SpecialAttack : BaseAction
             case State.SwingingSwordAfterHit:
                 OnAttackEnd?.Invoke(this, EventArgs.Empty);
                 ActionComplete();
-                audioSource.Stop();
+                //audioSource.Stop();
                 unit.canAttack = false;
                 break;
 
@@ -194,7 +194,7 @@ public class SpecialAttack : BaseAction
         state = State.SwingingSwordBeforeHit;
         float aimingStateTime = .7f;
         stateTimer = aimingStateTime;
-        audioSource.Play();
+        //audioSource.Play();
         OnAttackStart?.Invoke(this, EventArgs.Empty);
         //canAttack = true;
 
