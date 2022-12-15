@@ -1586,6 +1586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attack: {fileID: -4933007183853864577}
   order: 3
+  textTitle: 'Attack :'
 --- !u!82 &1706942399837331227
 AudioSource:
   m_ObjectHideFlags: 0

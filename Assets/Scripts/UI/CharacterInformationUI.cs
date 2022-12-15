@@ -14,6 +14,7 @@ public class CharacterInformationUI : MonoBehaviour {
     private TextMeshProUGUI HPText;
     private TextMeshProUGUI AttackText;
     private double maxHealth;
+    [SerializeField]private LocaliserCodeUI localiser;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +31,10 @@ public class CharacterInformationUI : MonoBehaviour {
         HPText.text = unitBase.HP.ToString( ) + "/" + maxHealth.ToString( );
 
         character = GameObject.Find("Player" + order + "AttackText");
+        localiser = character.GetComponent<LocaliserCodeUI>();
         AttackText = character.GetComponent<TextMeshProUGUI>();
-        AttackText.text = "Attack: " + unitBase.ATK;
+        AttackText.text = localiser.TextLocalised() + unitBase.ATK;
+
     }
 
     private void UnitBase_OnDamage( object sender, EventArgs e ) {

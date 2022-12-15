@@ -10,6 +10,7 @@ public class TurnSystemUI : MonoBehaviour
     [SerializeField] private Button endTurnButton;
     [SerializeField] private GameObject enemyTurnVisualGameObject;
     [SerializeField] private GameObject[ ] TurnImage;
+    [SerializeField] private LocaliserCodeUI localiser;
 
     int[ ] order = { 0, 1, 2, 3, 4, 5 };
 
@@ -36,7 +37,8 @@ public class TurnSystemUI : MonoBehaviour
 
     private void UpdateTurnText()
     {
-        textMeshProUGUI.text = "Turn " + TurnSystem.Instance.TurnNumber;
+        
+        textMeshProUGUI.text = localiser.TextLocalised() + TurnSystem.Instance.TurnNumber;
 
     }
 

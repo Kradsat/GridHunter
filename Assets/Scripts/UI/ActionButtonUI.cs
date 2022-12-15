@@ -9,6 +9,7 @@ public class ActionButtonUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textMeshProUGUI;
     [SerializeField] private Button button;
     [SerializeField] private GameObject selectedGameObject;
+    [SerializeField] private LocalisationSystem localisation;
 
     private BaseAction baseAction;
 
@@ -31,7 +32,7 @@ public class ActionButtonUI : MonoBehaviour
                 text = "ƒq[ƒ‹";
                 break;
         }
-        textMeshProUGUI.text = text;
+        textMeshProUGUI.text =  text;
         button.onClick.AddListener(() =>
         {
             UnitActionSystem.Instance.SetSelectedAction(baseAction);

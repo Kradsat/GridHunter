@@ -1,0 +1,25 @@
+key,japanese,english
+Title,タイトル,TITLE
+ActionPoint,アクションポイント,Action Points :
+Player1Attack,攻撃：,Attack:
+Player2Attack,攻撃：,Attack:
+Player3Attack,攻撃：,Attack:
+Player4Attack,攻撃：,Attack:
+Lose,負け,LOSE
+Win,勝ち,WIN
+EnemyTurn,敵のターン,ENEMY TURN
+EndTurn,ターン終了,End Turn
+Busy,お待ちえ,BUSY
+StageSelector,ステージ順番,STAGE SELECTOR
+TurnNumber,ターン,TURN
+,,
+aa,aa,aa
+bb,bb,bb
+Stay,ステイ,Stay
+Move,移動,Move
+Attack,攻撃,Attack
+HealAlly,ヒール,Heal Ally
+MassHunter,グリードハンター,GRID HUNTER
+StartButton,始め,Start
+StageSelectorTitle,ステージ,Stage Selector
+StageUn,ステージ1,Stage 1
