@@ -17,6 +17,8 @@ public class UnitBase : UnitStatus
     [Header("Effect")]
     [SerializeField] private GameObject _damageEffect;
     [SerializeField] private GameObject _healEffect;
+    [SerializeField] private AudioSource attackSE;
+    [SerializeField] private AudioSource healSE;
 
     private GridPosition gridPosition;
     public GridPosition GridPosition { get { return gridPosition; } }
@@ -137,6 +139,7 @@ public class UnitBase : UnitStatus
         if (base.HP <= 0)
         {
             LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
+            Pathfinding.Instance.OnUnitDestroy(this);
             Destroy(gameObject);
             TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
             OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
@@ -157,24 +160,17 @@ public class UnitBase : UnitStatus
         CreateHealEffect();
     }
 
-    private void HealthSystem_OnDead(object sender, EventArgs e)
-    {
-        LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
-        Destroy(gameObject);
-
-        OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
-    }
-
     private void CreateDamageEffect()
     {
         var effect = Instantiate(_damageEffect, this.transform.position, Quaternion.identity) ;
-
+        attackSE.Play();
         Destroy(effect, 1f);
     }
 
     private void CreateHealEffect()
     {
         var effect = Instantiate(_healEffect, this.transform.position, Quaternion.identity);
+        healSE.Play();
         Destroy(effect, 1f);
     }
 

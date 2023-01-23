@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dec5e25deeb1904f8773032d361a275, type: 3}
+  m_Name: itemData
+  m_EditorClassIdentifier: 
+  nomalItemData:
+  - name: rabbit
+    id: 1
+    cost: 1
+    attackPoint: 2
+  - name: 888
+    id: 2
+    cost: 1
+    attackPoint: 2
+  - name: handspeed
+    id: 3
+    cost: 2
+    attackPoint: 2
+  rareItemData:
+  - name: MFC
+    id: 4
+    cost: 2
+    attackPoint: 3
+  - name: bottle
+    id: 5
+    cost: 2
+    attackPoint: 3
+  - name: Riry
+    id: 6
+    cost: 3
+    attackPoint: 3
+  SRareItemData:
+  - name: tiger
+    id: 7
+    cost: 3
+    attackPoint: 4
+  - name: hachi
+    id: 8
+    cost: 4
+    attackPoint: 4
+  - name: jar Man
+    id: 9
+    cost: 5
+    attackPoint: 5
+  SSRareItemData:
+  - name: sushi
+    id: 10
+    cost: 9
+    attackPoint: 0
+  - name: bug
+    id: 11
+    cost: 8
+    attackPoint: 0
+  - name: cat
+    id: 12
+    cost: 8
+    attackPoint: 0
+  probability:
+  - probabilityName: nomal
+    num: 35
+  - probabilityName: rare
+    num: 30
+  - probabilityName: sRare
+    num: 25
+  - probabilityName: ssRare
+    num: 10

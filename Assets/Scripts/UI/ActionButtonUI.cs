@@ -15,7 +15,23 @@ public class ActionButtonUI : MonoBehaviour
     public void SetBaseAction(BaseAction baseAction)
     {
         this.baseAction = baseAction;
-       textMeshProUGUI.text = baseAction.GetActionName().ToUpper();
+        var text = "";
+        switch (baseAction.GetActionName())
+        {
+            case "Stay":
+                text = "ƒXƒeƒC";
+                break;
+            case "Move":
+                text = "ˆÚ“®";
+                break;
+            case "Attack":
+                text = "UŒ‚";
+                break;
+            case "Heal Ally":
+                text = "ƒq[ƒ‹";
+                break;
+        }
+        textMeshProUGUI.text = text;
         button.onClick.AddListener(() =>
         {
             UnitActionSystem.Instance.SetSelectedAction(baseAction);
