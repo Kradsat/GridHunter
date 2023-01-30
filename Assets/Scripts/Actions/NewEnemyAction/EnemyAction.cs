@@ -119,7 +119,7 @@ public class EnemyAction : UnitBase
         FindPathToTarget();
     }
 
-    public void GetAttackTarget()
+    public UnitBase GetAttackTarget()
     {
         _playerUnitList = UnitManager.Instance.GetAllyUnitList();
 
@@ -138,6 +138,8 @@ public class EnemyAction : UnitBase
                 _target = GetSpecificJobUnit();
                 break;
         }
+
+        return _target;
     }
 
     private UnitBase GetHighestHPUnit()
@@ -266,7 +268,7 @@ public class EnemyAction : UnitBase
 
         if (_isShowAttackDistance)
         {
-            GridSystemVisual.Instance.ShowAoePrediction(targetNeighbours);
+            GridSystemVisual.Instance.ShowPrediction(targetNeighbours);
         }
 
         pathGridPositionList = null;

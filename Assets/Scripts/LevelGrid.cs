@@ -38,7 +38,7 @@ public class LevelGrid : MonoBehaviour
 
     public void AddUnitAtGridPosition(GridPosition gridPosition, UnitBase unit)
     {
-        if (unit.Unit.Id != (int)MapData.OBJ_TYPE.BOSS)
+        if (unit.Unit.Id != (int)MapData.OBJ_TYPE.BOSS && unit.Unit.Id != (int)MapData.OBJ_TYPE.BOSS2)
         {
             GridObject gridObject = gridSystem.GetGridObject(gridPosition);
             gridObject.AddUnit(unit);
@@ -68,7 +68,7 @@ public class LevelGrid : MonoBehaviour
 
     public void RemoveUnitAtGridPosition(GridPosition gridPosition, UnitBase unit)
     {
-        if (unit.Unit.Id != (int)MapData.OBJ_TYPE.BOSS)
+        if (unit.Unit.Id != (int)MapData.OBJ_TYPE.BOSS && unit.Unit.Id != (int)MapData.OBJ_TYPE.BOSS2)
         {
             GridObject gridObject = gridSystem.GetGridObject(gridPosition);
             gridObject.RemoveUnit(unit);

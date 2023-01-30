@@ -1001,6 +1001,13 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1722,8 +1729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df9c0f005ff6d4408e2019efffdca10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 10
-  height: 10
+  width: 15
+  height: 15
   cellSize: 2
   gridDebugObjectPrefab: {fileID: 8290504478895520142, guid: b58cff230ace1c54b930ca11fcd520f0,
     type: 3}
@@ -5781,6 +5788,7 @@ MonoBehaviour:
   - {fileID: 459611253589615705, guid: fb783d5ddd2ca8846bf681090e4de6a8, type: 3}
   - {fileID: 8845809463210739547, guid: ef09042d89120d04da27bf0a75371ff4, type: 3}
   - {fileID: 5803220951515102136, guid: 8b3b070c131b0564f9303d0e2b35d62d, type: 3}
+  - {fileID: 8383685445954952436, guid: d447a72efc9843e468c58c1802282fda, type: 3}
   dataLoader: {fileID: 2056676127}
   unitActionSystem: {fileID: 1829696810}
   unityActionSystemUI: {fileID: 166488845}

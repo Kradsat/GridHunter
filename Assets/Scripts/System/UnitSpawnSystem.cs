@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class UnitSpawnSystem : MonoBehaviour
 {
-    [SerializeField] private GameObject[] unit = new GameObject[7];
+    [SerializeField] private GameObject[] unit = new GameObject[9];
     [SerializeField] private DataLoader dataLoader;
     [SerializeField] private UnitActionSystem unitActionSystem;
     [SerializeField] private UnityActionSystemUI unityActionSystemUI;

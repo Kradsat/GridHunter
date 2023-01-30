@@ -11,7 +11,6 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 1f3940360e826ce44999a330c13021de,
     type: 3}
   m_ValidKeywords:
-  - _ALPHATEST_ON
   - _DISABLE_DECALS
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
@@ -20,8 +19,7 @@ Material:
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 2450
-  stringTagMap:
-    RenderType: TransparentCutout
+  stringTagMap: {}
   disabledShaderPasses:
   - TransparentDepthPrepass
   - TransparentDepthPostpass

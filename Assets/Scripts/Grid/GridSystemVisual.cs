@@ -170,7 +170,7 @@ public class GridSystemVisual : MonoBehaviour
         return null;
     }
 
-    public void ShowAoePrediction(List<GridPosition> gridPositions)
+    public void ShowPrediction(List<GridPosition> gridPositions)
     {
         foreach(GridPosition gridPosition in gridPositions)
         {

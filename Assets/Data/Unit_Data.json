@@ -53,6 +53,12 @@
 			"unit_name": "boss",
 			"unit_hp": 200,
 			"unit_attack": 50
+		},
+		{
+			"unit_id": 9,
+			"unit_name": "boss2",
+			"unit_hp": 200,
+			"unit_attack": 50
 		}
 	]
 }
