@@ -19,16 +19,16 @@ public class ActionButtonUI : MonoBehaviour
         switch (baseAction.GetActionName())
         {
             case "Stay":
-                text = "ステイ";
+                text = "Stay";
                 break;
             case "Move":
-                text = "移動";
+                text = "Move";
                 break;
             case "Attack":
-                text = "攻撃";
+                text = "Attack";
                 break;
             case "Heal Ally":
-                text = "ヒール";
+                text = "Heal";
                 break;
         }
         textMeshProUGUI.text = text;
