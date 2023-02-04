@@ -25,12 +25,13 @@ public class TargetArrowController : MonoBehaviour
         lineRenderer.positionCount = 1;
         int i = 0;
         var point = _startPos;
-        var normalized = (_endPos - _startPos).normalized;
+        var normalized = (_endPos - _startPos);
         lineRenderer.SetPosition(i, point);
         for (float time = 0; Vector3.Distance(_startPos, point) < Vector3.Distance(_startPos,_endPos); time += _interval)
         {
             i++;
             point = _startPos + normalized * time;
+            point.y += Mathf.Sin(time * Mathf.PI) * 2;
             lineRenderer.positionCount = i + 1;
             lineRenderer.SetPosition(i, point);
         }
