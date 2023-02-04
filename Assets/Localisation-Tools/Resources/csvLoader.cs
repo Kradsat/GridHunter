@@ -14,7 +14,7 @@ public class csvLoader
     private char surround = '"';
     private string[] fieldSeparator = { "\",\"" };
 
-    public void loadCSV()
+    public void LoadCSV()
     {
         csvFile = Resources.Load<TextAsset>("Localisation");
     }
@@ -89,4 +89,5 @@ public class csvLoader
         Add(key, jp_value, en_value);
     }
 #endif
+
 }

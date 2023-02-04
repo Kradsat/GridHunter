@@ -10,7 +10,7 @@ public class LocalisationSystem
         English 
     }
 
-    public static Language language = Language.Japanese;
+    public static Language language = Language.English;
 
     private static Dictionary<string, string> localisedJP;
     private static Dictionary<string, string> localisedEN;
@@ -21,7 +21,7 @@ public class LocalisationSystem
     public static void Init()
     {
         CSVLoader = new csvLoader();
-        CSVLoader.loadCSV();
+        CSVLoader.LoadCSV();
 
         UpdateDictionnaries();
        
@@ -58,6 +58,7 @@ public class LocalisationSystem
         return value;
     }
 
+#if UNITY_EDITOR
     public static void Add(string key, string jp_value, string en_value)
     {
         if (CSVLoader == null)
@@ -65,9 +66,9 @@ public class LocalisationSystem
             CSVLoader = new csvLoader();
         }
 
-        CSVLoader.loadCSV();
+        CSVLoader.LoadCSV();
         CSVLoader.Add(key, jp_value, en_value);
-        CSVLoader.loadCSV();
+        CSVLoader.LoadCSV();
 
         UpdateDictionnaries();
     }
@@ -79,9 +80,9 @@ public class LocalisationSystem
             CSVLoader = new csvLoader();
         }
 
-        CSVLoader.loadCSV();
+        CSVLoader.LoadCSV();
         CSVLoader.Edit(key, jp_value, en_value);
-        CSVLoader.loadCSV();
+        CSVLoader.LoadCSV();
 
         UpdateDictionnaries();
     }
@@ -95,10 +96,11 @@ public class LocalisationSystem
             CSVLoader = new csvLoader();
         }
 
-        CSVLoader.loadCSV();
+        CSVLoader.LoadCSV();
         CSVLoader.Remove(key);
-        CSVLoader.loadCSV();
+        CSVLoader.LoadCSV();
 
         UpdateDictionnaries();
     }
+#endif
 }
