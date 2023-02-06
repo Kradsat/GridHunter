@@ -35,6 +35,7 @@ public class Boss2Action : EnemyAction
     private const int BOSS_SIZE = 4;
     // 四角範囲攻撃のサイズ
     private const int SQUARE_WIDTH = 1;
+    private const int RANGE_SIZE = 5;
 
     // ターン数
     private int _turn = 0;
@@ -51,6 +52,18 @@ public class Boss2Action : EnemyAction
     // 現在の攻撃エリア
     private List<GridPosition> _now_attack_area = new List<GridPosition>();
 
+    // AOE無効範囲
+    private List<GridPosition> _no_damage_area = new List<GridPosition>()
+    {
+        new GridPosition(12, 14),
+        new GridPosition(1, 12),
+        new GridPosition(6, 6),
+        new GridPosition(11, 9),new GridPosition(12, 9),new GridPosition(13, 9),
+        new GridPosition(2, 5),new GridPosition(3, 5),new GridPosition(4, 5),
+        new GridPosition(10, 3),
+        new GridPosition(5, 2)
+    };
+
     // 初期化
     public override void Init(UnitStruct unit)
     {
@@ -58,7 +71,7 @@ public class Boss2Action : EnemyAction
 
         var xPos = base.GridPosition.x - 1;
         var zPos = base.GridPosition.z - 1;
-        SetSquareArea(xPos, zPos, _square_area_list);
+        SetNormalArea(xPos, zPos);
         SetAoeArea();
     }
 
@@ -78,7 +91,6 @@ public class Boss2Action : EnemyAction
     {
         _turn = TurnSystem.Instance.TurnNumber / 2 - 1;
         var action = _turn % (int)_turn_action.Count;
-        Debug.Log($"===============================turn: {_turn} / action: {action}");
         _isPredictionOn = false;
 
         if (_turn_action[action] == TURN_ACTION.Predict)
@@ -100,14 +112,29 @@ public class Boss2Action : EnemyAction
     /// <summary>
     /// 四角攻撃する際の範囲セット
     /// </summary>
-    private void SetSquareArea(int x, int z, List<GridPosition> areaList)
+    private void SetNormalArea(int x, int z)
     {
-        areaList.Clear();
+        _square_area_list.Clear();
         for (var zPos = x - SQUARE_WIDTH; zPos < x + SQUARE_WIDTH + BOSS_SIZE; zPos++)
         {
             for (var xPos = z - SQUARE_WIDTH; xPos < z + SQUARE_WIDTH + BOSS_SIZE; xPos++)
             {
-                areaList.Add(new GridPosition(zPos, xPos));
+                _square_area_list.Add(new GridPosition(zPos, xPos));
+            }
+        }
+    }
+
+    /// <summary>
+    /// 遠隔範囲セット
+    /// </summary>
+    private void SetRangeArea(int x, int z)
+    {
+        _range_area_list.Clear();
+        for (var zPos = x - RANGE_SIZE / 2; zPos <= x + RANGE_SIZE / 2; zPos++)
+        {
+            for (var xPos = z - RANGE_SIZE / 2; xPos <= z + RANGE_SIZE / 2; xPos++)
+            {
+                _range_area_list.Add(new GridPosition(zPos, xPos));
             }
         }
     }
@@ -126,6 +153,12 @@ public class Boss2Action : EnemyAction
         }
 
         // remove no damage area
+        _no_damage_area.ForEach(_ => {
+            if (_aoe_range_list.Contains(_))
+            {
+                _aoe_range_list.Remove(_);
+            }
+        });
     }
 
     /// <summary>
@@ -137,9 +170,8 @@ public class Boss2Action : EnemyAction
 
         if (_turn_action[nextAction] == TURN_ACTION.Range)
         {
-            var target = base.GetAttackTarget();
-            Debug.Log($"================================= target: {target.name} {target.GetGridPosition().x} {target.GetGridPosition().z}");
-            SetSquareArea(target.GetGridPosition().x, target.GetGridPosition().z, _range_area_list);
+            var target = base.UpdateAttackTarget();
+            SetRangeArea(target.GetGridPosition().x, target.GetGridPosition().z);
             _now_attack_area = _range_area_list;
             _now_damage = _range_damage;
         }
@@ -161,7 +193,8 @@ public class Boss2Action : EnemyAction
         {
             if (UnitManager.Instance.GetAllyUnitList().Any(_ => _.GridPosition == targetGrid))
             {
-                UnitManager.Instance.GetAllyUnitList().Find(_ => _.GridPosition == targetGrid).Damage(_now_damage);
+                UnitManager.Instance.GetAllyUnitList().Find(_ => _.GridPosition == targetGrid)?.Damage(_now_damage);
+                UnitManager.Instance.GetEnemyActionList().Find(_ => _.GridPosition == targetGrid && _.Unit.Id != (int)MapData.OBJ_TYPE.BOSS2 && _.Unit.Id != (int)MapData.OBJ_TYPE.NEST)?.Damage(_now_damage);
             }
         }
         callback();

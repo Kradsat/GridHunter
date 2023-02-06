@@ -14,6 +14,9 @@ public static class MapData
         ENEMY3,
         BOSS,
         BOSS2,
+        MOSQUITO,
+        NEST,
+        ROCK,
         MAX,
     }
 }

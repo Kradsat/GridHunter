@@ -129,6 +129,12 @@ public class UnitBase : UnitStatus
 
     public void Damage(int damageAmount, Action callback = null)
     {
+        if(this.Unit.Id == (int)MapData.OBJ_TYPE.ROCK)
+        {
+            callback?.Invoke();
+            return;
+        }
+
         base.HP -= (double)damageAmount;
         if( base.HP < 0 ) {
             base.HP = 0;

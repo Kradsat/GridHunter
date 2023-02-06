@@ -48,6 +48,7 @@ public class EnemyAction : UnitBase
     private bool isActive = false;
 
     private UnitBase _target = null;
+    public UnitBase Target => _target;
     private List<UnitBase> _playerUnitList;
     private List<GridPosition> pathGridPositionList = null;
 
@@ -63,6 +64,10 @@ public class EnemyAction : UnitBase
         if (this.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
         {
             AttackTarget();
+            return;
+        }
+
+        if (!canMove) {
             return;
         }
 
@@ -109,8 +114,14 @@ public class EnemyAction : UnitBase
 
     public virtual void Attack(Action callback = null)
     {
+        if(this.Unit.Id == (int)MapData.OBJ_TYPE.NEST || this.Unit.Id == (int)MapData.OBJ_TYPE.ROCK)
+        {
+            callback?.Invoke();
+            return;
+        }
+
         _attackCallback = callback;
-        GetAttackTarget();
+        UpdateAttackTarget();
         if (_playerUnitList.Count == 0)
         {
             callback?.Invoke();
@@ -119,7 +130,7 @@ public class EnemyAction : UnitBase
         FindPathToTarget();
     }
 
-    public UnitBase GetAttackTarget()
+    public UnitBase UpdateAttackTarget()
     {
         _playerUnitList = UnitManager.Instance.GetAllyUnitList();
 
@@ -214,6 +225,11 @@ public class EnemyAction : UnitBase
 
     public UnitBase GetSpecificJobUnit()
     {
+        if (_playerUnitList.Count <= 0)
+        {
+            return null;
+        }
+
         var target = _playerUnitList[0];
 
         if (_playerUnitList.Count != _targetJob.Count)

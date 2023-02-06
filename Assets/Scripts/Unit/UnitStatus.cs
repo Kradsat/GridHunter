@@ -29,5 +29,5 @@ public class UnitStatus : MonoBehaviour
         //          + " equip:" + _unit.Equipment.equipment_name);
         
     }
-    public bool IsEnemy { get { return _unit.Id > 4; } }
+    public bool IsEnemy { get { return _unit.Id > 4 && _unit.Id < 12; } }
 }

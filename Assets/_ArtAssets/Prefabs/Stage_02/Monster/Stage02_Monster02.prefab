@@ -72,6 +72,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6867971552778048128}
+  - component: {fileID: -2499889056126532419}
+  - component: {fileID: 3894824291051969790}
   m_Layer: 0
   m_Name: Stage02_Monster02
   m_TagString: Untagged
@@ -95,6 +97,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &-2499889056126532419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328003001862531736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3894824291051969790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328003001862531736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4d0a4a3d6715a4ca2dc03ad136035f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 1
+  canAttack: 1
+  canStay: 1
+  _damageEffect: {fileID: 8715778948686599409, guid: 7747993743e67a942b42128a914b4d8b,
+    type: 3}
+  _healEffect: {fileID: 6671303523487081338, guid: c816cb316c50de54fa7b553d21fec87b,
+    type: 3}
+  attackSE: {fileID: 0}
+  healSE: {fileID: 0}
+  _rotateSpeed: 20
+  _stoppingDistance: 0.1
+  _moveSpeed: 4
+  _moveDistance: 4
+  _attackMode: 0
+  _targetJob: 04000000020000000100000003000000
+  _isShowAttackDistance: 1
+  _attackDistance: 1
 --- !u!1 &652289914997342906
 GameObject:
   m_ObjectHideFlags: 0

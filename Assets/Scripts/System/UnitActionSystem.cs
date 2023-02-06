@@ -213,6 +213,10 @@ public class UnitActionSystem : MonoBehaviour
         var enemyList = UnitManager.Instance.GetEnemyActionList();
         foreach (var enemy in enemyList)
         {
+            if (enemy.Unit.Id == (int)MapData.OBJ_TYPE.NEST) {
+                continue;
+            }
+
             if (enemy.Target == selectedUnit)
             {
                 var arrow = Instantiate(_targetArrow, _arrowParent);

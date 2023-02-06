@@ -14,6 +14,7 @@ public class UnitManager : MonoBehaviour
     [SerializeField]private List<EnemyAction> enemyActionList;
     [SerializeField] private GameObject Win;
     [SerializeField] private GameObject Lose;
+    [SerializeField] private NestSpawnController nestSpawnController;
 
     private void Awake()
     {
@@ -63,6 +64,7 @@ public class UnitManager : MonoBehaviour
         if (unit.IsEnemy)
         {
             enemyUnitList.Remove(unit);
+
             if ( enemyUnitList.Count == 0 ) {
                 if( Win == null ) {
                     return;
