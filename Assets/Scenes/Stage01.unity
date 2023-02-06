@@ -171,9 +171,12 @@ MonoBehaviour:
   unitList: []
   allyUnitList: []
   enemyUnitList: []
+  mobUnitList: []
+  nestList: []
   enemyActionList: []
   Win: {fileID: 1988345908}
   Lose: {fileID: 120338237}
+  _unitSpawnSystem: {fileID: 0}
 --- !u!1 &20212765
 GameObject:
   m_ObjectHideFlags: 0
