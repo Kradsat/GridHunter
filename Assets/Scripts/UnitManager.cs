@@ -11,10 +11,13 @@ public class UnitManager : MonoBehaviour
     [SerializeField]private List<UnitBase> unitList;
     [SerializeField]private List<UnitBase> allyUnitList;
     [SerializeField]private List<UnitBase> enemyUnitList;
+    [SerializeField]private List<UnitBase> mobUnitList;
+    [SerializeField]private List<UnitBase> nestList;
     [SerializeField]private List<EnemyAction> enemyActionList;
     [SerializeField] private GameObject Win;
     [SerializeField] private GameObject Lose;
-    [SerializeField] private NestSpawnController nestSpawnController;
+    [SerializeField] private UnitSpawnSystem _unitSpawnSystem;
+
 
     private void Awake()
     {
@@ -29,6 +32,8 @@ public class UnitManager : MonoBehaviour
         unitList = new List<UnitBase>();
         allyUnitList = new List<UnitBase>();
         enemyUnitList = new List<UnitBase>();
+        mobUnitList = new List<UnitBase>();
+        nestList = new List<UnitBase>();
         UnitBase.OnAnyUnitSpawn += Unit_OnAnyUnitSpawn;
         UnitBase.OnAnyUnitDead += Unit_OnAnyUnitDead;
 
@@ -42,10 +47,15 @@ public class UnitManager : MonoBehaviour
 
         unitList.Add(unit);
 
-        if (unit.IsEnemy)
+        if (unit.IsEnemy && unit.Unit.Id != (int)MapData.OBJ_TYPE.NEST)
         {
+            mobUnitList.Add(unit);
             enemyUnitList.Add(unit);
             enemyActionList.Add(unit.GetComponent<EnemyAction>());
+        }
+        else if (unit.Unit.Id == (int)MapData.OBJ_TYPE.NEST)
+        {
+            nestList.Add(unit);
         }
         else
         {
@@ -61,16 +71,26 @@ public class UnitManager : MonoBehaviour
 
         unitList.Remove(unit);
 
-        if (unit.IsEnemy)
+        if (unit.IsEnemy && unit.Unit.Id != (int)MapData.OBJ_TYPE.NEST)
         {
+            mobUnitList.Remove(unit);
             enemyUnitList.Remove(unit);
 
-            if ( enemyUnitList.Count == 0 ) {
+            if (enemyUnitList.Count == 0 && nestList.Count == 0) {
                 if( Win == null ) {
                     return;
                 }
                 Win.SetActive( true );
             }
+
+            if(mobUnitList.Count == 0)
+            {
+                SpawnNewEnemy();
+            }
+        }
+        else if (unit.Unit.Id == (int)MapData.OBJ_TYPE.NEST)
+        {
+            nestList.Remove(unit);
         }
         else
         {
@@ -109,5 +129,13 @@ public class UnitManager : MonoBehaviour
     public void RemoveEnemyAction(EnemyAction enemy)
     {
         enemyActionList.Remove(enemy);
+    }
+
+    private void SpawnNewEnemy()
+    {
+        foreach (var nest in nestList)
+        {
+            _unitSpawnSystem.SpawnFromNest(nest.GridPosition);
+        }
     }
 }
