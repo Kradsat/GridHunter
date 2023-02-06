@@ -15,6 +15,7 @@ public class UnitSpawnSystem : MonoBehaviour
         dataLoader.LoadAllDatas();
         var _mapData = MasterDataContainer.Instance.Map;
         var _unitData = MasterDataContainer.Instance.UnitDatas;
+        UnitBase selectedUnit = null;
 
         for (int z = 0; z < 10; z++)
         {
@@ -34,7 +35,11 @@ public class UnitSpawnSystem : MonoBehaviour
                     }
                     spawn.transform.position = new Vector3(xPos, 0, zPos);
                     var spawnUnit = spawn.GetComponent<UnitBase>();
-                    if (unitType == 3)  unitActionSystem.SelectedUnit = spawnUnit;
+                    if (unitType == 3)
+                    {
+                        unitActionSystem.SelectedUnit = spawnUnit;
+                        selectedUnit = spawnUnit;
+                    }
                     
 
                     var unitData = new UnitStruct();
@@ -52,5 +57,10 @@ public class UnitSpawnSystem : MonoBehaviour
 
         unityActionSystemUI.Initialize();
         gridSystemVisual.Initialize();
+        UnitManager.Instance.SetUpdateEnemyTarget();
+        if(selectedUnit != null)
+        {
+            unitActionSystem.SelectedUnit = selectedUnit;
+        }
     }
 }

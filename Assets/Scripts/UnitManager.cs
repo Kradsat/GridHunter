@@ -96,6 +96,14 @@ public class UnitManager : MonoBehaviour
         return enemyActionList.OrderBy(_ => _.Unit.Id).ToList();
     }
 
+    public void SetUpdateEnemyTarget()
+    {
+        foreach(var enemy in enemyActionList)
+        {
+            enemy.UpdateAttackTarget();
+        }
+    }
+
     public void RemoveEnemyAction(EnemyAction enemy)
     {
         enemyActionList.Remove(enemy);
