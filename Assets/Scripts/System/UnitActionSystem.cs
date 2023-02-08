@@ -140,7 +140,8 @@ public class UnitActionSystem : MonoBehaviour
             {
                 if(raycasthit.transform.TryGetComponent<UnitBase>(out UnitBase unit))
                 {
-                    if (unit == selectedUnit)
+                    if (unit == selectedUnit ||
+                        GetSelectedAction() == selectedUnit.GetAction<SpecialAttack>() && selectedUnit.GetActionPoints( ) > 0 )
                     {
                         return false;
                     }
