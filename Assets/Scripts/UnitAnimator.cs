@@ -32,6 +32,7 @@ public class UnitAnimator : MonoBehaviour
         if (TryGetComponent<SpecialAttack>(out SpecialAttack specialAttack))
         {
             specialAttack.OnAttackStart += SpecialAttack_OnAttackStart;
+            specialAttack.OnAttackEnd += SpecialAttack_OnAttackEnd;
         }
         //healthSystem = GetComponent<HealthSystem>();
         //healthSystem.OnDead += HealthSystem_OnDead;
@@ -45,6 +46,16 @@ public class UnitAnimator : MonoBehaviour
         foreach (var child in childComponents)
         {
            child.SetBool("Attack1",true);
+        }
+    }
+
+    private void SpecialAttack_OnAttackEnd(object sender, EventArgs e)
+    {
+        animator.SetTrigger("SpecialAttack");
+         var childComponents = GetComponentsInChildren<Animator>();
+        foreach (var child in childComponents)
+        {
+           child.SetBool("Attack1",false);
         }
     }
 
