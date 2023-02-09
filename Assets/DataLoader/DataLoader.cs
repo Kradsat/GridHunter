@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.IO;
 using System;
+using UnityEngine.SceneManagement;
 
 public class DataLoader : MonoBehaviour {
     [Header("Json")]
@@ -14,6 +15,8 @@ public class DataLoader : MonoBehaviour {
 
     public void LoadAllDatas()
     {
+        CheckData();
+
         //json
         MasterDataContainer.Instance.UnitDatas = JsonUtility.FromJson<Units>(UnitDataJson.text);
         MasterDataContainer.Instance.EquipmentDatas = JsonUtility.FromJson<Equipments>(EquipmentDataJson.text);
@@ -23,7 +26,35 @@ public class DataLoader : MonoBehaviour {
         LoadUnitEquip();
     }
 
-    //今はステージ１しかロードしません
+    private void CheckData()
+    {
+        if(EquipmentDataJson == null)
+        {
+            EquipmentDataJson = Resources.Load<TextAsset>("Data/Equipment_Data");
+        }
+
+        if (UnitDataJson == null)
+        {
+            UnitDataJson = Resources.Load<TextAsset>("Data/Unit_Data");
+        }
+
+        if (MapCSV == null)
+        {
+            var stage = "Stage1";
+            if(SceneManager.GetActiveScene().name == "scene2")
+            {
+                stage = "Stage2";
+            }
+
+            UnitDataJson = Resources.Load<TextAsset>("Data/" + stage);
+        }
+
+        if (UnitEquipCSV == null)
+        {
+            UnitEquipCSV = Resources.Load<TextAsset>("Data/Team_Data");
+        }
+    }
+
     public void LoadMapData(Action callback = null)
     {
         StringReader reader = new StringReader(MapCSV.text);

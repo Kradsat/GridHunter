@@ -129,6 +129,7 @@ public class UnitBase : UnitStatus
 
     public void Damage(int damageAmount, Action callback = null)
     {
+        Debug.Log("ATTACKED " + this.Unit.Id + " / " + this.Unit.Name);
         if (this.Unit.Id == (int)MapData.OBJ_TYPE.ROCK)
         {
             callback?.Invoke();
@@ -168,6 +169,10 @@ public class UnitBase : UnitStatus
 
     private void CreateDamageEffect()
     {
+        if (_damageEffect == null)
+        {
+            return;
+        }
         var effect = Instantiate(_damageEffect, this.transform.position, Quaternion.identity) ;
         attackSE.Play();
         Destroy(effect, 1f);
@@ -175,6 +180,10 @@ public class UnitBase : UnitStatus
 
     private void CreateHealEffect()
     {
+        if (_healEffect == null)
+        {
+            return;
+        }
         var effect = Instantiate(_healEffect, this.transform.position, Quaternion.identity);
         healSE.Play();
         Destroy(effect, 1f);

@@ -50,7 +50,10 @@ public class UnitManager : MonoBehaviour
 
         if (unit.IsEnemy && unit.Unit.Id != (int)MapData.OBJ_TYPE.NEST && unit.Unit.Id != (int)MapData.OBJ_TYPE.ROCK)
         {
-            mobUnitList.Add(unit);
+            if (unit.Unit.Id != (int)MapData.OBJ_TYPE.BOSS2)
+            {
+                mobUnitList.Add(unit);
+            }
             enemyUnitList.Add(unit);
             enemyActionList.Add(unit.GetComponent<EnemyAction>());
         }
@@ -78,7 +81,10 @@ public class UnitManager : MonoBehaviour
 
         if (unit.IsEnemy && unit.Unit.Id != (int)MapData.OBJ_TYPE.NEST && unit.Unit.Id != (int)MapData.OBJ_TYPE.ROCK)
         {
-            mobUnitList.Remove(unit);
+            if(unit.Unit.Id != (int)MapData.OBJ_TYPE.BOSS2)
+            {
+                mobUnitList.Remove(unit);
+            }
             enemyUnitList.Remove(unit);
             if (enemyUnitList.Count == 0 && nestList.Count == 0)
             {

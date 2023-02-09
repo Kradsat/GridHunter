@@ -102,10 +102,10 @@ public class Boss2Action : EnemyAction
         {
             _now_attack_area = _square_area_list;
             _now_damage = _normal_damage;
-            AreaAttack(callback);
+            AreaAttack(callback, _turn_action[action]);
         } else
         {
-            AreaAttack(callback);
+            AreaAttack(callback, _turn_action[action]);
         }
     }
 
@@ -187,13 +187,13 @@ public class Boss2Action : EnemyAction
     /// <summary>
     /// îÕàÕçUåÇ
     /// </summary>
-    private void AreaAttack(Action callback)
+    private void AreaAttack(Action callback, TURN_ACTION action)
     {
         foreach (var targetGrid in _now_attack_area)
         {
-            if (UnitManager.Instance.GetAllyUnitList().Any(_ => _.GridPosition == targetGrid))
+            UnitManager.Instance.GetAllyUnitList().Find(_ => _.GridPosition == targetGrid)?.Damage(_now_damage);
+            if (action == TURN_ACTION.AOE)
             {
-                UnitManager.Instance.GetAllyUnitList().Find(_ => _.GridPosition == targetGrid)?.Damage(_now_damage);
                 UnitManager.Instance.GetMobList.Find(_ => _.GridPosition == targetGrid)?.Damage(_now_damage);
             }
         }

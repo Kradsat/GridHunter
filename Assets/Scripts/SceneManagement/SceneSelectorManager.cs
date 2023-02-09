@@ -14,7 +14,7 @@ public class SceneSelectorManager : MonoBehaviour
         SceneManager.LoadSceneAsync( "Stage01" );
     }
     public void Stage02( ) {
-        SceneManager.LoadSceneAsync("Stage02");
+        SceneManager.LoadSceneAsync("scene2");
     }
     public void Gacha()
     {
