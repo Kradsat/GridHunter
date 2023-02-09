@@ -174,9 +174,10 @@ MonoBehaviour:
   enemyActionList: []
   mobUnitList: []
   nestList: []
+  objList: []
   Win: {fileID: 1988345908}
   Lose: {fileID: 120338237}
-  _unitSpawnSystem: {fileID: 0}
+  _unitSpawnSystem: {fileID: 1352567553}
 --- !u!1001 &17231868
 PrefabInstance:
   m_ObjectHideFlags: 0
