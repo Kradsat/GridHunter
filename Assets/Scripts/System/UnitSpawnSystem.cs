@@ -17,9 +17,9 @@ public class UnitSpawnSystem : MonoBehaviour
         var _unitData = MasterDataContainer.Instance.UnitDatas;
         UnitBase selectedUnit = null;
 
-        for (int z = 0; z < 10; z++)
+        for (int z = 0; z < 15; z++)
         {
-            for (int x = 0; x < 10; x++)
+            for (int x = 0; x < 15; x++)
             {
                 var unitType = _mapData[x, z];
                 if(unitType != 0)
@@ -62,5 +62,28 @@ public class UnitSpawnSystem : MonoBehaviour
         {
             unitActionSystem.SelectedUnit = selectedUnit;
         }
+    }
+
+    public void SpawnFromNest(GridPosition gridPosition)
+    {
+        var _unitData = MasterDataContainer.Instance.UnitDatas;
+        var unitType = (int)MapData.OBJ_TYPE.MOSQUITO;
+
+        var spawn = Instantiate(unit[(int)MapData.OBJ_TYPE.MOSQUITO]);
+        spawn.transform.SetParent(transform, false);
+        float xPos = gridPosition.x * GRID_SIZE;
+        float zPos = gridPosition.z * GRID_SIZE;
+        spawn.transform.position = new Vector3(xPos, 0, zPos);
+        var spawnUnit = spawn.GetComponent<UnitBase>();
+
+        var unitData = new UnitStruct();
+        unitData.Id = _unitData.unit_datas[unitType].unit_id;
+        unitData.Name = _unitData.unit_datas[unitType].unit_name;
+        unitData.Hp = _unitData.unit_datas[unitType].unit_hp;
+        unitData.Attack = _unitData.unit_datas[unitType].unit_attack;
+        var equip = unitType < 5 ? MasterDataContainer.Instance.UnitEquip[unitType - 1, 1] : 0;
+        unitData.Equipment = MasterDataContainer.Instance.EquipmentDatas.equipment_datas[equip];
+
+        spawnUnit.Init(unitData);
     }
 }

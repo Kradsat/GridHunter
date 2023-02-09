@@ -57,7 +57,6 @@ public class EnemyAction : UnitBase
     {
         base.Update();
 
-        UpdateAttackTarget();
         if (!isActive)
         {
             return;
@@ -66,6 +65,11 @@ public class EnemyAction : UnitBase
         if (this.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
         {
             AttackTarget();
+            return;
+        }
+
+        if (!canMove)
+        {
             return;
         }
 
@@ -112,6 +116,12 @@ public class EnemyAction : UnitBase
 
     public virtual void Attack(Action callback = null)
     {
+        if (this.Unit.Id == (int)MapData.OBJ_TYPE.NEST || this.Unit.Id == (int)MapData.OBJ_TYPE.ROCK)
+        {
+            callback?.Invoke();
+            return;
+        }
+
         _attackCallback = callback;
         UpdateAttackTarget();
         if (_playerUnitList.Count == 0)
@@ -122,7 +132,7 @@ public class EnemyAction : UnitBase
         FindPathToTarget();
     }
 
-    public void UpdateAttackTarget()
+    public UnitBase UpdateAttackTarget()
     {
         _playerUnitList = UnitManager.Instance.GetAllyUnitList();
 
@@ -141,6 +151,8 @@ public class EnemyAction : UnitBase
                 _target = GetSpecificJobUnit();
                 break;
         }
+
+        return _target;
     }
 
     private UnitBase GetHighestHPUnit()
@@ -215,6 +227,11 @@ public class EnemyAction : UnitBase
 
     public UnitBase GetSpecificJobUnit()
     {
+        if (_playerUnitList.Count <= 0)
+        {
+            return null;
+        }
+
         var target = _playerUnitList[0];
 
         if (_playerUnitList.Count != _targetJob.Count)
@@ -268,7 +285,7 @@ public class EnemyAction : UnitBase
 
         if (_isShowAttackDistance)
         {
-            GridSystemVisual.Instance.ShowAoePrediction(targetNeighbours);
+            GridSystemVisual.Instance.ShowPrediction(targetNeighbours);
         }
 
         pathGridPositionList = null;
@@ -307,7 +324,6 @@ public class EnemyAction : UnitBase
         Debug.Log(this + " / Attack Target: " + _target);
         _target.Damage(this.Unit.Attack);
         _attackCallback?.Invoke();
-        UpdateAttackTarget();
     }
 
     private void OnDestroy()

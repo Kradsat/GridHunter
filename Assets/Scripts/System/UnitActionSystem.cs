@@ -214,8 +214,17 @@ public class UnitActionSystem : MonoBehaviour
         var enemyList = UnitManager.Instance.GetEnemyActionList();
         foreach (var enemy in enemyList)
         {
+            if (enemy.Unit.Id == (int)MapData.OBJ_TYPE.NEST)
+            {
+                continue;
+            }
+
             if (enemy.Target == selectedUnit)
             {
+                if (selectedUnit == null)
+                {
+                    continue;
+                }
                 var arrow = Instantiate(_targetArrow, _arrowParent);
                 arrow.GetComponent<TargetArrowController>().ShowArrow(enemy.transform.position, selectedUnit.transform.position);
                 _arrowList.Add(arrow);

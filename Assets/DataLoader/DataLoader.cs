@@ -28,11 +28,12 @@ public class DataLoader : MonoBehaviour {
     {
         StringReader reader = new StringReader(MapCSV.text);
 
-        for (int y = 0; y < 10; y++)
+        for (int y = 0; y < 15; y++)
         {
             string[] line = reader.ReadLine().Split(",");
-            for (int x = 0; x < 10; x++)
+            for (int x = 0; x < 15; x++)
             {
+                if (!String.IsNullOrEmpty(line[x]))
                 MasterDataContainer.Instance.Map[x, y] = int.Parse(line[x]);
             }
         }

@@ -12,8 +12,12 @@ public class UnitManager : MonoBehaviour
     [SerializeField]private List<UnitBase> allyUnitList;
     [SerializeField]private List<UnitBase> enemyUnitList;
     [SerializeField]private List<EnemyAction> enemyActionList;
+    [SerializeField] private List<UnitBase> mobUnitList;
+    [SerializeField] private List<UnitBase> nestList;
+    [SerializeField] private List<UnitBase> objList;
     [SerializeField] private GameObject Win;
     [SerializeField] private GameObject Lose;
+    [SerializeField] private UnitSpawnSystem _unitSpawnSystem;
 
     private void Awake()
     {
@@ -28,6 +32,9 @@ public class UnitManager : MonoBehaviour
         unitList = new List<UnitBase>();
         allyUnitList = new List<UnitBase>();
         enemyUnitList = new List<UnitBase>();
+        mobUnitList = new List<UnitBase>();
+        nestList = new List<UnitBase>();
+        objList = new List<UnitBase>();
         UnitBase.OnAnyUnitSpawn += Unit_OnAnyUnitSpawn;
         UnitBase.OnAnyUnitDead += Unit_OnAnyUnitDead;
 
@@ -41,10 +48,19 @@ public class UnitManager : MonoBehaviour
 
         unitList.Add(unit);
 
-        if (unit.IsEnemy)
+        if (unit.IsEnemy && unit.Unit.Id != (int)MapData.OBJ_TYPE.NEST && unit.Unit.Id != (int)MapData.OBJ_TYPE.ROCK)
         {
+            mobUnitList.Add(unit);
             enemyUnitList.Add(unit);
             enemyActionList.Add(unit.GetComponent<EnemyAction>());
+        }
+        else if (unit.Unit.Id == (int)MapData.OBJ_TYPE.NEST)
+        {
+            nestList.Add(unit);
+        }
+        else if (unit.Unit.Id == (int)MapData.OBJ_TYPE.ROCK)
+        {
+            objList.Add(unit);
         }
         else
         {
@@ -60,24 +76,41 @@ public class UnitManager : MonoBehaviour
 
         unitList.Remove(unit);
 
-        if (unit.IsEnemy)
+        if (unit.IsEnemy && unit.Unit.Id != (int)MapData.OBJ_TYPE.NEST && unit.Unit.Id != (int)MapData.OBJ_TYPE.ROCK)
         {
+            mobUnitList.Remove(unit);
             enemyUnitList.Remove(unit);
-            if ( enemyUnitList.Count == 0 ) {
-                if( Win == null ) {
+            if (enemyUnitList.Count == 0 && nestList.Count == 0)
+            {
+                if (Win == null)
+                {
                     return;
                 }
-                Win.SetActive( true );
+                Win.SetActive(true);
             }
+            if (mobUnitList.Count == 0)
+            {
+                SpawnNewEnemy();
+            }
+        }
+        else if (unit.Unit.Id == (int)MapData.OBJ_TYPE.NEST)
+        {
+            nestList.Remove(unit);
+        }
+        else if (unit.Unit.Id == (int)MapData.OBJ_TYPE.ROCK)
+        {
+            objList.Remove(unit);
         }
         else
         {
             allyUnitList.Remove(unit);
-            if ( allyUnitList.Count == 0 ) {
-                if( Lose == null ) {
+            if (allyUnitList.Count == 0)
+            {
+                if (Lose == null)
+                {
                     return;
                 }
-                Lose.SetActive( true );
+                Lose.SetActive(true);
             }
         }
     }
@@ -96,6 +129,8 @@ public class UnitManager : MonoBehaviour
         return enemyActionList.OrderBy(_ => _.Unit.Id).ToList();
     }
 
+    public List<UnitBase> GetMobList => mobUnitList;
+
     public void SetUpdateEnemyTarget()
     {
         foreach(var enemy in enemyActionList)
@@ -107,5 +142,13 @@ public class UnitManager : MonoBehaviour
     public void RemoveEnemyAction(EnemyAction enemy)
     {
         enemyActionList.Remove(enemy);
+    }
+
+    private void SpawnNewEnemy()
+    {
+        foreach (var nest in nestList)
+        {
+            _unitSpawnSystem.SpawnFromNest(nest.GridPosition);
+        }
     }
 }

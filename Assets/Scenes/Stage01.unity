@@ -10056,7 +10056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipmentDataJson: {fileID: 4900000, guid: 7b4682a28f0f02c4ca456377e38f2db8, type: 3}
-  UnitDataJson: {fileID: 4900000, guid: 66c9d3ec0f4952a4293831ed4bd00653, type: 3}
+  UnitDataJson: {fileID: 4900000, guid: 6710734e158765c46a106dc3d78665c0, type: 3}
   MapCSV: {fileID: 4900000, guid: 0b5f0817a5a2e7a41bc76fddfc06ebda, type: 3}
   UnitEquipCSV: {fileID: 4900000, guid: f2f55e8d4280f1449808d1101642fe96, type: 3}
 --- !u!4 &2056676128

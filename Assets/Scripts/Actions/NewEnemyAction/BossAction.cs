@@ -62,7 +62,7 @@ public class BossAction : EnemyAction
         // AOEタイプがセットした際、予測エリアを表示する
         if(_aoe_type != (int)AOE_TYPE.MAX)
         {
-            GridSystemVisual.Instance.ShowAoePrediction(_area[_aoe_type]);
+            GridSystemVisual.Instance.ShowPrediction(_area[_aoe_type]);
         }
     }
 
