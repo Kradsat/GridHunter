@@ -1818,7 +1818,7 @@ MonoBehaviour:
   _targetJob: 04000000020000000100000003000000
   _isShowAttackDistance: 1
   _attackDistance: 1
-  _turn_action: 000000000300000002000000000000000300000002000000
+  _turn_action: 000000000300000001000000000000000300000002000000
   _normal_damage: 280
   _range_damage: 280
   _aoe_damage: 3000

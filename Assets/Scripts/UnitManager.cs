@@ -96,7 +96,9 @@ public class UnitManager : MonoBehaviour
             }
             if (mobUnitList.Count == 0)
             {
+                Debug.Log("ALL MOB DIED, START SPAWN");
                 SpawnNewEnemy();
+                TurnSystem.Instance.NextTurn();
             }
         }
         else if (unit.Unit.Id == (int)MapData.OBJ_TYPE.NEST)
@@ -152,8 +154,10 @@ public class UnitManager : MonoBehaviour
 
     private void SpawnNewEnemy()
     {
+        Debug.Log("count: " + nestList.Count);
         foreach (var nest in nestList)
         {
+            Debug.Log(nest);
             _unitSpawnSystem.SpawnFromNest(nest.GridPosition);
         }
     }
