@@ -44,7 +44,7 @@ public class LevelGrid : MonoBehaviour
             gridObject.AddUnit(unit);
             return;
         }
-        else
+        else if (unit.Unit.Id == (int)MapData.OBJ_TYPE.BOSS)
         {
             GridPosition gridPos;
             gridPos.x = gridPosition.x - 1;
@@ -53,6 +53,22 @@ public class LevelGrid : MonoBehaviour
             {
                 gridPosition.z = gridPos.z + i;
                 for (int j = 0; j < 4; j++)
+                {
+                    gridPosition.x = gridPos.x + j;
+                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+                    gridObject.AddUnit(unit);
+                }
+            }
+        }
+        else
+        {
+            GridPosition gridPos;
+            gridPos.x = gridPosition.x - 1;
+            gridPos.z = gridPosition.z - 1;
+            for (int i = 0; i < 3; i++)
+            {
+                gridPosition.z = gridPos.z + i;
+                for (int j = 0; j < 3; j++)
                 {
                     gridPosition.x = gridPos.x + j;
                     GridObject gridObject = gridSystem.GetGridObject(gridPosition);
@@ -75,7 +91,7 @@ public class LevelGrid : MonoBehaviour
             GridObject gridObject = gridSystem.GetGridObject(gridPosition);
             gridObject.RemoveUnit(unit);
             return;
-        } else {
+        } else if (unit.Unit.Id == (int)MapData.OBJ_TYPE.BOSS) {
             GridPosition gridPos;
             gridPos.x = gridPosition.x - 1;
             gridPos.z = gridPosition.z - 1;
@@ -83,6 +99,21 @@ public class LevelGrid : MonoBehaviour
             {
                 gridPosition.z = gridPos.z + i;
                 for (int j = 0; j < 4; j++)
+                {
+                    gridPosition.x = gridPos.x + j;
+                    GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+                    gridObject.RemoveUnit(unit);
+                }
+            }
+        }
+        else {
+            GridPosition gridPos;
+            gridPos.x = gridPosition.x - 1;
+            gridPos.z = gridPosition.z - 1;
+            for (int i = 0; i < 3; i++)
+            {
+                gridPosition.z = gridPos.z + i;
+                for (int j = 0; j < 3; j++)
                 {
                     gridPosition.x = gridPos.x + j;
                     GridObject gridObject = gridSystem.GetGridObject(gridPosition);
