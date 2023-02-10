@@ -40,7 +40,7 @@ public class UnitSpawnSystem : MonoBehaviour
                         unitActionSystem.SelectedUnit = spawnUnit;
                         selectedUnit = spawnUnit;
                     }
-                    
+
 
                     var unitData = new UnitStruct();
                     unitData.Id = _unitData.unit_datas[unitType].unit_id;
@@ -69,7 +69,7 @@ public class UnitSpawnSystem : MonoBehaviour
         var _unitData = MasterDataContainer.Instance.UnitDatas;
         var unitType = (int)MapData.OBJ_TYPE.MOSQUITO;
 
-        var spawn = Instantiate(unit[(int)MapData.OBJ_TYPE.MOSQUITO]);
+        var spawn = Instantiate(unit[unitType-1]);
         spawn.transform.SetParent(transform, false);
         float xPos = gridPosition.x * GRID_SIZE;
         float zPos = gridPosition.z * GRID_SIZE;

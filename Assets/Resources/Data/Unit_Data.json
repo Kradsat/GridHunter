@@ -57,19 +57,19 @@
 		{
 			"unit_id": 9,
 			"unit_name": "boss2",
-			"unit_hp": 200,
+			"unit_hp": 500,
 			"unit_attack": 50
 		},
 		{
 			"unit_id": 10,
 			"unit_name": "mosqito",
-			"unit_hp": 200,
+			"unit_hp": 50,
 			"unit_attack": 50
 		},
 		{
 			"unit_id": 11,
 			"unit_name": "nest",
-			"unit_hp": 200,
+			"unit_hp": 100,
 			"unit_attack": 0
 		},
 		{
@@ -80,4 +80,3 @@
 		}
 	]
 }
-		
