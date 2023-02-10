@@ -128,7 +128,7 @@ public class UnitActionSystem : MonoBehaviour
     {
         isBusy = false;
         OnBusyChanged?.Invoke(this, isBusy);
-
+        AllUnitNotHavePoints( );
     }
 
     private bool TryHandleUnitSelection()
@@ -141,7 +141,8 @@ public class UnitActionSystem : MonoBehaviour
                 if(raycasthit.transform.TryGetComponent<UnitBase>(out UnitBase unit))
                 {
                     if (unit == selectedUnit ||
-                        GetSelectedAction() == selectedUnit.GetAction<SpecialAttack>() && selectedUnit.GetActionPoints( ) > 0 )
+                        GetSelectedAction() == selectedUnit.GetAction<SpecialAttack>() && selectedUnit.GetActionPoints( ) > 0 ||
+                        unit.GetActionPoints( ) == 0 )
                     {
                         return false;
                     }
@@ -240,5 +241,17 @@ public class UnitActionSystem : MonoBehaviour
         }
 
         _arrowList.Clear();
+    }
+
+    public void AllUnitNotHavePoints( ) {
+        var unitlist = UnitManager.Instance.GetAllyUnitList( );
+        foreach( var unit in unitlist) {
+            if ( unit.GetActionPoints( ) == 0 ) {
+                continue;
+            } else {
+                return;
+            }
+        }
+        TurnSystem.Instance.NextTurn( );
     }
 }
